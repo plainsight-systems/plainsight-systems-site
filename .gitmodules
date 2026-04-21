@@ -1,0 +1,3 @@
+[submodule "themes/hugo-theme-operator"]
+	path = themes/hugo-theme-operator
+	url = https://github.com/plainsight-lab/hugo-theme-operator
