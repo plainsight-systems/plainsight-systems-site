@@ -30,7 +30,7 @@ Code that sits in a position of judgment over the operator's work is released un
 Andrew Hunter — Founder, Managing Member, and Sole Member of Plainsight Systems LLC — publishes long-form research on systems theory, AI governance, and architecture as constraint discipline at [andrewphunter.com](https://andrewphunter.com/).
 
 **Research notes** — academic-grade work on the formal structure of knowability and constraint-induced invariants. Section: [andrewphunter.com/research/](https://andrewphunter.com/research/).
-Highlighted: [First Definition of Knowability](https://andrewphunter.com/research/first-definition-of-knowability/) — initial formalization of knowability as a preserved mapping across time and composition.
+Highlighted: [Toward a Geometric Theory of Knowability](https://andrewphunter.com/research/geometric-theory-of-knowability/) — set-theoretic foundations of the constraint–invariant framework, transition toward geometric formalization, and explicit research directions across topology, dynamical systems, and measure theory.
 
 **Systems theory** — twelve-essay Corpus on architecture as constraint discipline. Section: [andrewphunter.com/theory/](https://andrewphunter.com/theory/).
 Highlighted: [Architecture as Practiced Constraint](https://andrewphunter.com/theory/architecture-as-practiced-constraint/) — architecture as the disciplined preservation of invariant space under pressure.
