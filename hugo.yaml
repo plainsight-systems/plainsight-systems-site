@@ -1,0 +1,77 @@
+baseURL: https://plainsight-systems.com
+languageCode: en-us
+title: Plainsight Systems
+theme: hugo-theme-operator
+
+params:
+  description: "Plainsight Systems LLC is a holding company for instruments whose authority does not depend on us. Apache 2.0 governance, perpetual instrument licenses, architecturally enforced data custody."
+  tagline: "Authority that does not depend on us."
+  domain: plainsight-systems.com
+  entity: "Plainsight Systems LLC"
+
+  # Custom CSS — loaded via Hugo pipes in head.html override
+  customCSS: ["css/overrides.css"]
+
+  # OG / Social
+  ogImage: /images/social-card.png
+  twitterCard: summary_large_image
+
+  # Footer
+  footerText: "Plainsight Systems LLC — registered in Arizona, USA."
+
+# Sitemap
+sitemap:
+  changefreq: monthly
+  priority: 0.5
+
+# Taxonomies
+taxonomies:
+  tag: tags
+  category: categories
+
+# Markup — allow unsafe so we can embed inline html in content where needed
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: github
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3
+    ordered: false
+
+# Build
+build:
+  writeStats: true
+
+# Minify
+minify:
+  disableCSS: false
+  disableHTML: false
+  disableJS: false
+
+# Main menu
+menu:
+  main:
+    - name: Portfolio
+      url: /portfolio/
+      weight: 10
+    - name: Research
+      url: /research/
+      weight: 15
+    - name: AI Governance
+      url: /ai-governance/
+      weight: 18
+    - name: Licensing
+      url: /licensing/
+      weight: 20
+    - name: About
+      url: /about/
+      weight: 30
+    - name: Press
+      url: /press/
+      weight: 35
+    - name: Contact
+      url: /contact/
+      weight: 40

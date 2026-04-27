@@ -1,0 +1,51 @@
+<footer class="ps-footer" role="contentinfo">
+  <div class="ps-footer__inner">
+    <div class="ps-footer__brand-col">
+      <a href="{{ "/" | relURL }}" class="ps-footer__brand">Plainsight Systems</a>
+      <address class="ps-footer__address">
+        Plainsight Systems LLC<br />
+        11240 N 19th Ave<br />
+        Suite 22 PMB 1072<br />
+        Phoenix, AZ 85029-4825<br />
+        USA
+      </address>
+    </div>
+
+    <div>
+      <span class="ps-footer__col-title">Portfolio</span>
+      <ul class="ps-footer__links">
+        <li><a href="https://plainsightlab.com">PlainSight Lab</a></li>
+        <li><a href="https://getappario.com">Appario</a></li>
+        <li><a href="https://custodyzero.com">CustodyZero</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <span class="ps-footer__col-title">Company</span>
+      <ul class="ps-footer__links">
+        <li><a href="{{ "/portfolio/" | relURL }}">Portfolio</a></li>
+        <li><a href="{{ "/research/" | relURL }}">Research</a></li>
+        <li><a href="{{ "/ai-governance/" | relURL }}">AI Governance</a></li>
+        <li><a href="{{ "/licensing/" | relURL }}">Licensing</a></li>
+        <li><a href="{{ "/about/" | relURL }}">About</a></li>
+        <li><a href="{{ "/press/" | relURL }}">Press</a></li>
+        <li><a href="{{ "/contact/" | relURL }}">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <span class="ps-footer__col-title">Legal</span>
+      <ul class="ps-footer__links">
+        <li><a href="{{ "/privacy/" | relURL }}">Privacy</a></li>
+        <li><a href="{{ "/terms/" | relURL }}">Terms</a></li>
+        <li><a href="{{ "/security/" | relURL }}">Security</a></li>
+        <li><a href="/.well-known/security.txt">security.txt</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ps-footer__bottom">
+    <span>© {{ now.Format "2006" }} Plainsight Systems LLC. All rights reserved.</span>
+    <span>Registered in Arizona, USA.</span>
+  </div>
+</footer>

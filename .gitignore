@@ -1,0 +1,27 @@
+# Wrangler
+.wrangler/
+.dev.vars
+
+# Dependencies
+node_modules/
+
+# Hugo build output
+public/
+resources/
+hugo_stats.json
+.hugo_build.lock
+
+# Font source files — only .woff2 is tracked
+static/fonts/*.ttf
+static/fonts/*.otf
+static/fonts/*.woff
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,667 @@
+/* ============================================================
+   Plainsight Systems — Brand Token Overrides
+   Loaded after theme CSS. Ink-on-ivory institutional register.
+   IBM Plex Serif + IBM Plex Mono — a typographic system for a
+   systems company. SIL OFL, self-hosted.
+   ============================================================ */
+
+/* ── FONTS ──────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Plex Serif';
+  src: url('/fonts/PlexSerif-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plex Serif';
+  src: url('/fonts/PlexSerif-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plex Serif';
+  src: url('/fonts/PlexSerif-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plex Serif';
+  src: url('/fonts/PlexSerif-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plex Serif';
+  src: url('/fonts/PlexSerif-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plex Mono';
+  src: url('/fonts/PlexMono-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plex Mono';
+  src: url('/fonts/PlexMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plex Mono';
+  src: url('/fonts/PlexMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── DESIGN TOKENS ──────────────────────────────────────────── */
+/* Outside @layer for precedence over theme.                    */
+
+:root {
+  /* Ink on ivory */
+  --ivory:        #fafaf5;   /* Page surface — warm off-white */
+  --ivory-dim:    #f3f2eb;   /* Card / surface-strong */
+  --rule:         #d4d0ca;   /* Dividers, table rules */
+  --rule-soft:    #e6e3dc;   /* Hairline dividers */
+  --ink:          #0f0f0f;   /* Body text and headings */
+  --ink-soft:     #2a2826;   /* Bold / strong */
+  --muted:        #5b5955;   /* Secondary text */
+  --muted-strong: #3b3936;   /* Labels that need a touch more weight */
+
+  /* Theme token overrides */
+  --color-bg:              var(--ivory);
+  --color-fg:              var(--ink);
+  --color-muted:           var(--muted);
+  --color-border:          var(--rule);
+  --color-surface:         var(--ivory);
+  --color-surface-strong:  var(--ivory-dim);
+  --color-accent:          var(--ink);
+  --color-accent-contrast: var(--ivory);
+  --color-link:            var(--ink);
+  --color-link-hover:      var(--muted-strong);
+  --color-focus:           var(--ink);
+  --color-code-bg:         var(--ivory-dim);
+  --color-code-fg:         var(--ink);
+
+  /* Typography — IBM Plex Serif for display/body, IBM Plex Mono for meta */
+  --font-sans:  'Plex Serif', 'Iowan Old Style', Charter, Georgia, serif;
+  --font-serif: 'Plex Serif', 'Iowan Old Style', Charter, Georgia, serif;
+  --font-mono:  'Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --font-weight-regular:  400;
+  --font-weight-semibold: 500;
+  --font-weight-bold:     500;
+
+  /* Quieter type scale than the theme default */
+  --text-xs:   0.72rem;
+  --text-sm:   0.82rem;
+  --text-base: 1rem;
+  --text-md:   1.08rem;
+  --text-lg:   1.22rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  1.95rem;
+  --text-3xl:  2.5rem;
+  --text-4xl:  3.1rem;
+
+  --line-height-base:  1.65;
+  --line-height-tight: 1.22;
+  --line-height-loose: 1.8;
+
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-wide:   0.18em;
+
+  /* Square edges throughout */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+
+  /* Restrained shadows */
+  --shadow-sm: 0 1px 0 rgba(15, 15, 15, 0.04);
+  --shadow-md: 0 1px 0 rgba(15, 15, 15, 0.06);
+  --shadow-lg: 0 2px 0 rgba(15, 15, 15, 0.08);
+
+  --container-max:    68rem;
+  --container-narrow: 44rem;
+  --container-padding: 1.5rem;
+
+  --logo-height: 22px;
+}
+
+/* ── BASE ───────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: var(--line-height-base);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--rule);
+  transition: text-decoration-color 140ms ease, color 140ms ease;
+}
+
+a:hover {
+  text-decoration-color: var(--ink);
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+/* ── NAV ────────────────────────────────────────────────────── */
+
+.ps-nav {
+  border-bottom: 1px solid var(--rule-soft);
+  padding: 1.25rem 0;
+  background: var(--ivory);
+}
+
+.ps-nav__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.ps-nav__brand {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.ps-nav__links {
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  align-items: baseline;
+}
+
+.ps-nav__link {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.ps-nav__link:hover { color: var(--ink); }
+.ps-nav__link[aria-current="page"] { color: var(--ink); }
+
+/* ── MOBILE NAV TOGGLE ──────────────────────────────────────── */
+/* Hidden on desktop; revealed on mobile via the responsive block.
+   Visual register: monospace uppercase label matching brand voice;
+   a single hairline border so the control reads as institutional,
+   not as a consumer-app hamburger. */
+
+.ps-nav__toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--rule);
+  padding: 0.5rem 1rem;
+  min-height: 44px;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+
+.ps-nav__toggle:hover,
+.ps-nav__toggle:focus-visible {
+  color: var(--ink);
+  border-color: var(--ink);
+  outline: none;
+}
+
+.ps-nav__toggle[aria-expanded="true"] {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+/* ── CONTAINERS & SECTIONS ──────────────────────────────────── */
+
+.ps-wrap {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.ps-wrap--narrow {
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.ps-section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.ps-section:last-of-type {
+  border-bottom: none;
+}
+
+.ps-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+/* ── HERO ───────────────────────────────────────────────────── */
+
+.ps-hero {
+  padding: 6rem 0 4rem;
+}
+
+.ps-hero__thesis {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.003em;
+  color: var(--ink);
+  max-width: 44rem;
+}
+
+.ps-hero__thesis em {
+  font-style: italic;
+}
+
+/* ── BRAND GRID ─────────────────────────────────────────────── */
+
+.ps-brands {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.ps-brand {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: background 140ms ease;
+}
+
+.ps-brand:last-child {
+  border-right: none;
+}
+
+.ps-brand:hover {
+  background: var(--ivory-dim);
+  text-decoration: none;
+}
+
+.ps-brand__name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+.ps-brand__tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ps-brand__desc {
+  font-size: 0.95rem;
+  color: var(--muted-strong);
+  line-height: 1.55;
+}
+
+.ps-brand__cta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-top: 0.5rem;
+}
+
+/* ── PROSE — body content on inner pages ────────────────────── */
+
+.ps-prose {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: var(--container-narrow);
+}
+
+.ps-prose h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 2.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+.ps-prose h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  margin-top: 2.75rem;
+  margin-bottom: 0.9rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.ps-prose h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.ps-prose h3 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-strong);
+  margin-top: 1.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.ps-prose p { margin-bottom: 1.15rem; }
+.ps-prose p:last-child { margin-bottom: 0; }
+
+.ps-prose ul, .ps-prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.15rem;
+}
+
+.ps-prose li { margin-bottom: 0.35rem; }
+
+.ps-prose strong { font-weight: 500; color: var(--ink); }
+.ps-prose em { font-style: italic; }
+
+.ps-prose hr {
+  border: none;
+  border-top: 1px solid var(--rule-soft);
+  margin: 2rem 0;
+}
+
+.ps-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.ps-prose thead {
+  border-bottom: 1px solid var(--rule);
+}
+
+.ps-prose th {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-strong);
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  font-weight: 500;
+}
+
+.ps-prose td {
+  padding: 0.6rem 0.7rem;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top;
+}
+
+.ps-prose blockquote {
+  border-left: 2px solid var(--ink);
+  padding-left: 1.25rem;
+  margin: 1.25rem 0;
+  color: var(--muted-strong);
+  font-style: italic;
+}
+
+.ps-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--ivory-dim);
+  padding: 0.1em 0.35em;
+}
+
+/* ── META LINE — e.g. "Last updated" ────────────────────────── */
+
+.ps-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* ── PAGE HEADER ────────────────────────────────────────────── */
+
+.ps-page-header {
+  padding: 4.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.ps-page-header__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 44rem;
+}
+
+.ps-page-header__desc {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: var(--muted-strong);
+  max-width: 44rem;
+  margin-top: 1rem;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+
+.ps-footer {
+  border-top: 1px solid var(--rule);
+  padding: 3rem 0 2rem;
+  background: var(--ivory);
+}
+
+.ps-footer__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.ps-footer__brand {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  display: block;
+  text-decoration: none;
+}
+
+.ps-footer__address {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  font-style: normal;
+}
+
+.ps-footer__col-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-strong);
+  margin-bottom: 0.9rem;
+  display: block;
+}
+
+.ps-footer__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ps-footer__links a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.ps-footer__links a:hover { color: var(--ink); }
+
+.ps-footer__bottom {
+  max-width: var(--container-max);
+  margin: 2.5rem auto 0;
+  padding: 1.5rem var(--container-padding) 0;
+  border-top: 1px solid var(--rule-soft);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .ps-nav__inner {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Brand sits left, toggle sits right. The nav element drops to its own
+     row below them, full-width. order: 2 forces the row break. */
+  .ps-nav nav[aria-label="Primary"] {
+    width: 100%;
+    order: 2;
+  }
+
+  .ps-nav__links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 0.5rem;
+  }
+
+  .ps-nav__links li {
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .ps-nav__links li:last-child {
+    border-bottom: none;
+  }
+
+  .ps-nav__link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    width: 100%;
+  }
+
+  /* JS-enabled: collapse the menu by default, expose the toggle. */
+  html.js .ps-nav__toggle {
+    display: inline-flex;
+  }
+
+  html.js .ps-nav__toggle[aria-expanded="false"] ~ nav .ps-nav__links {
+    display: none;
+  }
+
+  .ps-hero { padding: 3.5rem 0 2.5rem; }
+
+  .ps-brands {
+    grid-template-columns: 1fr;
+  }
+  .ps-brand {
+    border-right: none;
+  }
+
+  .ps-footer__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ps-footer__brand-col {
+    grid-column: 1 / -1;
+  }
+
+  .ps-footer__bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,20 @@
+/* TEAM */
+
+Founder, Managing Member, and Sole Member: Andrew P Hunter
+Contact: hello@plainsight-systems.com
+Site: https://andrewphunter.com
+LinkedIn: https://www.linkedin.com/in/andrewphunter/
+ORCID: 0009-0005-7613-8019
+From: Phoenix, AZ, USA
+
+/* SITE */
+
+Last update: 2026-04-27
+Standards: HTML5, CSS3
+Generator: Hugo (extended)
+Hosting: Cloudflare Workers
+Source license: MIT (site code), CC BY 4.0 (site content)
+
+/* THANKS */
+
+To the operating brands — PlainSight Lab, Appario, CustodyZero — that produce the work this corporate-identity layer represents.

@@ -1,0 +1,20 @@
+{{ define "main" }}
+<article>
+  <header class="ps-page-header">
+    <div class="ps-wrap--narrow">
+      <h1 class="ps-page-header__title">{{ .Title }}</h1>
+      {{ with .Description }}
+      <p class="ps-page-header__desc">{{ . }}</p>
+      {{ end }}
+    </div>
+  </header>
+
+  <div class="ps-section" style="border-bottom: none;">
+    <div class="ps-wrap--narrow">
+      <div class="ps-prose">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</article>
+{{ end }}

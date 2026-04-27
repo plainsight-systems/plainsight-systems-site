@@ -1,0 +1,24 @@
+<header class="ps-nav" role="banner">
+  <div class="ps-nav__inner">
+    <a href="{{ "/" | relURL }}" class="ps-nav__brand">Plainsight Systems</a>
+    <button
+      class="ps-nav__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="ps-nav-list"
+      aria-label="Toggle navigation menu">Menu</button>
+    <nav aria-label="Primary">
+      <ul id="ps-nav-list" class="ps-nav__links">
+        {{ range .Site.Menus.main }}
+        <li>
+          <a
+            href="{{ .URL | relURL }}"
+            class="ps-nav__link"
+            {{ if $.Page.IsMenuCurrent "main" . }}aria-current="page"{{ end }}
+          >{{ .Name }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>

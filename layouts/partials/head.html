@@ -1,0 +1,103 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+{{ $description := .Description | default .Site.Params.description }}
+{{ with $description }}<meta name="description" content="{{ . }}" />{{ end }}
+
+<link rel="canonical" href="{{ .Permalink }}" />
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#0f0f0f" />
+
+<!-- Open Graph -->
+{{ $ogImage := .Params.ogImage | default .Site.Params.ogImage }}
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}" />
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
+<meta property="og:description" content="{{ $description }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+{{ with $ogImage }}
+<meta property="og:image" content="{{ $.Site.BaseURL }}{{ strings.TrimPrefix "/" . }}" />
+{{ end }}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
+<meta name="twitter:description" content="{{ $description }}" />
+
+<!-- Organization JSON-LD -->
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://plainsight-systems.com/#organization",
+  "name": "Plainsight Systems LLC",
+  "legalName": "Plainsight Systems LLC",
+  "alternateName": "Plainsight Systems",
+  "url": "https://plainsight-systems.com/",
+  "logo": "https://plainsight-systems.com/images/social-card.png",
+  "foundingDate": "2026-03-06",
+  "founder": {
+    "@type": "Person",
+    "name": "Andrew P Hunter",
+    "sameAs": [
+      "https://www.linkedin.com/in/andrewphunter/",
+      "https://andrewphunter.com/",
+      "https://orcid.org/0009-0005-7613-8019"
+    ]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "11240 N 19th Ave, Suite 22 PMB 1072",
+    "addressLocality": "Phoenix",
+    "addressRegion": "AZ",
+    "postalCode": "85029-4825",
+    "addressCountry": "US"
+  },
+  "telephone": "+1-602-932-7283",
+  "email": "hello@plainsight-systems.com",
+  "sameAs": [
+    "https://plainsightlab.com",
+    "https://getappario.com",
+    "https://custodyzero.com"
+  ],
+  "subOrganization": [
+    { "@type": "Organization", "name": "PlainSight Lab", "url": "https://plainsightlab.com" },
+    { "@type": "Organization", "name": "Appario", "url": "https://getappario.com" },
+    { "@type": "Organization", "name": "CustodyZero", "url": "https://custodyzero.com" }
+  ]
+}
+</script>
+{{ end }}
+
+<!-- Theme CSS -->
+{{ $themeCSS := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $themeCSS.RelPermalink }}" integrity="{{ $themeCSS.Data.Integrity }}" />
+
+<!-- Plainsight Systems brand tokens — loaded after theme CSS -->
+{{ $overrides := resources.Get "css/overrides.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $overrides.RelPermalink }}" integrity="{{ $overrides.Data.Integrity }}" />
+
+<!-- Mobile nav script -->
+{{ $navJS := resources.Get "js/nav.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $navJS.RelPermalink }}" integrity="{{ $navJS.Data.Integrity }}" defer></script>
+
+<noscript><style>
+/* Without JS: keep the toggle hidden and force the menu visible on mobile. */
+.ps-nav__toggle { display: none !important; }
+@media (max-width: 768px) {
+  .ps-nav__links {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+}
+</style></noscript>
+
+{{ hugo.Generator }}
