@@ -38,6 +38,7 @@ Plainsight Systems is operated by a small team. In the tradition established by 
 | Jurisdiction of formation | State of Arizona, United States |
 | Date of formation | March 6, 2026 |
 | Arizona Corporation Commission entity ID | 25028899 |
+| SAM.gov UEI | R82LBMJFPCZ7 |
 | NAICS classification | 541511 — Custom Computer Programming Services |
 | Business classification | Veteran-Owned Small Business (VOSB) |
 | Statutory agent | Registered Agents Inc., 4539 N 22nd St Ste R, Phoenix, AZ 85016-4639 |
