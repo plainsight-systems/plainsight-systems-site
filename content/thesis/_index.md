@@ -13,7 +13,7 @@ Two inheritances — and they are concepts, not companies.
 
 The first is **product purity**: Apple in the Jobs era. The discipline was never aesthetic minimalism — it was the refusal to choose between simplicity and power. A product had to be genuinely capable and deeply configurable and, at the same time, immediately intuitive. Neither was traded for the other. And it had to be *finished* — complete to the last detail, down to how a keyboard sits in its stand. The industry has always treated simple and powerful as opposites; purity is the refusal of that trade-off, and the engineering to deliver both.
 
-The second is **performance discipline**: id Tech in the Carmack era, when the engine wrung from ordinary hardware what the market was certain it could not do.
+The second is **performance discipline**: id Tech in the Carmack and Abrash era, when two engineers together wrung from ordinary hardware what the market was certain it could not do.
 
 Neither is an endorsement of a company. Each names a phase — the moment a particular discipline was at its sharpest — and that discipline is what Plainsight Systems is built to inherit.
 
