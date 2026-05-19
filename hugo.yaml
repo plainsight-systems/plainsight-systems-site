@@ -54,6 +54,9 @@ minify:
 # Main menu
 menu:
   main:
+    - name: Thesis
+      url: /thesis/
+      weight: 5
     - name: Portfolio
       url: /portfolio/
       weight: 10
