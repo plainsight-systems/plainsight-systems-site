@@ -9,9 +9,13 @@ Intelligence belongs on the device — owned outright by the operator, running o
 
 ## Lineage
 
-Two inheritances.
+Two inheritances — and they are concepts, not companies.
 
-The first is the purity of Apple at its most focused — the discipline that treats a product as a crafted, finished object, not a surface for someone else's data collection. The second is the performance conviction of id — the refusal to accept that the hardware in front of you can do only what the market assumes it can.
+The first is **product purity**: Apple in the Jobs era, when a product was a crafted, finished object and nothing else — not a surface for someone else's data collection, not a channel for rented services.
+
+The second is **performance discipline**: id Tech in the Carmack era, when the engine wrung from ordinary hardware what the market was certain it could not do.
+
+Neither is an endorsement of a company. Each names a phase — the moment a particular discipline was at its sharpest — and that discipline is what Plainsight Systems is built to inherit.
 
 Most companies shipping AI inherited neither. They assume intelligence is expensive, remote, and rented, because that is the easiest thing to build and the easiest thing to bill. Plainsight Systems assumes the opposite — and then does the engineering to make the opposite true.
 
