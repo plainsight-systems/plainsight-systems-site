@@ -9,7 +9,7 @@ The full thesis is at [About](/about/). The licensing doctrine that makes these 
 
 ## Foundational position
 
-Plainsight Systems builds instruments whose authority does not depend on us. Three claims follow:
+The prevailing assumption is that intelligence is a service: rented from someone else's computer, metered by the token, withdrawn at the vendor's discretion. Plainsight Systems is built on the refutation. Intelligence belongs on the device — owned outright by the operator, on hardware they have already paid for. That bet binds the company to a single commitment: every system shipped is licensed, architected, and maintained so the person using it retains authority over it. Three claims follow:
 
 - **The operator can see how the instrument functions.** Systems that sit in judgment positions — change-control, agent coordination, governance enforcement — are released open-source. A proprietary governor is a contradiction in terms.
 - **The operator can change what the instrument does.** Canonical specifications are public. Scoring methodologies are explained. File formats are open. Local-first architectures put the substrate inside the operator's reach.

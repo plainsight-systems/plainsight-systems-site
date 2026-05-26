@@ -9,9 +9,11 @@ Plainsight Systems LLC is a limited liability company registered in the State of
 
 ## Thesis
 
-Plainsight Systems builds instruments whose authority does not depend on us. Every system shipped is licensed, architected, and maintained so the person using it retains authority over it — before, during, and after our continued cooperation.
+The prevailing assumption is that intelligence is a service: rented from someone else's computer, metered by the token, withdrawn at the vendor's discretion. Plainsight Systems is built on the refutation.
 
-This is not a marketing claim. It is a constraint on what the company ships. Three categories of authority are treated as load-bearing:
+Intelligence belongs on the device — owned outright by the operator, running on hardware they have already paid for, answerable to no one's server. That is not a constraint the company tolerates. It is the bet the entire company is built to win.
+
+That bet binds the company to a single commitment: every system shipped is licensed, architected, and maintained so the person using it retains authority over it — before, during, and after our continued cooperation. This is not a marketing claim. It is a constraint on what the company ships. Three categories of authority are treated as load-bearing:
 
 **Visibility.** The operator can see how the instrument functions. Systems that sit in positions of judgment — governance, coordination, adjudication — are released as open source, because selling a proprietary governor is a contradiction in terms.
 
