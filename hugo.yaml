@@ -57,9 +57,15 @@ menu:
     - name: Thesis
       url: /thesis/
       weight: 5
+    - name: Roadmap
+      url: /roadmap/
+      weight: 8
     - name: Portfolio
       url: /portfolio/
       weight: 10
+    - name: Investors
+      url: /investors/
+      weight: 12
     - name: Research
       url: /research/
       weight: 15
