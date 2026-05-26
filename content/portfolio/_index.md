@@ -1,11 +1,25 @@
 ---
 title: "Portfolio"
-description: "The operating brands held by Plainsight Systems LLC. Each brand applies the shared thesis — authority that does not depend on us — to a different domain."
+description: "Three proof surfaces, three operating brands, one shared substrate. The full catalogue held by Plainsight Systems LLC."
 ---
 
-Plainsight Systems LLC holds three operating brands. Each applies the shared thesis to a different domain, with licensing, architecture, and maintenance policy derived from the same source.
+Three proof surfaces — Type, StationZero, and Valet — sit at the center of the company's forward plan, within a broader portfolio organised under three operating brands. Each brand applies the shared thesis to a different domain, with licensing, architecture, and maintenance policy derived from the same source.
 
-## PlainSight Lab
+## Proof surfaces
+
+The three CustodyZero products against which the company will be measured first:
+
+**Type** — a writing system for long-form work: AI-assisted, genuinely beautiful, with editorial intelligence that runs on the device rather than in a vendor's data center. Type for Mac is in closed alpha now; launch target is Q3 2026.
+
+**StationZero** — safety, not security, on the edge. Home infrastructure that watches and reasons on the property; footage and inference never leave it. First POC target is Q4 2026.
+
+**Valet** — ambient personal intelligence on the edge. An assistant that learns its operator over time and runs entirely on the operator's own machine. Closed-alpha target is Q1 2027.
+
+The full forward plan is on [Roadmap](/roadmap/). The shared substrate is on [Vigil](/vigil/).
+
+## Operating brands
+
+### PlainSight Lab
 
 *Governance and adversarial resilience research.*
 
@@ -15,7 +29,7 @@ Canonical documents are published under CC BY 4.0. Associated code is released u
 
 [plainsightlab.com](https://plainsightlab.com)
 
-## Appario
+### Appario
 
 *AI commerce readiness for merchants.*
 
@@ -25,17 +39,19 @@ Appario is transitioning from a cloud SaaS to a locally installed application un
 
 [getappario.com](https://getappario.com)
 
-## CustodyZero
+### CustodyZero
 
 *A product house for local-first instruments.*
 
 CustodyZero builds instruments that run on the operator's hardware, under the operator's control, with no cloud dependency. Every CustodyZero product inherits parent-organisation policies: security patches remain free for supported versions; user data is architecturally incapable of being surrendered; remote administration and telemetry pipes — even dormant ones — are forbidden by design.
 
-Current and near-term products under CustodyZero:
+CustodyZero hosts the three proof surfaces above (Type, StationZero, Valet) alongside:
 
-- **StationZero** — a home edge automation platform. First scope is WiFi camera surveillance on local-storage-capable cameras running on a user-owned compute node, with a phased roadmap extending into adversarial detection, device control, and whole-home automation. *In research.*
-- **Type** — a writing instrument for long-form writers and theorists. Local-first, perpetually licensed, with an editorial LLM assistant that proposes edits without capturing the operator's text. *In early testing.*
-- **Valet** — a resident, local-running assistant that learns its operator over time. Continuous inference on user-owned hardware; persistent memory routes through storage the operator already controls. *In development.*
 - **Factory** — a change-control system for AI-assisted development. Every change declares its intent; every acceptance is risk-proportional; every decision is auditable. Apache 2.0. *Active and in use.*
+- **Note — A Type companion** — the phone companion app to Type. *Planned.*
 
 [custodyzero.com](https://custodyzero.com)
+
+## Holding-company arm
+
+**Plainsight Edge** — a catalogue of small, single-purpose on-device-intelligence utilities, each one with a tight scope and a perpetual license. Not an operating brand; ships under the Plainsight Systems developer account.
