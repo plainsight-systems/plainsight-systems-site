@@ -9,9 +9,9 @@ It is not a product. It is the layer every Plainsight Systems product stands on.
 
 ## Measured, not promised
 
-Vigil is real, and it is instrumented. The inner harness sustains **89.4 tokens per second** of decode — recorded on an Apple M3, not current-generation silicon, with the performance runs documented internally. Multi-token prediction and memory-layout optimisation, both on the near roadmap, target steady-state decode of roughly 100 tokens per second and beyond on the same hardware.
+Vigil is real, and it is instrumented. The runtime currently averages **93.8 tokens per second** of decode across all prompt lengths, on an Apple M3 — under coresident load, on silicon that is not current-generation, with the performance runs documented internally. Multi-token prediction and memory-layout optimisation, both on the near roadmap, target sustained decode of 100 tokens per second across all normal prompt lengths.
 
-The numbers are quoted at the level the engine has actually reached. Future numbers are quoted as targets. The distinction is load-bearing.
+The current number is the average the engine actually reaches under load. The target is sustained — every prompt length, not just the mean. The distinction is load-bearing.
 
 ## Architecture
 

@@ -23,7 +23,7 @@ Most companies shipping AI inherited neither. They assume intelligence is expens
 
 Vigil is the Plainsight Systems edge-intelligence runtime: a custom inference engine, built in-house, that runs capable models on the operator's own hardware with no cloud dependency and no per-token meter.
 
-Vigil is real, and it is measured. The inner harness sustains **89.4 tokens per second** of decode — recorded on an Apple M3, not current-generation silicon, with the performance runs documented. Multi-token prediction and memory-layout optimization, both on the near roadmap, target steady-state decode of roughly 100 tokens per second and beyond.
+Vigil is real, and it is measured. The runtime averages **93.8 tokens per second** of decode across all prompt lengths, on an Apple M3 — under coresident load, on silicon that is not current-generation, with the performance runs documented. Multi-token prediction and memory-layout optimization, both on the near roadmap, target sustained decode of 100 tokens per second across all normal prompt lengths.
 
 Vigil is built once, and every product rides it. The marginal cost of the intelligence layer for each new instrument trends toward zero — the hard part is already paid for. This is what makes the portfolio a portfolio, and not a series of unrelated bets.
 
