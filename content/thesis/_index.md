@@ -53,6 +53,6 @@ That is the compounding. Each new product is cheaper to build than the last, bec
 
 ## Where this is going
 
-Plainsight Systems is founder-funded and operating. Three operating brands are live; the flagship instruments are in testing and development; Vigil is in active extraction and optimization. The thesis is no longer a hypothesis — it is measured, and it is being built.
+Plainsight Systems is founder-funded and operating. Three operating brands are live; the flagship instruments are in testing and development; Vigil is extracted and in active optimization. The thesis is no longer a hypothesis — it is measured, and it is being built.
 
 The company is positioning to widen the table. This page is not a solicitation; it is the standing case. Conversations with investors, operators, and collaborators who share the refutation are welcome — [hello@plainsight-systems.com](mailto:hello@plainsight-systems.com).
