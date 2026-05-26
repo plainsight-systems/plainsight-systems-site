@@ -69,12 +69,6 @@ menu:
     - name: Research
       url: /research/
       weight: 15
-    - name: AI Governance
-      url: /ai-governance/
-      weight: 18
-    - name: Licensing
-      url: /licensing/
-      weight: 20
     - name: About
       url: /about/
       weight: 30

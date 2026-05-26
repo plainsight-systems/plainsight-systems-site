@@ -21,7 +21,7 @@ That bet binds the company to a single commitment: every system shipped is licen
 
 **Exit.** The operator can leave without losing what they built. End-user instruments are licensed perpetually — purchase buys permanent right to use; non-payment means no new features, not loss of function. Security patches remain free for supported versions. Local-first architectures remove the operator's dependency on the company's continued operation.
 
-The practical expression of these commitments is documented in [Licensing](/licensing/). The body of public artifacts produced under them — canonical specifications, open-source governance code, and the founder's long-form research — is indexed at [Research](/research/). How the operating brands, the shared edge-intelligence runtime, and the licensing doctrine compound into a single company is set out in the [Thesis](/thesis/) — with the substrate explained in detail on [Vigil](/vigil/), the forward milestones on [Roadmap](/roadmap/), and the standing investor invitation at [Investors](/investors/).
+The practical expression of these commitments is documented in [Licensing](/licensing/) and operationalised for AI systems specifically on [AI Governance](/ai-governance/). The body of public artifacts produced under them — canonical specifications, open-source governance code, and the founder's long-form research — is indexed at [Research](/research/). How the operating brands, the shared edge-intelligence runtime, and the licensing doctrine compound into a single company is set out in the [Thesis](/thesis/) — with the substrate explained in detail on [Vigil](/vigil/), the forward milestones on [Roadmap](/roadmap/), and the standing investor invitation at [Investors](/investors/).
 
 ## Stewards
 
