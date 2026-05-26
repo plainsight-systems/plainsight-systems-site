@@ -37,7 +37,7 @@ Plurality of implementation is permitted. Plurality of canonical truth is not: i
 
 ## Brand assets — all rights reserved
 
-The names "Plainsight Systems", "PlainSight Lab", "Appario", "CustodyZero", "StationZero", "Type", "Valet", "Factory", "Archon", and all associated wordmarks, logomarks, icons, and visual identity elements are trademarks or service marks of Plainsight Systems LLC. They are explicitly excluded from the Apache 2.0, CC BY 4.0, and perpetual license terms above.
+The names "Plainsight Systems", "PlainSight Lab", "Appario", "CustodyZero", "StationZero", "Type", "Note", "Valet", "Factory", "Archon", and all associated wordmarks, logomarks, icons, and visual identity elements are trademarks or service marks of Plainsight Systems LLC. They are explicitly excluded from the Apache 2.0, CC BY 4.0, and perpetual license terms above.
 
 Use of brand assets — including in derivative works, forks, or re-distributions — requires written permission.
 
