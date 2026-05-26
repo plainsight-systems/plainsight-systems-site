@@ -15,7 +15,7 @@ The current number is the average the engine actually reaches under load. The ta
 
 ## Architecture
 
-A product-neutral C++23 runtime, extracted from the Valet harness and a Gemma 4 mixture-of-experts implementation and now in active optimisation.
+A product-neutral C++23 runtime that runs open-weight models through a custom inference path. Extracted from the Valet harness; now in active optimisation.
 
 Backends are silicon-specific by design, not abstracted away. Apple Silicon, against MLX, is the first concrete backend — the one the published numbers come from. AMD Strix Halo, the target for StationZero on the home edge, is the next backend under active research. Each backend is written to the silicon it serves; honesty about hardware is part of the contract.
 
