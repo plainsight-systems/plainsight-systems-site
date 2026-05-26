@@ -31,17 +31,21 @@ Vigil is built once, and every product rides it. The marginal cost of the intell
 
 Vigil is the engine. These are the instruments it drives.
 
-**Valet** — ambient personal intelligence on the edge. An assistant that learns its operator over time and runs entirely on the operator's own machine.
+Three proof surfaces lead — the products against which the company will be measured first:
 
-**StationZero** — safety, not security, on the edge. Home infrastructure that watches and reasons on the property; footage and inference never leave it.
+**Type** — a writing system for long-form work: AI-assisted, genuinely beautiful, with editorial intelligence that runs on the device rather than in a vendor's data center. Type for Mac is in closed alpha now; launch target is Q3 2026.
 
-**Type** — a writing system for long-form work: AI-assisted, genuinely beautiful, with editorial intelligence that runs on the device rather than in a vendor's data center.
+**StationZero** — safety, not security, on the edge. Home infrastructure that watches and reasons on the property; footage and inference never leave it. First POC target is Q4 2026.
+
+**Valet** — ambient personal intelligence on the edge. An assistant that learns its operator over time and runs entirely on the operator's own machine. Closed-alpha target is Q1 2027.
+
+And, on the same substrate:
 
 **Appario** — AI commerce readiness for merchants. The discovery layer for AI shopping agents is becoming as decisive as search once was; Appario gives a merchant direct standing in it, rather than dependence on the platform sitting between them and their buyers.
 
 **Plainsight Edge** — a catalogue of small, single-purpose utilities, each one built for on-device intelligence: one job, done locally, owned outright.
 
-Each is positioned to define its category. None of them is a science project.
+Each is positioned to define its category. None of them is a science project. The full forward plan is on [Roadmap](/roadmap/).
 
 ## Why it compounds
 
