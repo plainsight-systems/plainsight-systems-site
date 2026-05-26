@@ -15,7 +15,7 @@ Intelligence is being built as rented infrastructure: metered by the token, with
 
 ## What we are proving
 
-The forward plan is concentrated. Type for Mac launches in Q3 2026 — the first paid software proof. StationZero's first hardware POC follows in Q4 2026 on real silicon, one safety scenario end-to-end, no cloud inference in the path. Valet's closed alpha lands Q1 2027 on macOS and Windows compute. The sequence is dependency-driven, not parallel — the Vigil x86 backend StationZero builds in Q4 unlocks Type for Windows and Valet on Windows. See [Roadmap](/roadmap/) for the full chain and the architectural reason it compounds, and [Vigil](/vigil/) for the engine that makes the sequence possible.
+The forward plan is concentrated. Type for Mac launches in Q3 2026 — the first paid software proof. StationZero's first hardware POC follows in Q4 2026 on real hardware, one safety scenario end-to-end, no cloud inference in the path. Valet's closed alpha lands Q1 2027 on Mac and Windows. The sequence is dependency-driven, not parallel — the Vigil work StationZero requires in Q4 also unlocks Type for Windows and Valet on Windows. See [Roadmap](/roadmap/) for the full chain and the architectural reason it compounds, and [Vigil](/vigil/) for the engine that makes the sequence possible.
 
 ## The founder
 

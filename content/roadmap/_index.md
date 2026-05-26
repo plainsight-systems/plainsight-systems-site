@@ -20,16 +20,16 @@ Plainsight Systems is structured to amortise engineering work across the portfol
 
 **Across products: one substrate.** Vigil is the shared edge-intelligence runtime — built once, consumed by every product that needs inference. Each new product takes a share of Vigil work and pays it forward to the next.
 
-**Within a product: one core, native shells.** Every Plainsight Systems product is a central C++ business-logic core exposed across a stable ABI to thin platform-native UI shells. Each shell is *designed for* its target — Mac, Windows, iPad, custom hardware — not ported or wrapped. A new platform is a new shell, not a new product.
+**Within a product: one core, native interfaces.** Every Plainsight Systems product is a single core of business logic, with a separate native user interface built on top for each target — Mac, Windows, iPad, custom hardware. Each interface is *designed for* its platform, not ported or wrapped. A new platform is a new interface, not a new product.
 
 The forward sequence reflects both axes:
 
-- **Type for Mac (Q3 2026)** ships against Vigil's Apple Silicon + MLX backend (already working) and a Swift shell over the Type core.
-- **StationZero POC (Q4 2026)** is the first hardware target on AMD. The Vigil AMD backend built for StationZero is the same backend Type for Windows and Valet's Windows alpha need.
-- **Type for Windows (Q1 2027, most likely)** is unlocked once the AMD backend is real; Intel may run on the same path, pending verification. The C++ core does not change — only the shell and the runtime under it.
-- **Valet closed-alpha (Q1 2027)** ships on macOS and Windows simultaneously. Vigil supports both backends by then; Valet's core is consumed by a Swift shell on Mac and a native shell on Windows.
+- **Type for Mac (Q3 2026)** ships against Vigil on Apple platforms (already working) and a native Mac interface over the Type core.
+- **StationZero POC (Q4 2026)** is the first hardware target outside Apple. The Vigil work StationZero requires is the same work Type for Windows and Valet's Windows side will need.
+- **Type for Windows (Q1 2027, most likely)** is unlocked once that work is real. The Type core does not change — only the interface and the runtime under it.
+- **Valet closed-alpha (Q1 2027)** ships on Mac and Windows simultaneously. Vigil supports both by then; Valet's core is consumed by a native Mac interface and a native Windows interface.
 
-Vigil work paid for StationZero amortises across two Type variants and the Windows side of Valet's alpha. That is what the shared substrate buys — and what the per-target-shell architecture lets the company actually realise rather than promise.
+Vigil work paid for StationZero amortises across two Type variants and the Windows side of Valet's alpha. That is what the shared substrate buys — and what the per-target-interface architecture lets the company actually realise rather than promise.
 
 ## Type — Q3 2026 launch target (Mac)
 
@@ -39,8 +39,8 @@ Three positioning wedges, deliberately broken trade-offs the field has treated a
 
 The Type product line continues on the same Type core:
 
-- **Type for iPad** — committed, unscheduled. The iPad screens are already design-approved; the remaining work is the touch shell over the existing Apple-side Swift substrate.
-- **Type for Windows** — Q1 2027, most likely. A new Windows shell over the same Type core, gated on Vigil's x86 backend (built for StationZero, per the section above). Intel pending verification on the same path.
+- **Type for iPad** — committed, unscheduled. The iPad screens are already design-approved; the remaining work is the touch interface over the Type core, which already runs on Apple platforms.
+- **Type for Windows** — Q1 2027, most likely. A new Windows interface over the same Type core, gated on the same Vigil work StationZero requires (per the section above). Intel coverage requires separate verification.
 - **Note — A Type companion** — committed, unscheduled. The phone companion app to Type.
 
 Perpetual license, no telemetry, no kill switch. Free security patches for supported versions, regardless of subscription status — the [licensing doctrine](/licensing/) is uniform across the portfolio.
@@ -57,11 +57,11 @@ StationZero is home edge safety, not cloud surveillance — a compute node that 
 
 Valet is lifelong local personal intelligence on the operator's own silicon: an assistant that knows the user over time through temporal-aware semantic memory, runs entirely on the user's own hardware, and acts through substrate the user already controls (iCloud on Mac, Drive or OneDrive on Windows). Nothing leaves the device.
 
-**Q1 2027 is a closed-alpha target — not a launch.** The alpha proves the local-intelligence loop on the user's compute: Vigil-backed inference, deterministic memory, composed shell, and action through the user's own cloud-storage substrate. Resident, not roving — the cross-device phone-marshalling lands at v1-launch.
+**Q1 2027 is a closed-alpha target — not a launch.** The alpha proves the local-intelligence loop on the user's compute: Vigil-backed inference, deterministic memory, native user interface, and action through the user's own cloud-storage substrate. Resident, not roving — the cross-device phone-marshalling lands at v1-launch.
 
 A binding constraint carried from product definition: *the user installs the app, that's it.* No command line, no setup wizard, no first-launch script. Apple-philosophy elegance treated as a structural property of the install flow, not a polish step at the end.
 
-**v1-launch — unscheduled.** Commercial cross-platform deliverable. Compute expands to Linux on a defensible subset; the phone side (iOS + Android) lands together for cross-device marshalling. The architecture admits all of this — the Valet core is the same; v1-launch is the work of two more native shells and Vigil on a third compute target.
+**v1-launch — unscheduled.** Commercial cross-platform deliverable. Linux machines join the supported set on a defensible subset; the phone side (iOS + Android) lands together for cross-device marshalling. The architecture admits all of this — the Valet core is the same; v1-launch is the work of two more native interfaces and Vigil running on a third platform.
 
 ---
 
