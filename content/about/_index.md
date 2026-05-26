@@ -9,7 +9,7 @@ Plainsight Systems LLC is a limited liability company registered in the State of
 
 ## Thesis
 
-Plainsight Systems builds instruments whose authority does not depend on us. Across governance, commerce, home infrastructure, and writing, every system we ship is licensed, architected, and maintained so the person using it retains authority over it — before, during, and after our continued cooperation.
+Plainsight Systems builds instruments whose authority does not depend on us. Every system shipped is licensed, architected, and maintained so the person using it retains authority over it — before, during, and after our continued cooperation.
 
 This is not a marketing claim. It is a constraint on what the company ships. Three categories of authority are treated as load-bearing:
 
@@ -19,7 +19,7 @@ This is not a marketing claim. It is a constraint on what the company ships. Thr
 
 **Exit.** The operator can leave without losing what they built. End-user instruments are licensed perpetually — purchase buys permanent right to use; non-payment means no new features, not loss of function. Security patches remain free for supported versions. Local-first architectures remove the operator's dependency on the company's continued operation.
 
-The practical expression of these commitments is documented in [Licensing](/licensing/). The body of public artifacts produced under them — canonical specifications, open-source governance code, and the founder's long-form research — is indexed at [Research](/research/). How the operating brands, the shared edge-intelligence runtime, and the licensing doctrine compound into a single company is set out in the [Thesis](/thesis/).
+The practical expression of these commitments is documented in [Licensing](/licensing/). The body of public artifacts produced under them — canonical specifications, open-source governance code, and the founder's long-form research — is indexed at [Research](/research/). How the operating brands, the shared edge-intelligence runtime, and the licensing doctrine compound into a single company is set out in the [Thesis](/thesis/) — with the substrate explained in detail on [Vigil](/vigil/), the forward milestones on [Roadmap](/roadmap/), and the standing investor invitation at [Investors](/investors/).
 
 ## Stewards
 
@@ -56,7 +56,7 @@ PlainSight Lab, Appario, and CustodyZero originated as initiatives in early 2026
 
 ## Funding and sustainability
 
-Plainsight Systems is funded by founder capital and customer revenue from its operating brands. The company does not currently hold outside investment. The licensing doctrine — perpetual licenses for end-user instruments, permissive licenses for governance code, attribution-required licenses for canonical specifications — is structural rather than contingent on any single revenue source.
+Plainsight Systems is currently funded by founder capital and customer revenue. The company is preparing a milestone round to take the founder full-time through the seed-period proof window — see [Investors](/investors/) for the standing invitation. The licensing doctrine — perpetual licenses for end-user instruments, permissive licenses for governance code, attribution-required licenses for canonical specifications — is structural rather than contingent on any single revenue source.
 
 ## Intent of this site
 
