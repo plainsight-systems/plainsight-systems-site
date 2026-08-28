@@ -1,0 +1,47 @@
+{{/*
+  repo-card partial. Renders one open-source repo card with live stats
+  fetched from the GitHub REST API at build time.
+
+  Params (positional via dict — the caller passes a data-file entry):
+    .repo    — GitHub owner/name (e.g. "plainsight-systems/cpp-perf-guidelines")
+    .summary — curated one-liner (overrides the GitHub description)
+
+  Failure mode: if the GitHub API is unreachable or returns an error,
+  the card still renders (name + summary + link), the stats row omits
+  the fetched fields, and a build warning is emitted. Hugo caches
+  successful fetches, so transient failures fall back to the last
+  cached response on subsequent builds.
+*/}}
+
+{{ $repo := .repo }}
+{{ $summary := .summary }}
+{{ $repoURL := printf "https://github.com/%s" $repo }}
+{{ $apiURL := printf "https://api.github.com/repos/%s" $repo }}
+{{ $name := path.Base $repo }}
+
+{{ $fetched := false }}
+{{ $stars := 0 }}
+{{ $forks := 0 }}
+{{ $updated := "" }}
+
+{{ with try (resources.GetRemote $apiURL) }}
+  {{ with .Err }}
+    {{ warnf "repo-card: GitHub API fetch failed for %s: %s" $repo . }}
+  {{ else }}
+    {{ $data := .Value.Content | transform.Unmarshal }}
+    {{ $fetched = true }}
+    {{ $stars = int $data.stargazers_count }}
+    {{ $forks = int $data.forks_count }}
+    {{ with $data.pushed_at }}{{ $updated = (time .).Format "Jan 2006" }}{{ end }}
+  {{ end }}
+{{ end }}
+
+<a class="ps-brand" href="{{ $repoURL }}" rel="noopener">
+  <span class="ps-brand__tag">
+    {{- with $updated }}updated {{ . }}{{ end -}}
+    {{- if $fetched }}{{ if $updated }} · {{ end }}{{ $stars }}★ · {{ $forks }} forks{{ end -}}
+  </span>
+  <span class="ps-brand__name">{{ $name }}</span>
+  <span class="ps-brand__desc">{{ $summary }}</span>
+  <span class="ps-brand__cta">{{ strings.TrimPrefix "https://" $repoURL }} →</span>
+</a>

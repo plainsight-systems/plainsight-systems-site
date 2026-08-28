@@ -2,116 +2,60 @@
 
 <section class="ps-hero">
   <div class="ps-wrap">
-    <span class="ps-eyebrow">Plainsight Systems LLC</span>
     <p class="ps-hero__thesis">
-      Plainsight Systems builds local-first intelligence instruments — intelligence
-      that runs on the operator's own hardware, not rented from the cloud. Powered
-      by <a href="{{ "/vigil/" | relURL }}">Vigil</a>, the shared edge-intelligence
-      runtime. Authority that does not depend on us — before, during, and after.
+      Plainsight Systems is an independent research vehicle — an LLC used
+      to explore edge-native and on-device AI and publish open-source work
+      under a clean legal and licensing structure.
     </p>
   </div>
 </section>
 
 <section class="ps-section">
-  <div class="ps-wrap">
-    <span class="ps-eyebrow">Proof surfaces</span>
-  </div>
-  <div class="ps-wrap" style="padding-top: 1.5rem;">
-    <div class="ps-brands">
-
-      <a class="ps-brand" href="{{ "/roadmap/" | relURL }}">
-        <span class="ps-brand__tag">Writing instrument · Q3 2026 launch target (Mac)</span>
-        <span class="ps-brand__name">Type</span>
-        <span class="ps-brand__desc">
-          Keyboard-first writing for long-form work, with editorial intelligence
-          that runs on the device. In closed alpha now. Type for Mac launches Q3 2026;
-          iPad and Windows variants follow on the same engine.
-        </span>
-        <span class="ps-brand__cta">Roadmap →</span>
-      </a>
-
-      <a class="ps-brand" href="{{ "/roadmap/" | relURL }}">
-        <span class="ps-brand__tag">Home edge safety hardware · Q4 2026 POC target</span>
-        <span class="ps-brand__name">StationZero</span>
-        <span class="ps-brand__desc">
-          A compute node that watches and reasons on the property — local inference,
-          no cloud, footage that never leaves the device. First POC in Q4 2026 on
-          real hardware; investor-demo and beta path through 2027.
-        </span>
-        <span class="ps-brand__cta">Roadmap →</span>
-      </a>
-
-      <a class="ps-brand" href="{{ "/roadmap/" | relURL }}">
-        <span class="ps-brand__tag">Local personal intelligence · Q1 2027 closed-alpha target</span>
-        <span class="ps-brand__name">Valet</span>
-        <span class="ps-brand__desc">
-          Lifelong local personal intelligence on the user's own silicon —
-          temporal-aware semantic memory; action through the user's own substrate.
-          Closed alpha lands Q1 2027 on macOS and Windows compute. Not a launch.
-        </span>
-        <span class="ps-brand__cta">Roadmap →</span>
-      </a>
-
+  <div class="ps-wrap--narrow">
+    <span class="ps-eyebrow">Research</span>
+    <div class="ps-prose">
+      <p>
+        The exploration audits cargo-cult technology choices — defaults
+        adopted by momentum rather than fit. On-device LLMs where cloud is
+        the assumption; low-power radios where Bluetooth is the assumption.
+        Different domains, same lens.
+      </p>
+      <p>
+        <a href="{{ "/research/" | relURL }}">Read the research direction →</a>
+      </p>
     </div>
   </div>
 </section>
 
 <section class="ps-section">
   <div class="ps-wrap">
-    <span class="ps-eyebrow">Operating brands</span>
+    <span class="ps-eyebrow">Open source</span>
   </div>
   <div class="ps-wrap" style="padding-top: 1.5rem;">
     <div class="ps-brands">
-
-      <a class="ps-brand" href="https://plainsightlab.com" rel="noopener">
-        <span class="ps-brand__tag">Governance · Research</span>
-        <span class="ps-brand__name">PlainSight Lab</span>
-        <span class="ps-brand__desc">
-          An authority layer for adversarial, AI-amplified systems. Canonical truth,
-          enforced invariants, and stewardship of correctness where delayed correction
-          produces irreversible harm.
-        </span>
-        <span class="ps-brand__cta">plainsightlab.com →</span>
-      </a>
-
-      <a class="ps-brand" href="https://getappario.com" rel="noopener">
-        <span class="ps-brand__tag">Commerce Readiness</span>
-        <span class="ps-brand__name">Appario</span>
-        <span class="ps-brand__desc">
-          AI commerce readiness for merchants. Scans a store against the protocols,
-          schema, and data requirements used by AI shopping agents, and returns the
-          ranked fix list the merchant would otherwise pay a consultant to produce.
-        </span>
-        <span class="ps-brand__cta">getappario.com →</span>
-      </a>
-
-      <a class="ps-brand" href="https://custodyzero.com" rel="noopener">
-        <span class="ps-brand__tag">Local-First Instruments</span>
-        <span class="ps-brand__name">CustodyZero</span>
-        <span class="ps-brand__desc">
-          A product house for local-first instruments. Home of the proof surfaces above —
-          Type, StationZero, Valet — alongside Factory (change-control, Apache 2.0) and
-          Note (a phone companion for Type, planned).
-        </span>
-        <span class="ps-brand__cta">custodyzero.com →</span>
-      </a>
-
+      {{ range first 2 .Site.Data.featured_repos }}
+        {{ partial "repo-card.html" . }}
+      {{ end }}
     </div>
+    <p style="margin-top: 1.5rem;">
+      More at <a href="https://github.com/plainsight-systems" rel="noopener">github.com/plainsight-systems</a> →
+    </p>
   </div>
 </section>
 
 <section class="ps-section">
   <div class="ps-wrap--narrow">
-    <span class="ps-eyebrow">Thesis</span>
+    <span class="ps-eyebrow">About</span>
     <div class="ps-prose">
       <p>
-        Beneath every Plainsight Systems product sits Vigil — a single edge-intelligence
-        runtime, built once and amortised across the portfolio. Above every product sits
-        one licensing doctrine. Intelligence on the device, not rented from the cloud;
-        a portfolio that compounds rather than a series of unrelated bets.
+        <strong>Led by Andrew P Hunter</strong><br>
+        Founder &amp; Principal Researcher
       </p>
       <p>
-        <a href="{{ "/thesis/" | relURL }}">Read the thesis →</a>
+        <a href="https://www.linkedin.com/in/andrewphunter/" rel="noopener">LinkedIn</a> ·
+        <a href="https://github.com/plainsight-systems" rel="noopener">GitHub</a> ·
+        <a href="https://orcid.org/0009-0005-7613-8019" rel="noopener">ORCID</a> ·
+        <a href="https://andrewphunter.com/" rel="noopener">andrewphunter.com</a>
       </p>
     </div>
   </div>
@@ -122,33 +66,12 @@
     <span class="ps-eyebrow">Licensing</span>
     <div class="ps-prose">
       <p>
-        The thesis is operating policy. Governance and coordination systems are released
-        under <strong>Apache 2.0</strong>; what is released stays released. End-user
-        instruments are sold under a <strong>perpetual license</strong> — purchase buys
-        permanent right to use; paid upgrades buy feature updates; non-payment does not
-        revoke function. Security patches remain free for supported versions as long as
-        reasonably manageable. Canonical specifications are published under
-        <strong>CC&nbsp;BY&nbsp;4.0</strong>. Brand assets are reserved.
+        Governance and coordination code is released under <strong>Apache&nbsp;2.0</strong>
+        — what is released stays released. Canonical specifications are published
+        under <strong>CC&nbsp;BY&nbsp;4.0</strong>. Brand assets are reserved.
       </p>
       <p>
         <a href="{{ "/licensing/" | relURL }}">Read the full licensing policy →</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="ps-section">
-  <div class="ps-wrap--narrow">
-    <span class="ps-eyebrow">Investors</span>
-    <div class="ps-prose">
-      <p>
-        Plainsight Systems is preparing a milestone round to take the founder full-time
-        through the compressed proof window — Type for Mac launch, StationZero POC,
-        Vigil cross-platform expansion, and Valet closed-alpha. Conversations with
-        investors who share the local-first thesis are welcome.
-      </p>
-      <p>
-        <a href="{{ "/investors/" | relURL }}">Read the investor invitation →</a>
       </p>
     </div>
   </div>

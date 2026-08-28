@@ -1,0 +1,15 @@
+# Repos featured on the Open Source section of the home page (first N)
+# and on the Open Source page (all). Order matters — flagship first.
+#
+# Each entry:
+#   repo    — GitHub owner/name (used both to build github.com URL and to
+#             fetch stats at build time from the GitHub API)
+#   summary — curated one-liner shown on the card. Overrides the raw
+#             GitHub description so the on-site copy stays under our
+#             control regardless of what a repo's description says.
+
+- repo: plainsight-systems/cpp-perf-guidelines
+  summary: "A low-level C++ performance corpus — the technique layer below the ISO C++ Core Guidelines. Adopted beyond the project."
+
+- repo: plainsight-systems/mcp-servers
+  summary: "MCP servers in Rust that give coding agents queryable access to trusted best-practice corpora."
