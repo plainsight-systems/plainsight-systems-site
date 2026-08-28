@@ -54,27 +54,18 @@ minify:
 # Main menu
 menu:
   main:
-    - name: Thesis
-      url: /thesis/
-      weight: 5
-    - name: Roadmap
-      url: /roadmap/
-      weight: 8
-    - name: Portfolio
-      url: /portfolio/
-      weight: 10
-    - name: Investors
-      url: /investors/
-      weight: 12
     - name: Research
       url: /research/
-      weight: 15
+      weight: 10
+    - name: Open Source
+      url: /open-source/
+      weight: 20
+    - name: Licensing
+      url: /licensing/
+      weight: 30
     - name: About
       url: /about/
-      weight: 30
-    - name: Press
-      url: /press/
-      weight: 35
+      weight: 40
     - name: Contact
       url: /contact/
-      weight: 40
+      weight: 50
