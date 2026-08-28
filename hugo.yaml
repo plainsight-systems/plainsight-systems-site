@@ -4,8 +4,7 @@ title: Plainsight Systems
 theme: hugo-theme-operator
 
 params:
-  description: "Plainsight Systems LLC is a holding company for instruments whose authority does not depend on us. Apache 2.0 governance, perpetual instrument licenses, architecturally enforced data custody."
-  tagline: "Authority that does not depend on us."
+  description: "Plainsight Systems is an independent research vehicle — an LLC used to explore edge-native and on-device AI and publish open-source work under a clean legal and licensing structure."
   domain: plainsight-systems.com
   entity: "Plainsight Systems LLC"
 

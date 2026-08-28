@@ -1,6 +1,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
 {{ $description := .Description | default .Site.Params.description }}
 {{ with $description }}<meta name="description" content="{{ . }}" />{{ end }}
@@ -17,7 +17,7 @@
 <!-- Open Graph -->
 {{ $ogImage := .Params.ogImage | default .Site.Params.ogImage }}
 <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}" />
-<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
 <meta property="og:description" content="{{ $description }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:site_name" content="{{ .Site.Title }}" />
@@ -27,7 +27,7 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
 <meta name="twitter:description" content="{{ $description }}" />
 
 <!-- Organization JSON-LD -->
@@ -62,15 +62,9 @@
   },
   "telephone": "+1-602-932-7283",
   "email": "hello@plainsight-systems.com",
+  "description": "Independent research vehicle exploring edge-native and on-device AI. An LLC that holds and licenses open-source research cleanly.",
   "sameAs": [
-    "https://plainsightlab.com",
-    "https://getappario.com",
-    "https://custodyzero.com"
-  ],
-  "subOrganization": [
-    { "@type": "Organization", "name": "PlainSight Lab", "url": "https://plainsightlab.com" },
-    { "@type": "Organization", "name": "Appario", "url": "https://getappario.com" },
-    { "@type": "Organization", "name": "CustodyZero", "url": "https://custodyzero.com" }
+    "https://github.com/plainsight-systems"
   ]
 }
 </script>
