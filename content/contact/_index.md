@@ -3,7 +3,7 @@ title: "Contact"
 description: "How to reach Plainsight Systems LLC. Role addresses for legal, privacy, and security matters."
 ---
 
-Plainsight Systems does not operate a support ticket system at the holding-company level. Product-specific support is handled by each operating brand on its own site. Matters addressed to the parent entity — company, legal, privacy, or security — are handled at the addresses below.
+Matters addressed to Plainsight Systems LLC are handled at the role addresses below.
 
 ## Role addresses
 
@@ -27,13 +27,3 @@ Plainsight Systems LLC\
 Suite 22 PMB 1072\
 Phoenix, AZ 85029-4825\
 United States
-
-The principal office address is a private mailbox facility. Physical mail sent to this address is received, scanned, and routed to the responsible steward.
-
-## Operating brands
-
-Product-specific inquiries should be directed to the relevant operating brand:
-
-- **PlainSight Lab** — [plainsightlab.com](https://plainsightlab.com)
-- **Appario** — [getappario.com](https://getappario.com)
-- **CustodyZero** — [custodyzero.com](https://custodyzero.com)
