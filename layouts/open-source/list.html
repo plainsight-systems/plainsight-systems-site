@@ -1,0 +1,33 @@
+{{ define "main" }}
+<article>
+  <header class="ps-page-header">
+    <div class="ps-wrap--narrow">
+      <h1 class="ps-page-header__title">{{ .Title }}</h1>
+      {{ with .Description }}
+      <p class="ps-page-header__desc">{{ . }}</p>
+      {{ end }}
+    </div>
+  </header>
+
+  <div class="ps-section" style="border-bottom: none;">
+    <div class="ps-wrap--narrow">
+      <div class="ps-prose">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+
+  <div class="ps-section">
+    <div class="ps-wrap">
+      <div class="ps-brands">
+        {{ range .Site.Data.featured_repos }}
+          {{ partial "repo-card.html" . }}
+        {{ end }}
+      </div>
+      <p style="margin-top: 1.5rem;">
+        The organization on GitHub: <a href="https://github.com/plainsight-systems" rel="noopener">github.com/plainsight-systems</a> →
+      </p>
+    </div>
+  </div>
+</article>
+{{ end }}
