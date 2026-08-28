@@ -1,58 +1,22 @@
 ---
 title: "Research"
-description: "Plainsight Systems LLC stewards governance specifications, open-source code, and long-form research published across its operating brands and by its founder. This page is the canonical index for reviewers, collaborators, and journalists."
+description: "The Plainsight Systems research thesis and current threads — an audit of cargo-cult technology choices, with on-device LLMs, agentic-era code editors, transformer theory, and low-power device control as the live work."
 ---
 
-Plainsight Systems LLC stewards work across three operating brands and the founder's published research. The artifacts below are publicly available under permissive licenses or open access; this page is a stable index for reviewers, collaborators, and journalists working backwards from products to source.
+The exploration audits cargo-cult technology choices — the defaults adopted by momentum rather than fit. Different domains, same lens: characterise the received default, name the problem it solved when it was adopted, measure whether that problem is still the binding constraint, and — if not — ask what a fresh choice would look like made today. Where the finding is *"the default is still right,"* that is also a result.
 
-## Canonical specifications and governance frameworks
+## Current threads
 
-PlainSight Lab is the operating brand responsible for canonical truth, invariant enforcement, and governance frameworks for adversarial, AI-amplified systems. Documents are published under the [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
+**On-device LLMs.** Hand-rolled C++ inference harnesses targeting the silicon they actually run on, no ML frameworks in the hot path. Air-gapped mixture-of-experts inference on Apple Silicon is reaching 80–90 tokens per second on an M3; higher-VRAM operator-owned hardware (AMD Strix Halo) is under research. The defaults being tested are that capable inference has to be a service rented from the cloud, and that framework portability is worth more than fit to the specific machine you're running on.
 
-The full corpus is at [plainsightlab.com/docs/](https://plainsightlab.com/docs/). Highlighted documents:
+**Agentic-era code editor architecture.** What a code editor becomes when coding agents are first-class participants rather than plugins retrofitted onto a human's editor. Work-object models, operator-first interaction, and evaluation harnesses for measuring agentic editor performance against a defined task surface.
 
-- [Systems Thesis](https://plainsightlab.com/docs/systems-thesis/) — foundational framing of where authority binds and where it does not.
-- [Truth & Governance Evolution](https://plainsightlab.com/docs/truth-governance-evolution/) — how canonical truth is defined, maintained, and transitioned over time.
-- [Adversarial Assumptions](https://plainsightlab.com/docs/adversarial-assumptions/) — the threat model for systems that must hold under coordinated misuse.
-- [Problem Classes](https://plainsightlab.com/docs/problem-classes/) — taxonomy of failure modes that delayed correction cannot recover from.
+**Transformer theory from first principles.** Full implementation of the arc from Rosenblatt's Perceptron (1957) to Vaswani's Transformer (2017), in C#, without a machine-learning framework. The interesting question isn't which framework trains fastest — it's what is actually happening. Related work: [NeuralAscent](https://github.com/AndrewPHunter/NeuralAscent) (personal repository).
 
-Constitutional and governance documents — internal constitution, authority model, decision records, stewardship — are at [plainsightlab.com/governance/](https://plainsightlab.com/governance/).
+**Low-power device control.** Sub-GHz radios and wakeup-receiver architectures for scenarios where Bluetooth is the assumption but the range, power, or latency profile is wrong for the actual use case. Wireless accent lighting is the concrete example being characterised now.
 
-## Open-source governance and coordination code
+## Where the work lives
 
-Code that sits in a position of judgment over the operator's work is released under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The release is irrevocable; the operator's right to fork, modify, and redistribute persists regardless of subsequent company decisions. Full doctrine: [Licensing](/licensing/).
-
-- **[Factory](https://github.com/CustodyZero/factory)** — change-control system for AI-assisted development. Every change declares its intent; every acceptance is risk-proportional; every decision auditable. *Active and in use.*
-- **[Archon](https://github.com/CustodyZero/archon)** — deterministic coordination layer for local AI agents. Operator-defined rules, enforced. *Currently inactive; the Apache 2.0 release remains available.*
-
-## Founder's research and writing
-
-Andrew Hunter — Founder, Managing Member, and Sole Member of Plainsight Systems LLC — publishes long-form research on systems theory, AI governance, and architecture as constraint discipline at [andrewphunter.com](https://andrewphunter.com/).
-
-**Research notes** — academic-grade work on the formal structure of knowability and constraint-induced invariants. Section: [andrewphunter.com/research/](https://andrewphunter.com/research/).
-Highlighted: [Toward a Geometric Theory of Knowability](https://andrewphunter.com/research/geometric-theory-of-knowability/) — set-theoretic foundations of the constraint–invariant framework, transition toward geometric formalization, and explicit research directions across topology, dynamical systems, and measure theory.
-
-**Systems theory** — twelve-essay Corpus on architecture as constraint discipline. Section: [andrewphunter.com/theory/](https://andrewphunter.com/theory/).
-Highlighted: [Architecture as Practiced Constraint](https://andrewphunter.com/theory/architecture-as-practiced-constraint/) — architecture as the disciplined preservation of invariant space under pressure.
-
-**Applied analysis** — twelve essays on AI governance and architectural diagnostics under operational pressure. Section: [andrewphunter.com/applications/](https://andrewphunter.com/applications/).
-Highlighted: [Human Override Is Not Governance](https://andrewphunter.com/applications/human-override-is-not-governance/) — why human-in-the-loop becomes a delegation surface under scale rather than a safety guarantee.
-
-ORCID: [0009-0005-7613-8019](https://orcid.org/0009-0005-7613-8019).
-
-## Domain analysis
-
-Operating brands publish ongoing technical analysis at their respective sites:
-
-- **Appario** — agentic commerce protocols (ACP, UCP), AI shopping integration, and merchant-side preparation for ChatGPT shopping and Google AI Mode. [getappario.com/blog/](https://getappario.com/blog/).
-
-## Licensing summary
-
-| Category | License |
-|---|---|
-| Canonical specifications and written content | CC BY 4.0 |
-| Governance and coordination code | Apache 2.0 |
-| End-user instruments | Perpetual license + free security patches |
-| Brand assets | All rights reserved |
-
-Full doctrine: [Licensing](/licensing/).
+- Open source: [github.com/plainsight-systems](https://github.com/plainsight-systems)
+- Related personal work: [github.com/AndrewPHunter](https://github.com/AndrewPHunter)
+- Longer-form writing: [andrewphunter.com](https://andrewphunter.com/)
