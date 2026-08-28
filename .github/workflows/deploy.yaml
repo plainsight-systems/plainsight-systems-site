@@ -3,6 +3,16 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches: [ "main" ]
+  # Weekly rebuild refreshes build-time GitHub stats on the Open Source
+  # cards (fetched via resources.GetRemote in layouts/partials/repo-card.html)
+  # so stars, forks, and last-pushed dates stay honest without a content push.
+  # 06:00 UTC every Monday — off-hours for the primary time zones.
+  schedule:
+    - cron: "0 6 * * 1"
+  # Manual trigger from the Actions tab, e.g. after publishing a new repo to
+  # the org and updating data/featured_repos.yaml on a branch, or to force
+  # a stats refresh sooner than the weekly schedule.
+  workflow_dispatch:
 
 permissions:
   contents: read
