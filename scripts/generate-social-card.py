@@ -5,12 +5,16 @@ Generate the Open Graph social card for plainsight-systems.com.
 Output:  static/images/social-card.png  (1200 x 630)
 
 Inputs:  static/fonts/PlexSerif-Regular.woff2
-         static/fonts/PlexSerif-LightItalic.woff2
          static/fonts/PlexMono-Regular.woff2
 
 Brand tokens are mirrored from assets/css/overrides.css. If those tokens
 change, update the BRAND block below to match — the social card is the
 same brand surface as the site, just rendered as a raster.
+
+Composition:
+  eyebrow  INDEPENDENT RESEARCH VEHICLE     (tracked mono, describes what)
+  wordmark Plainsight Systems               (serif, the name)
+  footer   plainsight-systems.com   PHOENIX, AZ · USA
 
 Deterministic: given the same input fonts and this script, produces the
 same bytes.
@@ -49,7 +53,6 @@ PAD_Y = 88
 # Type sizes
 SIZE_EYEBROW = 18
 SIZE_WORDMARK = 96
-SIZE_TAGLINE = 38
 SIZE_FOOTER = 16
 
 # Letter-spacing (px) for tracked mono — mirrors CSS letter-spacing in em.
@@ -95,7 +98,6 @@ def main() -> int:
 
     inputs = {
         "serif_regular": FONT_DIR / "PlexSerif-Regular.woff2",
-        "serif_light_italic": FONT_DIR / "PlexSerif-LightItalic.woff2",
         "mono_regular": FONT_DIR / "PlexMono-Regular.woff2",
     }
     for name, path in inputs.items():
@@ -113,30 +115,19 @@ def main() -> int:
 
         font_eyebrow = ImageFont.truetype(str(ttf_paths["mono_regular"]), SIZE_EYEBROW)
         font_wordmark = ImageFont.truetype(str(ttf_paths["serif_regular"]), SIZE_WORDMARK)
-        font_tagline = ImageFont.truetype(str(ttf_paths["serif_light_italic"]), SIZE_TAGLINE)
         font_footer = ImageFont.truetype(str(ttf_paths["mono_regular"]), SIZE_FOOTER)
 
         img = Image.new("RGB", (W, H), IVORY)
         draw = ImageDraw.Draw(img)
 
-        # ── Eyebrow (top-left): "PLAINSIGHT SYSTEMS LLC"
-        eyebrow_text = "PLAINSIGHT SYSTEMS LLC"
+        # ── Eyebrow (top-left): descriptor of what this LLC is
+        eyebrow_text = "INDEPENDENT RESEARCH VEHICLE"
         draw_tracked(draw, (PAD_X, PAD_Y), eyebrow_text, font_eyebrow, MUTED, TRACK_EYEBROW)
 
         # ── Wordmark
         wordmark_text = "Plainsight Systems"
         wm_y = 232
         draw.text((PAD_X, wm_y), wordmark_text, font=font_wordmark, fill=INK)
-
-        # ── Hairline rule under the wordmark
-        wm_bbox = draw.textbbox((PAD_X, wm_y), wordmark_text, font=font_wordmark)
-        rule_y = wm_bbox[3] + 38
-        rule_w = 520
-        draw.line([(PAD_X, rule_y), (PAD_X + rule_w, rule_y)], fill=RULE, width=1)
-
-        # ── Tagline (italic light)
-        tagline_text = "Authority that does not depend on us."
-        draw.text((PAD_X, rule_y + 30), tagline_text, font=font_tagline, fill=INK)
 
         # ── Footer line: domain (left), locator (right)
         foot_y = H - PAD_Y - 4
