@@ -1,15 +1,49 @@
 {{/*
-  Renders a list of write-up items (from partial "writing/items.html").
-  One row each: kind, title (linked), venue, date, and what it came from.
+  Renders write-up items (from partial "writing/items.html").
+  Params: dict "items" <list> "filter" <bool>.
+
+  filter=false (home): one flat list.
+  filter=true (Research): grouped by year, with a filter bar (text plus
+  kind and topic chips) that assets/js/writing-filter.js reveals and
+  drives. Without JavaScript the bar stays hidden and the full list shows.
 */}}
+{{ $items := .items }}
+{{ $filter := .filter }}
+{{ if not $filter }}
 <ol class="ps-writing">
-  {{ range . }}
-  <li class="ps-writing__item">
-    <span class="ps-writing__meta">
-      {{- .kindLabel }} · {{ .venue }} · <time datetime="{{ .date }}">{{ (time .date).Format "2 Jan 2006" }}</time>
-      {{- with .about }} · {{ . }}{{ end -}}
-    </span>
-    <a class="ps-writing__title" href="{{ .url }}"{{ if hasPrefix .url "http" }} rel="noopener"{{ end }}>{{ .title }}</a>
-  </li>
-  {{ end }}
+  {{ range $items }}{{ partial "writing/item.html" . }}{{ end }}
 </ol>
+{{ else }}
+{{ $kinds := slice }}
+{{ $abouts := slice }}
+{{ $years := slice }}
+{{ range $items }}
+  {{ $kinds = $kinds | append .kind }}
+  {{ with .about }}{{ $abouts = $abouts | append . }}{{ end }}
+  {{ $years = $years | append (substr .date 0 4) }}
+{{ end }}
+{{ $kindLabels := dict "paper" "Papers" "article" "Articles" "post" "Posts" }}
+<div class="ps-writing-block" data-writing-filter>
+  <div class="ps-writing-controls" hidden>
+    <input class="ps-writing-search" type="search" placeholder="Filter by words" aria-label="Filter write-ups by words">
+    <div class="ps-writing-chips" role="group" aria-label="Filter write-ups by kind or topic">
+      <button type="button" class="ps-writing-chip" data-filter="" aria-pressed="true">All</button>
+      {{ range (uniq $kinds) }}<button type="button" class="ps-writing-chip" data-filter="kind:{{ . }}" aria-pressed="false">{{ index $kindLabels . }}</button>{{ end }}
+      {{ range (sort (uniq $abouts)) }}<button type="button" class="ps-writing-chip" data-filter="about:{{ . }}" aria-pressed="false">{{ . }}</button>{{ end }}
+    </div>
+    <p class="ps-writing-count" aria-live="polite"></p>
+  </div>
+  {{ range (uniq $years) }}
+  {{ $year := . }}
+  <section class="ps-writing__group" aria-label="{{ $year }}">
+    <h3 class="ps-writing__year">{{ $year }}</h3>
+    <ol class="ps-writing">
+      {{ range where $items "date" "ge" (printf "%s-01-01" $year) }}
+        {{ if eq (substr .date 0 4) $year }}{{ partial "writing/item.html" . }}{{ end }}
+      {{ end }}
+    </ol>
+  </section>
+  {{ end }}
+  <p class="ps-writing-empty" hidden>No write-ups match.</p>
+</div>
+{{ end }}

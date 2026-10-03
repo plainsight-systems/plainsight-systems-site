@@ -1,0 +1,11 @@
+{{/* One write-up row. data-* attributes feed assets/js/writing-filter.js. */}}
+<li class="ps-writing__item"
+    data-kind="{{ .kind }}"
+    data-about="{{ .about }}"
+    data-text="{{ lower (printf "%s %s %s %s" .title .venue .about .kindLabel) }}">
+  <span class="ps-writing__meta">
+    {{- .kindLabel }} · {{ .venue }} · <time datetime="{{ .date }}">{{ (time .date).Format "2 Jan 2006" }}</time>
+    {{- with .about }} · {{ . }}{{ end -}}
+  </span>
+  <a class="ps-writing__title" href="{{ .url }}"{{ if hasPrefix .url "http" }} rel="noopener"{{ end }}>{{ .title }}</a>
+</li>

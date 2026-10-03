@@ -23,7 +23,7 @@
 <section class="ps-section">
   <div class="ps-wrap">
     <span class="ps-eyebrow">Latest</span>
-    {{ partial "writing/list.html" . }}
+    {{ partial "writing/list.html" (dict "items" . "filter" false) }}
     <p class="ps-section__more">
       <a href="{{ "research/" | relURL }}">All papers and write-ups →</a>
     </p>

@@ -87,6 +87,10 @@
 {{ $navJS := resources.Get "js/nav.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $navJS.RelPermalink }}" integrity="{{ $navJS.Data.Integrity }}" defer></script>
 
+<!-- Write-ups filter (Research page); no-op where there is no list -->
+{{ $writingJS := resources.Get "js/writing-filter.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $writingJS.RelPermalink }}" integrity="{{ $writingJS.Data.Integrity }}" defer></script>
+
 <noscript><style>
 /* Without JS: keep the toggle hidden and force the menu visible on mobile. */
 .ps-nav__toggle { display: none !important; }

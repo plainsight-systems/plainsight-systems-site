@@ -46,7 +46,7 @@
   <section class="ps-section" aria-labelledby="writing-label">
     <div class="ps-wrap">
       <span class="ps-eyebrow" id="writing-label">Write-ups</span>
-      {{ partial "writing/list.html" . }}
+      {{ partial "writing/list.html" (dict "items" . "filter" true) }}
     </div>
   </section>
   {{ end }}
