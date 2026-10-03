@@ -14,6 +14,13 @@
 #            also the filter tag on the Research page
 #
 # Only real, published links go here.
+#
+# What qualifies:
+#   - articles and papers from the work, wherever published
+#   - LinkedIn posts that stand on their own: a complete thought, or an
+#     explanation of a repository or build
+#   - not LinkedIn posts that only introduce or point to an article; list
+#     the article instead
 # LinkedIn permalinks are feed/update URLs built from each post's activity
 # ID. Post titles quote a sentence from each post verbatim; article titles
 # are the article's own title.
