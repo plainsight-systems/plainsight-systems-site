@@ -32,7 +32,7 @@ You may not use this site to:
 
 ## Intellectual property
 
-**Written content** on this site, including research papers and their PDFs, is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) unless a page states otherwise. You may reuse it with attribution.
+**Written content** on this site, including research papers and their PDFs, is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) unless a page states otherwise. You may reuse it with attribution. Research papers are copyright their authors, as stated on each paper.
 
 **Site code** (layouts, styles, scripts, configuration) is licensed under the Apache License 2.0, as set out in the site repository.
 

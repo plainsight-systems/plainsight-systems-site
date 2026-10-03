@@ -637,6 +637,14 @@ a:hover {
   margin: 0.5rem 0 0;
 }
 
+.ps-paper__license {
+  margin: 0.25rem 0 0;
+}
+
+.ps-paper__license a {
+  color: inherit;
+}
+
 .ps-paper__actions {
   display: flex;
   flex-wrap: wrap;

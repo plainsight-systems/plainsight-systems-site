@@ -15,6 +15,8 @@ Code released by Plainsight Systems, including the builds, tools and this websit
 
 Research papers and their PDFs, corpora and specifications, documentation, and the prose on this site are released under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). You are free to use, adapt, and redistribute them with attribution, for any purpose, including commercial.
 
+Research papers are copyright their authors and published by Plainsight Systems; each paper names its copyright holder and license on its page and in its PDF.
+
 ## Brand assets: all rights reserved
 
 The name "Plainsight Systems", the Plainsight Systems wordmark, and any associated logomarks and visual identity elements are trademarks or service marks of Plainsight Systems LLC. They are excluded from the Apache 2.0 and CC BY 4.0 terms above. Using them in derivative works, forks, or redistributions requires written permission.

@@ -5,6 +5,8 @@
     pdf          the PDF page resource
     pdfSize      human-readable size, e.g. "412 KB"
     statusLabel  display label for .Params.status
+    holders      copyright holders: the authors, "Given Family" joined
+                 with commas and "and" (papers are copyright their authors)
 */}}
 {{ $where := .File.Path }}
 
@@ -48,4 +50,8 @@
   {{ end }}
 {{ end }}
 
-{{ return dict "pdf" $pdf "pdfSize" $pdfSize "statusLabel" $statusLabel }}
+{{ $names := slice }}
+{{ range .Params.authors }}{{ $names = $names | append (printf "%s %s" .given .family) }}{{ end }}
+{{ $holders := delimit $names ", " " and " }}
+
+{{ return dict "pdf" $pdf "pdfSize" $pdfSize "statusLabel" $statusLabel "holders" $holders }}

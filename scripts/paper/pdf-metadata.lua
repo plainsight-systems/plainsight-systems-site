@@ -5,6 +5,8 @@
 --   status, version, date        -> date: "Working paper · Version 0.1 · 3 October 2026"
 --   paper-url (set by the build)  -> appended to the date line, so a shared
 --                                    PDF links back to its web page
+--   authors + date                -> copyright line: "© 2026 Given Family,
+--                                    CC BY 4.0" (papers are copyright their authors)
 --   unlabelled code blocks        -> wrapping Verbatim (see pdf-header.tex)
 --
 -- Errors on a malformed date or unknown status rather than printing a
@@ -59,6 +61,14 @@ function Meta(m)
     inlines:insert(pandoc.LineBreak())
     inlines:insert(pandoc.Link(url, url))
   end
+  local holders = {}
+  for _, n in ipairs(names) do holders[#holders + 1] = stringify(n) end
+  local joined = #holders > 1
+    and table.concat(holders, ", ", 1, #holders - 1) .. " and " .. holders[#holders]
+    or holders[1]
+  inlines:insert(pandoc.LineBreak())
+  inlines:insert(pandoc.Str("© " .. y .. " " .. joined .. " · "))
+  inlines:insert(pandoc.Link("CC BY 4.0", "https://creativecommons.org/licenses/by/4.0/"))
   m.date = pandoc.MetaInlines(inlines)
   return m
 end
