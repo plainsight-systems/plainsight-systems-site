@@ -139,6 +139,9 @@
 
   --container-max:    68rem;
   --container-narrow: 44rem;
+  /* Reading measure for running text. Wide enough to use the page,
+     ~85-90 characters at the prose size. Tables may extend past it. */
+  --measure: 50rem;
   --container-padding: 1.5rem;
 
   --logo-height: 22px;
@@ -274,16 +277,18 @@ a:hover {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
+  container-type: inline-size;
 }
 
 /* Same box as .ps-wrap so every section shares the nav's left edge.
    The reading measure is enforced by the content (.ps-prose, page
-   header) at --container-narrow, left-aligned, not by centering a
+   header) at --measure, left-aligned, not by centering a
    narrower box. */
 .ps-wrap--narrow {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
+  container-type: inline-size;
 }
 
 .ps-section {
@@ -402,10 +407,10 @@ a:hover {
 .ps-prose {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.7;
   color: var(--ink);
-  max-width: var(--container-narrow);
+  max-width: var(--measure);
 }
 
 .ps-prose h1 {
@@ -464,11 +469,16 @@ a:hover {
   margin: 2rem 0;
 }
 
+/* Tables size to their content: at least the text measure, at most the
+   full page width (100cqi of the enclosing .ps-wrap container), so a
+   wide table uses the page instead of wrapping every cell. */
 .ps-prose table {
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
+  max-width: 100cqi;
   border-collapse: collapse;
   margin: 1.5rem 0;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
 }
 
 .ps-prose thead {
@@ -531,7 +541,7 @@ a:hover {
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: var(--ink);
-  max-width: 44rem;
+  max-width: var(--measure);
 }
 
 .ps-page-header__desc {
@@ -540,13 +550,13 @@ a:hover {
   font-size: 1.08rem;
   line-height: 1.5;
   color: var(--muted-strong);
-  max-width: 44rem;
+  max-width: var(--measure);
   margin-top: 1rem;
 }
 
 /* ── RESEARCH PAPER ─────────────────────────────────────────── */
-/* Text column keeps the 44rem measure on the shared left edge; the
-   contents rail uses the space to its right. Below 1024px the rail
+/* The text column takes the space the contents rail leaves, on the
+   shared left edge. Below 1024px the rail
    drops above the body as a plain list. */
 
 .ps-paper__authors {
@@ -628,7 +638,7 @@ a:hover {
 }
 
 .ps-paper__bibtex {
-  max-width: var(--container-narrow);
+  max-width: var(--measure);
   margin: 0.75rem 0 0;
   padding: 1rem 1.25rem;
   background: var(--ivory-dim);
@@ -642,15 +652,15 @@ a:hover {
 
 .ps-paper__grid {
   display: grid;
-  grid-template-columns: minmax(0, var(--container-narrow)) minmax(11rem, 15rem);
+  grid-template-columns: minmax(0, 1fr) minmax(11rem, 14rem);
   grid-template-areas: "abstract rail" "main rail";
-  justify-content: space-between;
   column-gap: 3rem;
   align-items: start;
 }
 
 .ps-paper__abstract { grid-area: abstract; min-width: 0; }
 .ps-paper__main { grid-area: main; min-width: 0; }
+.ps-paper__main .ps-prose table { max-width: 100%; }
 /* The rail stretches to the full row height so the sticky contents
    inside it have room to stick. */
 .ps-paper__rail { grid-area: rail; align-self: stretch; }
@@ -816,7 +826,7 @@ a:hover {
 
 .ps-papers__list {
   list-style: none;
-  max-width: var(--container-narrow);
+  max-width: var(--measure);
   border-top: 1px solid var(--rule);
 }
 
@@ -969,6 +979,16 @@ a:hover {
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+  /* A table wider than the screen scrolls sideways inside its own box,
+     words intact, instead of widening the page. */
+  .ps-prose table {
+    display: block;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
   .ps-nav__inner {
     flex-wrap: wrap;
     align-items: center;
