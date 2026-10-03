@@ -5,9 +5,15 @@ description: "Andrew P Hunter, systems architect and builder, and Plainsight Sys
 
 ## Andrew P Hunter
 
-I'm a systems architect and builder. I build things to find out how they work, then follow the question wherever it leads: inference engines, GPU memory systems, compression and information theory, real-time rendering. The usual career advice is to pick one narrow vertical and stay in it. I work across several on purpose, because the hard problem in one field is often already solved, or misunderstood, in another.
+I build things to find out how they work. Lately that has meant an inference engine written from scratch for the browser, a tour of why GPUs spend so much time waiting on memory, and a detour through Claude Shannon's 1948 paper because a tokenizer raised a question I couldn't let go of.
 
-The questions I'm working on, and what each has produced, are on the [Research](/research/) page. Longer essays are at [andrewphunter.com](https://andrewphunter.com/), and shorter notes go to LinkedIn. I'm a US military veteran.
+The usual advice is to pick one narrow specialty and stay in it. I've never managed it. Every field I dig into turns out to have a problem another field already solved, and finding that connection is the best part of the work. Shannon worked the same way: information theory, a maze-solving mechanical mouse, juggling machines, and a unicycle he rode through the halls of Bell Labs. I've kept the curiosity and skipped the unicycle.
+
+I learned technical writing on nuclear power plant operations in the Navy, writing operating policies and procedures. Writeups of mine became a troubleshooting appendix in the water chemistry manual, best-practice guidelines adopted at Portsmouth Naval Shipyard, changes to the Navy's Radiological Controls Manual, and a long run of standing orders and guidance at the squadron level. The habit stuck: every build here ends in a write-up.
+
+Projects get names with a lineage. Seymour is named for Seymour Cray, who spent his career keeping the math fed. The rest of that name is an easter egg.
+
+The work itself is on the [Research](/research/) and [Projects](/projects/) pages. Longer essays live at [andrewphunter.com](https://andrewphunter.com/).
 
 [LinkedIn](https://www.linkedin.com/in/andrewphunter/) · [GitHub](https://github.com/plainsight-systems) · [ORCID](https://orcid.org/0009-0005-7613-8019) · [andrewphunter.com](https://andrewphunter.com/)
 
