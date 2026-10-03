@@ -268,8 +268,12 @@ a:hover {
   padding: 0 var(--container-padding);
 }
 
+/* Same box as .ps-wrap so every section shares the nav's left edge.
+   The reading measure is enforced by the content (.ps-prose, page
+   header) at --container-narrow, left-aligned, not by centering a
+   narrower box. */
 .ps-wrap--narrow {
-  max-width: var(--container-narrow);
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
 }
@@ -315,9 +319,12 @@ a:hover {
 
 /* ── BRAND GRID ─────────────────────────────────────────────── */
 
+/* auto-fit collapses empty tracks, so two cards fill the row instead of
+   leaving a blank third column. The first card has no left padding so its
+   text sits on the shared left edge; later cards are inset from their rule. */
 .ps-brands {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 0;
   border-top: 1px solid var(--rule);
 }
@@ -331,7 +338,10 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  transition: background 140ms ease;
+}
+
+.ps-brand:first-child {
+  padding-left: 0;
 }
 
 .ps-brand:last-child {
@@ -339,8 +349,13 @@ a:hover {
 }
 
 .ps-brand:hover {
-  background: var(--ivory-dim);
   text-decoration: none;
+}
+
+.ps-brand:hover .ps-brand__name {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
 .ps-brand__name {
@@ -651,6 +666,8 @@ a:hover {
   }
   .ps-brand {
     border-right: none;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .ps-footer__inner {
