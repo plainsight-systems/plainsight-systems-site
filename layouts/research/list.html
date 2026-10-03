@@ -1,0 +1,51 @@
+{{ define "main" }}
+<article>
+  <header class="ps-page-header">
+    <div class="ps-wrap--narrow">
+      <h1 class="ps-page-header__title">{{ .Title }}</h1>
+      {{ with .Description }}
+      <p class="ps-page-header__desc">{{ . }}</p>
+      {{ end }}
+    </div>
+  </header>
+
+  {{/* Papers, newest first. The section renders only when at least one
+       paper exists in this build (drafts appear only with hugo -D, and
+       are labelled as drafts). */}}
+  {{ $papers := .RegularPages.ByDate.Reverse }}
+  {{ with $papers }}
+  <section class="ps-section ps-papers" aria-labelledby="papers-label">
+    <div class="ps-wrap">
+      <span class="ps-eyebrow" id="papers-label">Papers</span>
+      <ol class="ps-papers__list">
+        {{ range . }}
+        {{ $p := partial "paper/validate.html" . }}
+        <li class="ps-papers__item">
+          <span class="ps-papers__meta">
+            {{- if .Draft }}<span class="ps-papers__draft">Draft</span> · {{ end -}}
+            {{ $p.statusLabel }} · Version {{ .Params.version }} · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+          </span>
+          <h2 class="ps-papers__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Params.subtitle }}<p class="ps-papers__subtitle">{{ . }}</p>{{ end }}
+          <p class="ps-papers__abstract">{{ .Params.abstract | .RenderString | plainify | replaceRE `\s+` " " | strings.TrimSpace | truncate 320 }}</p>
+          <p class="ps-papers__links">
+            <a href="{{ .RelPermalink }}">Read</a>
+            {{ with $p.pdf }}<span aria-hidden="true">·</span> <a href="{{ .RelPermalink }}" download>PDF <span class="ps-papers__size">{{ $p.pdfSize }}</span></a>{{ end }}
+          </p>
+        </li>
+        {{ end }}
+      </ol>
+    </div>
+  </section>
+  {{ end }}
+
+  <div class="ps-section" style="border-bottom: none;">
+    <div class="ps-wrap--narrow">
+      {{ if $papers }}<span class="ps-eyebrow">Direction</span>{{ end }}
+      <div class="ps-prose">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</article>
+{{ end }}
