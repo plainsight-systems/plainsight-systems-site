@@ -79,7 +79,7 @@
 {{ $themeCSS := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $themeCSS.RelPermalink }}" integrity="{{ $themeCSS.Data.Integrity }}" />
 
-<!-- Plainsight Systems brand tokens — loaded after theme CSS -->
+<!-- Plainsight Systems brand tokens, loaded after the theme CSS -->
 {{ $overrides := resources.Get "css/overrides.css" | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $overrides.RelPermalink }}" integrity="{{ $overrides.Data.Integrity }}" />
 

@@ -8,7 +8,7 @@ params:
   domain: plainsight-systems.com
   entity: "Plainsight Systems LLC"
 
-  # Custom CSS — loaded via Hugo pipes in head.html override
+  # Custom CSS, loaded via Hugo pipes in the head.html override
   customCSS: ["css/overrides.css"]
 
   # OG / Social
@@ -16,7 +16,7 @@ params:
   twitterCard: summary_large_image
 
   # Footer
-  footerText: "Plainsight Systems LLC — registered in Arizona, USA."
+  footerText: "Plainsight Systems LLC, registered in Arizona, USA."
 
 # Sitemap
 sitemap:
@@ -28,7 +28,7 @@ taxonomies:
   tag: tags
   category: categories
 
-# Markup — allow unsafe so we can embed inline html in content where needed
+# Markup: allow unsafe so content can embed inline HTML where needed
 markup:
   goldmark:
     renderer:

@@ -12,7 +12,7 @@ change, update the BRAND block below to match — the social card is the
 same brand surface as the site, just rendered as a raster.
 
 Composition:
-  eyebrow  INDEPENDENT RESEARCH VEHICLE     (tracked mono, describes what)
+  eyebrow  BUILDS THINGS TO UNDERSTAND THEM (tracked mono, describes what)
   wordmark Plainsight Systems               (serif, the name)
   footer   plainsight-systems.com   PHOENIX, AZ · USA
 
@@ -121,7 +121,7 @@ def main() -> int:
         draw = ImageDraw.Draw(img)
 
         # ── Eyebrow (top-left): descriptor of what this LLC is
-        eyebrow_text = "INDEPENDENT RESEARCH VEHICLE"
+        eyebrow_text = "BUILDS THINGS TO UNDERSTAND THEM"
         draw_tracked(draw, (PAD_X, PAD_Y), eyebrow_text, font_eyebrow, MUTED, TRACK_EYEBROW)
 
         # ── Wordmark

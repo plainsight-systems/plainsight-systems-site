@@ -9,7 +9,7 @@ Matters addressed to Plainsight Systems LLC are handled at the role addresses be
 
 | Purpose | Address |
 |---|---|
-| General and press enquiries | [hello@plainsight-systems.com](mailto:hello@plainsight-systems.com) |
+| General and press inquiries | [hello@plainsight-systems.com](mailto:hello@plainsight-systems.com) |
 | Legal, compliance, and licensing | [legal@plainsight-systems.com](mailto:legal@plainsight-systems.com) |
 | Privacy and data rights | [privacy@plainsight-systems.com](mailto:privacy@plainsight-systems.com) |
 | Security and responsible disclosure | [security@plainsight-systems.com](mailto:security@plainsight-systems.com) |
