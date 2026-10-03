@@ -689,6 +689,19 @@ a:hover {
   color: var(--ink-soft);
 }
 
+/* Bibliography (pandoc citeproc): hanging indent, one entry per block. */
+.ps-prose .csl-bib-body {
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.ps-prose .csl-entry {
+  padding-left: 1.75rem;
+  text-indent: -1.75rem;
+  margin-bottom: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
 /* Footnotes (goldmark) read as endnotes. */
 .ps-prose .footnotes {
   margin-top: 3rem;

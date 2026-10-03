@@ -1,0 +1,9 @@
+% Included in every paper PDF (scripts/build-paper.sh).
+% Code wraps at the margin instead of running off the page: fvextra for
+% highlighted blocks; unhighlighted blocks are converted to Verbatim by
+% scripts/paper/pdf-metadata.lua so the same setting applies.
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+% Captions match the web page: "Figure 1." not "Figure 1:".
+\usepackage{caption}
+\captionsetup{labelsep=period,font=small}

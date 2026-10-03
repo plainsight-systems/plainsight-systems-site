@@ -77,6 +77,8 @@ plainsight-systems-site/
 │   │   ├── header.html
 │   │   └── footer.html
 │   └── index.html                   # Homepage template
+├── papers/                          # Research paper sources (see papers/README.md)
+├── scripts/build-paper.sh           # paper.md → content/research/<slug>/ (page + PDF)
 ├── static/
 │   ├── _headers                     # Cloudflare response headers
 │   ├── .well-known/security.txt     # RFC 9116 security contact
