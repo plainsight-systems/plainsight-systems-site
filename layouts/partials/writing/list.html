@@ -1,0 +1,15 @@
+{{/*
+  Renders a list of write-up items (from partial "writing/items.html").
+  One row each: kind, title (linked), venue, date, and what it came from.
+*/}}
+<ol class="ps-writing">
+  {{ range . }}
+  <li class="ps-writing__item">
+    <span class="ps-writing__meta">
+      {{- .kindLabel }} · {{ .venue }} · <time datetime="{{ .date }}">{{ (time .date).Format "2 Jan 2006" }}</time>
+      {{- with .about }} · {{ . }}{{ end -}}
+    </span>
+    <a class="ps-writing__title" href="{{ .url }}"{{ if hasPrefix .url "http" }} rel="noopener"{{ end }}>{{ .title }}</a>
+  </li>
+  {{ end }}
+</ol>

@@ -17,19 +17,19 @@
   </div>
 </section>
 
+{{/* Latest papers and write-ups, wherever published. Rendered only when
+     something has been published. */}}
+{{ with first 3 (partial "writing/items.html" .) }}
 <section class="ps-section">
   <div class="ps-wrap">
-    <span class="ps-eyebrow">Questions</span>
-    <div class="ps-questions__list">
-      {{ range where site.Data.questions "home" true }}
-        {{ partial "question.html" (dict "q" . "page" $ "link" true) }}
-      {{ end }}
-    </div>
+    <span class="ps-eyebrow">Latest</span>
+    {{ partial "writing/list.html" . }}
     <p class="ps-section__more">
-      <a href="{{ "research/" | relURL }}">All questions, papers and write-ups →</a>
+      <a href="{{ "research/" | relURL }}">All papers and write-ups →</a>
     </p>
   </div>
 </section>
+{{ end }}
 
 <section class="ps-section">
   <div class="ps-wrap">

@@ -1,0 +1,16 @@
+# Write-ups published outside this site's paper pages: blog articles,
+# LinkedIn posts, and papers hosted elsewhere. Listed newest first on the
+# Research page, and mixed with this site's papers in "Latest" on the home
+# page. Add an entry when something publishes; nothing else needs to
+# change when the work takes a new direction.
+#
+# Each entry (all required unless marked optional):
+#   title    the write-up's title or opening line
+#   kind     paper | article | post
+#   url      where it lives
+#   venue    where it was published, e.g. "LinkedIn", "andrewphunter.com"
+#   date     YYYY-MM-DD
+#   about    optional: the build or topic it came from, e.g. "Charlotte"
+#
+# Only real, published links go here.
+[]

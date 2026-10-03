@@ -4,20 +4,26 @@
 # Each entry:
 #   repo    GitHub owner/name (builds the github.com URL and fetches stats
 #           at build time from the GitHub API)
+#   question the question the build exists to answer, shown first on the
+#           card
 #   summary curated one-liner shown on the card, so on-site copy stays
 #           under our control whatever the repository description says
 #   demo    optional URL of a live demo
 
 - repo: plainsight-systems/seymour
-  summary: "Why a GPU with a petaflop of compute waits on memory: take the chip apart, push a token through the model, and pull the throttles."
+  question: "Why is a GPU with a petaflop of compute waiting on memory?"
+  summary: "Take the chip apart, push a token through Llama 3.1 8B, and pull the throttles to see where decode stalls. H100 to MI355X."
   demo: https://plainsight-systems.github.io/seymour/
 
 - repo: plainsight-systems/charlotte
-  summary: "A transformer inference engine written by hand in C++, compiled to WebAssembly, with compute in WebGPU and no framework underneath. Early."
+  question: "What does inference cost when nothing is hidden?"
+  summary: "A transformer inference engine written by hand in C++, compiled to WebAssembly, with compute in WebGPU and no framework, to meet every choke point directly. Early."
   demo: https://plainsight-systems.github.io/charlotte/
 
 - repo: plainsight-systems/cpp-perf-guidelines
+  question: "What does a performance engineer know that a model trained on average code does not?"
   summary: "The C++ performance technique layer below the ISO C++ Core Guidelines, every example compiled and checked. Starred and forked beyond the project."
 
 - repo: plainsight-systems/mcp-servers
-  summary: "MCP servers in Rust that put the performance corpora in front of coding agents while they work."
+  question: "Can a coding agent use that knowledge while it works?"
+  summary: "MCP servers in Rust that put the performance corpora in front of coding agents as they write code."

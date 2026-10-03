@@ -4,6 +4,7 @@
 
   Params (the caller passes a data-file entry):
     .repo    GitHub owner/name (e.g. "plainsight-systems/cpp-perf-guidelines")
+    .question the question the build exists to answer
     .summary curated one-liner (overrides the GitHub description)
     .demo    optional URL of a live demo; adds a "Live" link
 
@@ -45,6 +46,7 @@
     {{- if $fetched }}{{ if $updated }} · {{ end }}{{ $stars }}★ · {{ $forks }} forks{{ end -}}
   </span>
   <a class="ps-brand__name" href="{{ $repoURL }}" rel="noopener">{{ $name }}</a>
+  {{ with .question }}<span class="ps-brand__question">{{ . }}</span>{{ end }}
   <span class="ps-brand__desc">{{ $summary }}</span>
   <span class="ps-brand__cta">
     {{- with .demo }}<a href="{{ . }}" rel="noopener">Live →</a>{{ end -}}

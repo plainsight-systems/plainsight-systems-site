@@ -39,16 +39,17 @@
   </section>
   {{ end }}
 
-  <section class="ps-section ps-questions" aria-labelledby="questions-label">
+  {{/* Write-ups published elsewhere (articles, posts, papers hosted off
+       this site), newest first. Rendered only when there are any. */}}
+  {{ $writing := where (partial "writing/items.html" .) "onsite" false }}
+  {{ with $writing }}
+  <section class="ps-section" aria-labelledby="writing-label">
     <div class="ps-wrap">
-      <span class="ps-eyebrow" id="questions-label">Questions</span>
-      <div class="ps-questions__list">
-        {{ range site.Data.questions }}
-          {{ partial "question.html" (dict "q" . "page" $ "link" false) }}
-        {{ end }}
-      </div>
+      <span class="ps-eyebrow" id="writing-label">Write-ups</span>
+      {{ partial "writing/list.html" . }}
     </div>
   </section>
+  {{ end }}
 
   <div class="ps-section" style="border-bottom: none;">
     <div class="ps-wrap--narrow">

@@ -1,0 +1,33 @@
+{{/*
+  Returns every published write-up as a uniform list of dicts, newest
+  first: this site's paper pages plus the entries in data/writing.yaml.
+  Each dict: title, url, kind (paper|article|post), kindLabel, venue,
+  date (YYYY-MM-DD string), about, onsite (true for this site's papers).
+  A data entry missing a required field, or with an unknown kind or a
+  malformed date, fails the build.
+*/}}
+{{ $kinds := dict "paper" "Paper" "article" "Article" "post" "Post" }}
+{{ $items := slice }}
+{{ with site.GetPage "/research" }}
+  {{ range .RegularPages }}
+    {{ $items = $items | append (dict
+        "title" .Title "url" .RelPermalink "kind" "paper" "kindLabel" "Paper"
+        "venue" "Plainsight Systems" "date" (.Date.Format "2006-01-02") "about" ""
+        "onsite" true) }}
+  {{ end }}
+{{ end }}
+{{ range site.Data.writing }}
+  {{ $label := index $kinds (.kind | default "") }}
+  {{ if or (not $label) (not .title) (not .url) (not .venue) (not .date) }}
+    {{ errorf "data/writing.yaml: every entry needs title, kind (paper|article|post), url, venue and date; check %q" (.title | default .url) }}
+  {{ end }}
+  {{ $date := printf "%v" .date }}
+  {{ if not (findRE `^\d{4}-\d{2}-\d{2}` $date) }}
+    {{ errorf "data/writing.yaml: date for %q must be YYYY-MM-DD, got %q" .title $date }}
+  {{ end }}
+  {{ $items = $items | append (dict
+      "title" .title "url" .url "kind" .kind "kindLabel" $label
+      "venue" .venue "date" (substr $date 0 10) "about" (.about | default "")
+      "onsite" false) }}
+{{ end }}
+{{ return sort $items "date" "desc" }}
