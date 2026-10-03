@@ -34,9 +34,9 @@ You may not use this site to:
 
 **Written content** on this site, including research papers and their PDFs, is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) unless a page states otherwise. You may reuse it with attribution.
 
-**Site code** (layouts, styles, configuration) is licensed under the MIT License, as set out in the site repository.
+**Site code** (layouts, styles, scripts, configuration) is licensed under the Apache License 2.0, as set out in the site repository.
 
-**Brand assets**: the name "Plainsight Systems" and its wordmark, logomark, and icons are trademarks or service marks of Plainsight Systems LLC and are excluded from the CC BY 4.0 and MIT licenses above. Use of brand assets requires written permission: [legal@plainsight-systems.com](mailto:legal@plainsight-systems.com).
+**Brand assets**: the name "Plainsight Systems" and its wordmark, logomark, and icons are trademarks or service marks of Plainsight Systems LLC and are excluded from the CC BY 4.0 and Apache 2.0 licenses above. Use of brand assets requires written permission: [legal@plainsight-systems.com](mailto:legal@plainsight-systems.com).
 
 ## Third-party links
 

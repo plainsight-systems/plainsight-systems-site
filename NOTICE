@@ -1,0 +1,11 @@
+plainsight-systems.com
+Copyright 2026 Plainsight Systems LLC
+
+Third-party components distributed with this site:
+
+- IBM Plex Serif and IBM Plex Mono (static/fonts/), Copyright 2017 IBM Corp.,
+  licensed under the SIL Open Font License 1.1. See static/fonts/OFL.txt.
+- KaTeX 0.16.21 stylesheet and fonts (static/katex/), MIT License.
+  See static/katex/LICENSE.
+- hugo-theme-operator (themes/hugo-theme-operator, git submodule),
+  MIT License. See its LICENSE file.

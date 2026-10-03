@@ -94,8 +94,9 @@ plainsight-systems-site/
 
 ## Licensing
 
-Site code (layouts, styles, config) — MIT. See `LICENSE`.
+Split license, Apache 2.0 for code and CC BY 4.0 for written content; see `LICENSE`.
 
-Site content (written copy, legal pages) — CC BY 4.0. Attribution required.
-
-Brand assets — "Plainsight Systems", the Plainsight Systems wordmark, and any associated logomarks are all rights reserved and explicitly excluded from the above licenses.
+- Site code (layouts, templates, styles, scripts, configuration): Apache 2.0, `LICENSE-CODE`.
+- Written content (pages, research papers and their PDFs): CC BY 4.0, `LICENSE-CONTENT`.
+- Brand assets ("Plainsight Systems", the wordmark and logomarks): all rights reserved, excluded from both.
+- Third-party fonts, KaTeX and the theme keep their own licenses: `NOTICE`.

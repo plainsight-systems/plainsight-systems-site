@@ -1,34 +1,16 @@
-MIT License
+plainsight-systems.com is distributed under a split license.
 
-Copyright (c) 2026 Plainsight Systems LLC
+Site code (layouts, templates, styles, scripts and configuration) is
+licensed under the Apache License, Version 2.0. See LICENSE-CODE.
 
-Site code only — layouts, styles, scripts, build configuration.
+Written content (pages, research papers and their PDFs, and other prose)
+is licensed under the Creative Commons Attribution 4.0 International
+license. See LICENSE-CONTENT.
 
-Site content (written copy, legal pages, policy statements) is separately
-licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+Each file is governed by the applicable scope above; the two licenses are
+not cumulative requirements on every file.
 
-Brand assets — including the names "Plainsight Systems", "PlainSight Lab",
-"Appario", "CustodyZero", "StationZero", "Type", "Valet", "Factory", "Archon", and all
-associated wordmarks, logomarks, icons, and visual identity elements — are
-trademarks or service marks of Plainsight Systems LLC and are explicitly
-excluded from both the MIT license below and the CC BY 4.0 license on content.
+Third-party components keep their own licenses; see NOTICE.
 
----
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The name "Plainsight Systems" and its wordmark, logomark and icons are
+trademarks of Plainsight Systems LLC and are excluded from both licenses.
