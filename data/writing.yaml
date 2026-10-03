@@ -10,7 +10,58 @@
 #   url      where it lives
 #   venue    where it was published, e.g. "LinkedIn", "andrewphunter.com"
 #   date     YYYY-MM-DD
-#   about    optional: the build or topic it came from, e.g. "Charlotte"
+#   about    optional: the build or topic it came from, e.g. "Seymour";
+#            also the filter tag on the Research page
 #
 # Only real, published links go here.
-[]
+# LinkedIn permalinks are feed/update URLs built from each post's activity
+# ID. Titles quote a sentence from each post verbatim.
+
+- title: "I added data structures and algorithms to my C++ performance corpus: 54 new guidelines in two categories, one for CPU hot paths and one for GPU."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7511840174851678209/
+  venue: LinkedIn
+  date: 2026-10-02
+  about: C++ corpus
+
+- title: "Nobody reads my posts about GPU memory bandwidth. Let's see if they'll play them."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7511785364865495040/
+  venue: LinkedIn
+  date: 2026-10-02
+  about: Seymour
+
+- title: "Laurie Kirk's CppCon keynote names something inference engineers deal with every day."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7511422065611243520/
+  venue: LinkedIn
+  date: 2026-10-01
+  about: KV cache
+
+- title: "So I built Seymour, a hands-on tour of why your GPU is starving."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7510739459768967188/
+  venue: LinkedIn
+  date: 2026-09-29
+  about: Seymour
+
+- title: "C++ evaluates every function argument before the call, so value_or and try_emplace build a fallback value even when it is never used."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7505995919759327233/
+  venue: LinkedIn
+  date: 2026-09-16
+  about: C++ corpus
+
+- title: "I spent half this week sure my local model had a reasoning problem."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7504183243261452288/
+  venue: LinkedIn
+  date: 2026-09-11
+  about: Local inference
+
+- title: "We added WebAssembly to our C++ performance corpus."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7503094895985750017/
+  venue: LinkedIn
+  date: 2026-09-08
+  about: C++ corpus
