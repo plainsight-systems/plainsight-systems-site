@@ -723,6 +723,48 @@ a:hover {
   font-size: inherit;
 }
 
+/* Figures: full column width, numbered caption below. */
+.ps-figure {
+  margin: 2.25rem 0;
+}
+
+.ps-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule-soft);
+  background: #fff;
+}
+
+.ps-figure figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted-strong);
+}
+
+.ps-figure__label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-right: 0.35rem;
+}
+
+/* Display math scrolls sideways on narrow screens instead of overflowing
+   the page. */
+.ps-prose .katex-display {
+  margin: 1.5rem 0;
+  padding: 0.25rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.ps-prose .katex {
+  font-size: 1.12em;
+}
+
 @media (max-width: 1024px) {
   .ps-paper__grid {
     grid-template-columns: minmax(0, 1fr);

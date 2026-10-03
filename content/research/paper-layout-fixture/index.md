@@ -56,7 +56,23 @@ Inline code such as `index.md` should sit in the line without changing its heigh
 
 ## Results
 
-This section is short on purpose, to check the spacing between consecutive headings and short paragraphs.
+Inline math sits in the line: the entropy of a source is \(H(X) = -\sum_x p(x) \log_2 p(x)\), measured in bits. Dollar signs are never math, so a salary of $431K and a budget of $10 stay literal.
+
+Display math is centered and scrolls sideways on narrow screens rather than overflowing:
+
+\[
+\mathbb{E}_{x \sim p}\left[-\log q(x)\right] = H(p) + D_{\mathrm{KL}}(p \,\|\, q)
+\]
+
+A wide equation checks the horizontal scroll:
+
+\[
+\mathcal{L}(\theta) = \underbrace{H(X)}_{\text{source}} + \underbrace{\varepsilon_{\text{approx}}}_{\text{expression}} + \underbrace{\varepsilon_{\text{est}}}_{\text{data}} + \underbrace{\varepsilon_{\text{opt}}}_{\text{compute}} + \underbrace{\varepsilon_{\text{other}}}_{\text{everything else}}
+\]
+
+A standalone image becomes a numbered figure captioned by its alt text:
+
+![One markdown source, two outputs: pandoc resolves citations once and writes both the web page and the PDF.](figure-pipeline.svg)
 
 ## Conclusion
 

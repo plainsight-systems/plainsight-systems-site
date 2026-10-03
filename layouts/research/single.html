@@ -22,6 +22,11 @@
 
 {{ define "head-extra" }}
   {{ $p := partial "paper/validate.html" . }}
+  {{/* Render the body first so the math hook can flag pages that need KaTeX. */}}
+  {{ $noop := .Content }}
+  {{ if .Store.Get "hasMath" }}
+  <link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}" />
+  {{ end }}
   {{ $first := index .Params.authors 0 }}
   <meta name="citation_title" content="{{ .Title }}" />
   {{ range .Params.authors }}

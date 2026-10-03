@@ -33,6 +33,21 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+    # Math: \( \) inline and \[ \] display only, rendered at build time by
+    # layouts/_markup/render-passthrough.html. Dollar signs are never math,
+    # here or in the pandoc PDF build, so "$431K" stays literal everywhere.
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - ['\[', '\]']
+          inline:
+            - ['\(', '\)']
+    # A standalone image is a block, so the image render hook can emit a
+    # numbered <figure> for it.
+    parser:
+      wrapStandAloneImageWithinParagraph: false
   highlight:
     style: github
   tableOfContents:

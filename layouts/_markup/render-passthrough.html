@@ -1,0 +1,15 @@
+{{- /*
+  Renders \( \) and \[ \] math to HTML + MathML at build time with KaTeX
+  (transform.ToMath). Invalid LaTeX fails the build at its source position
+  instead of shipping raw markup. Pages that render math set "hasMath" so
+  the KaTeX stylesheet loads only where it is needed.
+*/ -}}
+{{- $opts := dict "output" "htmlAndMathml" "displayMode" (eq .Type "block") "throwOnError" true "strict" "error" }}
+{{- with try (transform.ToMath .Inner $opts) }}
+  {{- with .Err }}
+    {{- errorf "math at %s: KaTeX could not render %q: %s" $.Position $.Inner . }}
+  {{- else }}
+    {{- .Value }}
+    {{- $.Page.Store.Set "hasMath" true }}
+  {{- end }}
+{{- end -}}

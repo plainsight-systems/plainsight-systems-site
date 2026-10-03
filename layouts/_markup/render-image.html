@@ -1,0 +1,48 @@
+{{- /*
+  Images. A standalone image (its own paragraph) is a figure, captioned
+  with its alt text. This matches pandoc, which also turns a standalone
+  image into a figure captioned by its alt text, so one markdown source
+  gives the same figures on the web and in the PDF.
+
+  Figure numbers come from .Ordinal (the image's position on the page),
+  which is deterministic across re-renders. Inline images are rejected in
+  research papers so that every image is a figure and the web numbering
+  matches LaTeX's.
+
+  A local image must exist in the page bundle; a missing file fails the
+  build rather than rendering a broken image. Raster images get intrinsic
+  width and height so the layout does not shift as they load.
+*/ -}}
+{{- $src := .Destination }}
+{{- $res := "" }}
+{{- $u := urls.Parse .Destination }}
+{{- if not $u.IsAbs }}
+  {{- $res = .Page.Resources.Get $u.Path }}
+  {{- if not $res }}
+    {{- errorf "image %d in %s: %q is not in the page bundle" (add .Ordinal 1) .Page.File.Path .Destination }}
+  {{- else }}
+    {{- $src = $res.RelPermalink }}
+  {{- end }}
+{{- end }}
+{{- $w := 0 }}
+{{- $h := 0 }}
+{{- with $res }}
+  {{- if and (eq .ResourceType "image") (ne .MediaType.SubType "svg") }}
+    {{- $w = .Width }}
+    {{- $h = .Height }}
+  {{- end }}
+{{- end }}
+{{- if .IsBlock }}
+  {{- $n := add .Ordinal 1 }}
+  <figure class="ps-figure" id="figure-{{ $n }}">
+    <img src="{{ $src }}" alt="{{ .PlainText }}"{{ if $w }} width="{{ $w }}" height="{{ $h }}"{{ end }} loading="lazy" decoding="async">
+    {{- with .Text }}
+    <figcaption><span class="ps-figure__label">Figure {{ $n }}.</span> {{ . }}</figcaption>
+    {{- end }}
+  </figure>
+{{- else }}
+  {{- if eq .Page.Section "research" }}
+    {{- errorf "image %d in %s: inline images are not supported in papers; put %q in its own paragraph so it becomes a figure" (add .Ordinal 1) .Page.File.Path .Destination }}
+  {{- end -}}
+  <img src="{{ $src }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $w }} width="{{ $w }}" height="{{ $h }}"{{ end }} loading="lazy" decoding="async">
+{{- end -}}
