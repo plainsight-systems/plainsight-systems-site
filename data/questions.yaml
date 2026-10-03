@@ -1,0 +1,92 @@
+# The questions the research is working on, in display order. Rendered on
+# the Research page (all) and the home page (those with home: true).
+#
+# Each entry:
+#   id        anchor on the Research page (/research/#<id>)
+#   question  the question itself
+#   status    in-progress | published | planned | earlier
+#   origin    optional: where the question came from
+#   body      markdown, 2-4 sentences
+#   home      optional: true to feature on the home page
+#   builds    optional: [{name, demo?, source?}]
+#   writeups  optional: [{title, kind: paper|article|post, url, date}]
+#             Papers, blog articles and LinkedIn posts that came out of the
+#             question, wherever they were published. Only real, published
+#             links go here.
+
+- id: inference
+  question: "What does inference cost when nothing is hidden?"
+  status: in-progress
+  home: true
+  body: >-
+    Charlotte is a transformer inference engine written by hand: C++
+    compiled to WebAssembly, compute in WebGPU, no machine-learning
+    framework. Browser inference libraries already exist. The point is to
+    meet every choke point directly, ask why it is there, and watch where
+    coding agents miss those same choke points in their first two or three
+    passes.
+  builds:
+    - name: Charlotte
+      demo: https://plainsight-systems.github.io/charlotte/
+      source: https://github.com/plainsight-systems/charlotte
+
+- id: vocabulary
+  question: "Why is vocabulary size a hyperparameter?"
+  status: in-progress
+  origin: "Came out of Charlotte's tokenizer"
+  home: true
+  body: >-
+    Shannon showed that recoding a source without loss cannot change the
+    information it carries, yet the choice of tokenizer changes how well a
+    model learns. That gap points at the learner rather than the language.
+    The work starts from Shannon's 1948 paper and moves forward, looking for
+    where vocabulary size could be derived instead of tuned.
+
+- id: memory
+  question: "Why is a GPU with a petaflop of compute waiting on memory?"
+  status: published
+  home: true
+  body: >-
+    Seymour takes a GPU apart, pushes a token through Llama 3.1 8B, and
+    shows where decode stalls on memory bandwidth, on H100, H200, MI300X,
+    MI325X and MI355X. Its game, Feed the Machine, teaches batching by
+    making you do it.
+  builds:
+    - name: Seymour
+      demo: https://plainsight-systems.github.io/seymour/
+      source: https://github.com/plainsight-systems/seymour
+
+- id: rendering
+  question: "Is real-time path tracing doing attention's math?"
+  status: planned
+  home: true
+  body: >-
+    ReSTIR merges small per-pixel reservoirs across neighbors and frames
+    much as flash attention merges running maxima and sums across tiles.
+    Serenity builds a real-time path tracer to find out how far that
+    correspondence goes, and where it breaks.
+
+- id: performance-knowledge
+  question: "What does a performance engineer know that a model trained on average code does not?"
+  status: published
+  body: >-
+    The C++ performance corpus writes down the technique layer below the ISO
+    C++ Core Guidelines, drawn from game engines, embedded systems and GPU
+    practice, with every example compiled and checked against an
+    independent reference. MCP servers in Rust put it in front of coding
+    agents while they work.
+  builds:
+    - name: cpp-perf-guidelines
+      source: https://github.com/plainsight-systems/cpp-perf-guidelines
+    - name: mcp-servers
+      source: https://github.com/plainsight-systems/mcp-servers
+
+- id: foundations
+  question: "What is actually happening inside a neural network?"
+  status: earlier
+  body: >-
+    The arc from Rosenblatt's Perceptron (1957) to the Transformer (2017),
+    implemented in C# without a machine-learning framework.
+  builds:
+    - name: NeuralAscent
+      source: https://github.com/AndrewPHunter/NeuralAscent

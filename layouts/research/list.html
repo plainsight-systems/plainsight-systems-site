@@ -39,9 +39,19 @@
   </section>
   {{ end }}
 
+  <section class="ps-section ps-questions" aria-labelledby="questions-label">
+    <div class="ps-wrap">
+      <span class="ps-eyebrow" id="questions-label">Questions</span>
+      <div class="ps-questions__list">
+        {{ range site.Data.questions }}
+          {{ partial "question.html" (dict "q" . "page" $ "link" false) }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
   <div class="ps-section" style="border-bottom: none;">
     <div class="ps-wrap--narrow">
-      {{ if $papers }}<span class="ps-eyebrow">Direction</span>{{ end }}
       <div class="ps-prose">
         {{ .Content }}
       </div>

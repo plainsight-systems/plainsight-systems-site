@@ -822,6 +822,90 @@ a:hover {
   }
 }
 
+/* ── QUESTIONS ──────────────────────────────────────────────── */
+/* data/questions.yaml, rendered by partials/question.html on the Research
+   and home pages. */
+
+.ps-questions__list {
+  max-width: var(--measure);
+  border-top: 1px solid var(--rule);
+}
+
+.ps-question {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  scroll-margin-top: 1.5rem;
+}
+
+.ps-question__meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ps-question__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  margin: 0.55rem 0 0;
+}
+
+.ps-question__title a {
+  text-decoration: none;
+}
+
+.ps-question__title a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--ink);
+}
+
+.ps-question__body {
+  margin-top: 0.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.ps-question__body p { margin: 0; }
+
+.ps-question__links {
+  list-style: none;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ps-question__links li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+.ps-question__kind,
+.ps-question__date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ps-question__kind {
+  min-width: 4.5rem;
+}
+
+.ps-question__name {
+  color: var(--ink);
+}
+
 /* ── RESEARCH INDEX ─────────────────────────────────────────── */
 
 .ps-papers__list {
