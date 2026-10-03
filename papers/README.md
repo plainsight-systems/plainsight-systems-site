@@ -1,6 +1,6 @@
 # Research papers
 
-Each paper's source lives here. The web page and the PDF are generated
+Each paper's source lives here. Where to publish beyond the site: [VENUES.md](VENUES.md). The web page and the PDF are generated
 from it into `content/research/<slug>/`, which is build output: never
 edit it by hand.
 
