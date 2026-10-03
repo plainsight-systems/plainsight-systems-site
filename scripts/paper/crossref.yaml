@@ -1,0 +1,16 @@
+# pandoc-crossref settings shared by the web page and the PDF
+# (scripts/build-paper.sh). Write @fig:x, @tbl:x, @eq:x, @sec:x in a paper.
+#
+# Template variables are written \[var\]: papers are read without dollar
+# math, so crossref's usual $$var$$ would stay literal.
+cref: false
+linkReferences: true
+nameInLink: true
+titleDelim: "."
+figureTitle: "Figure"
+tableTitle: "Table"
+figPrefix: "Figure"
+tblPrefix: "Table"
+eqnPrefix: "Eq."
+secPrefix: "Section"
+eqnPrefixTemplate: "\\[p\\] (\\[i\\])"

@@ -21,12 +21,18 @@
 # rebuild. Any failure (wrong pandoc version, unresolved citation, LaTeX
 # error, missing font) stops the build before the output is touched.
 #
-# Requires: pandoc 3.8.3 (pinned), xelatex with TeX Live's IBM Plex fonts,
-# rsvg-convert for SVG figures.
+# Cross-references (@fig:x, @tbl:x, @eq:x, @sec:x) are resolved by
+# pandoc-crossref for both outputs, with shared settings in
+# scripts/paper/crossref.yaml.
+#
+# Requires: pandoc 3.12 and pandoc-crossref 0.3.25 built against it (both
+# pinned), xelatex with TeX Live's IBM Plex fonts, rsvg-convert for SVG
+# figures.
 
 set -euo pipefail
 
-PANDOC_VERSION="3.8.3"
+PANDOC_VERSION="3.12"
+CROSSREF_VERSION="0.3.25"
 
 die() { echo "build-paper: $*" >&2; exit 1; }
 
@@ -39,6 +45,10 @@ src="$root/papers/$slug"
 out="$root/content/research/$slug"
 filter="$root/scripts/paper/pdf-metadata.lua"
 header="$root/scripts/paper/pdf-header.tex"
+xref="$root/scripts/paper/crossref.yaml"
+xrefweb="$root/scripts/paper/crossref-web.yaml"
+webfilter="$root/scripts/paper/web-body.lua"
+shift="$root/scripts/paper/shift-headings.lua"
 
 [[ -f "$src/paper.md" ]] || die "no source at papers/$slug/paper.md"
 
@@ -47,6 +57,12 @@ command -v pandoc >/dev/null || die "pandoc not found (need $PANDOC_VERSION)"
 have="$(pandoc --version | head -1 | awk '{print $2}')"
 [[ "$have" == "$PANDOC_VERSION" ]] \
   || die "pandoc $PANDOC_VERSION required for reproducible output, found $have"
+command -v pandoc-crossref >/dev/null || die "pandoc-crossref not found (need $CROSSREF_VERSION)"
+xr="$(pandoc-crossref --version)"
+[[ "$xr" == "pandoc-crossref v$CROSSREF_VERSION "* ]] \
+  || die "pandoc-crossref $CROSSREF_VERSION required, found: $xr"
+[[ "$xr" == *"built with Pandoc v$PANDOC_VERSION,"* ]] \
+  || die "pandoc-crossref must be built with pandoc $PANDOC_VERSION, found: $xr"
 command -v xelatex >/dev/null || die "xelatex not found (install TeX Live)"
 for face in IBMPlexSerif-Regular IBMPlexSerif-Italic IBMPlexSerif-Bold IBMPlexSerif-BoldItalic \
             IBMPlexMono-Regular IBMPlexMono-Italic IBMPlexMono-Bold IBMPlexMono-BoldItalic; do
@@ -86,7 +102,7 @@ base_url="$(awk '$1 == "baseURL:" {print $2; exit}' "$root/hugo.yaml" | tr -d '"
 reader='markdown-tex_math_dollars+tex_math_single_backslash'
 writer='markdown-tex_math_dollars+tex_math_single_backslash'
 writer+='-fenced_divs-native_divs-bracketed_spans-native_spans'
-writer+='-header_attributes-link_attributes-raw_attribute-fenced_code_attributes'
+writer+='-link_attributes-raw_attribute-fenced_code_attributes-implicit_figures'
 writer+='-simple_tables-multiline_tables-grid_tables+pipe_tables-smart'
 
 cite=()
@@ -100,8 +116,17 @@ work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
 
 # ── Web body ───────────────────────────────────────────────────
+# Papers use ## for top-level sections (the page title is the h1), so
+# headings are shifted up one level (shift-headings.lua) for crossref and
+# LaTeX section numbering; web-body.lua shifts them back for Hugo.
+# Filter order matters: crossref first (its @fig:x refs look like
+# citations), then the web reshaping, then citeproc.
 pandoc "$src/paper.md" \
   --from="$reader" --to="$writer" --wrap=preserve \
+  --lua-filter="$shift" \
+  --filter=pandoc-crossref --metadata-file="$xref" --metadata-file="$xrefweb" \
+  --metadata=equationNumberTeX:'\tag' \
+  --lua-filter="$webfilter" \
   ${cite[@]+"${cite[@]}"} --fail-if-warnings \
   --output="$work/body.md"
 
@@ -121,8 +146,8 @@ pandoc "$src/paper.md" \
 # from a hash of every input, so identical inputs give a byte-identical PDF
 # and any change to the inputs changes the ID.
 pdf_id="$(
-  { echo "pandoc $PANDOC_VERSION"
-    cat "$filter" "$header"
+  { echo "pandoc $PANDOC_VERSION crossref $CROSSREF_VERSION"
+    cat "$filter" "$header" "$xref" "$xrefweb" "$webfilter" "$shift"
     (cd "$src" && find . -type f ! -name '.DS_Store' | LC_ALL=C sort | while IFS= read -r f; do
        echo "$f"; cat "$f"; done)
   } | shasum -a 256 | cut -c1-32
@@ -138,8 +163,10 @@ done
 SOURCE_DATE_EPOCH="$epoch" FORCE_SOURCE_DATE=1 \
 pandoc "$src/paper.md" \
   --from="$reader" \
-  ${cite[@]+"${cite[@]}"} --fail-if-warnings \
+  --number-sections --lua-filter="$shift" \
+  --filter=pandoc-crossref --metadata-file="$xref" \
   --lua-filter="$filter" \
+  ${cite[@]+"${cite[@]}"} --fail-if-warnings \
   --include-in-header="$header" --include-in-header="$work/pdf-id.tex" \
   --metadata=paper-url:"$base_url/research/$slug/" \
   --resource-path="$src" \

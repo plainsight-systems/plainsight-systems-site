@@ -17,9 +17,11 @@ Build after every change, then commit the source and the output together:
 scripts/build-paper.sh <slug>
 ```
 
-The build needs pandoc 3.8.3 (pinned for reproducible output), TeX Live
-with its IBM Plex fonts (`tlmgr install plex`), and `rsvg-convert` for
-SVG figures. Identical inputs give a byte-identical PDF.
+The build needs pandoc 3.12 and pandoc-crossref 0.3.25 built against it
+(both pinned for reproducible output; `brew install pandoc-crossref`
+installs the pair), TeX Live with its IBM Plex fonts (`tlmgr install
+plex`), and `rsvg-convert` for SVG figures. Identical inputs give a
+byte-identical PDF.
 
 ## Front matter
 
@@ -47,11 +49,21 @@ Do not set `pdf:`; the build sets it to `<slug>.pdf`.
 
 ## Writing
 
+- **Sections:** `##` for top-level sections, `###` below; never `#`
+  (the page title is the h1). Sections are numbered (1, 2, 2.1) on the
+  web and in the PDF. Unnumbered: `## References {-}`.
 - **Math:** `\( ... \)` inline, `\[ ... \]` display. Dollar signs are
-  always literal, on the web and in the PDF.
-- **Figures:** an image in its own paragraph is a numbered figure,
-  captioned by its alt text: `![Caption text.](figures/plot.svg)`.
-  Inline images are rejected.
+  always literal, on the web and in the PDF. Label a display equation to
+  number it: `\[ ... \]{#eq:kl}`.
+- **Figures:** an image in its own paragraph is a figure, captioned by its
+  alt text, and must be labelled:
+  `![Caption text.](figures/plot.svg){#fig:plot}`. Inline images are
+  rejected.
+- **Tables:** caption on the line after the table:
+  `: Caption text. {#tbl:results}`.
+- **Cross-references:** `@fig:plot`, `@tbl:results`, `@eq:kl`,
+  `@sec:method` (label a section with `## Method {#sec:method}`). They
+  render as linked "Figure 1", "Table 1", "Eq. (1)", "Section 3".
 - **Citations:** `[@key]` with entries in `refs.bib`. Put the reference
   list where it belongs with:
 
@@ -68,8 +80,10 @@ Do not set `pdf:`; the build sets it to `<slug>.pdf`.
 
 ## What fails the build
 
-The script stops before touching the output on: a pandoc version other
-than the pinned one, a missing font, an unresolved citation, a LaTeX or
-KaTeX error, a malformed date or unknown status, or `pdf:` in the source.
+The script stops before touching the output on: a pandoc or
+pandoc-crossref version other than the pinned ones, a missing font, an
+unresolved citation or cross-reference, an unlabelled figure, a `#`
+heading, a LaTeX or KaTeX error, a malformed date or unknown status, or
+`pdf:` in the source.
 Hugo then fails on any missing required front matter field, a missing
 figure, or an inline image in a paper.

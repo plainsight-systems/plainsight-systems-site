@@ -1,0 +1,11 @@
+# pandoc-crossref settings for the web page only (scripts/build-paper.sh).
+# Figure captions carry no number here: the image render hook numbers
+# figures itself, in the same document order (see web-body.lua).
+figureTemplate: "\\[t\\]"
+# Equation numbers become KaTeX \tag{n} (equationNumberTeX is passed on the
+# command line: a metadata file would read "\tag" as markdown).
+eqnIndexTemplate: "\\[i\\]"
+# Section numbers are written into heading text ("1 Introduction"), as
+# --number-sections does in the PDF.
+numberSections: true
+sectionsDepth: 2

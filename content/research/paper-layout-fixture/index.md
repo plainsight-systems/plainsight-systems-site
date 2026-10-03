@@ -25,21 +25,29 @@ keywords: [layout, fixture]
 pdf: paper-layout-fixture.pdf
 ---
 
-## Introduction
+## 1 Introduction
 
 The body column holds the reading measure at 44rem and starts on the same left edge as the navigation. Long paragraphs should wrap comfortably at this width on a desktop screen and reflow without horizontal scrolling on a phone. This sentence is here to make the paragraph long enough to show three or more lines of text at the widest breakpoint.
 
-A second paragraph checks spacing between paragraphs, carries a footnote marker,[^1] and cites two sources so the bibliography is exercised: the source coding theorem ([Shannon 1948](#ref-shannon1948)), and usable information under computational constraints ([Xu et al. 2020](#ref-xu2020)).
+A second paragraph checks spacing between paragraphs, carries a footnote marker,[^1] points ahead to [Figure 1](#fig:pipeline), [Table 1](#tbl:elements), [Eq. (1)](#eq:kl) and [Section 4](#sec:results), and cites two sources so the bibliography is exercised: the source coding theorem ([Shannon 1948](#ref-shannon1948)), and usable information under computational constraints ([Xu et al. 2020](#ref-xu2020)).
 
-## Background
+## 2 Background
 
-### A third-level heading
+### 2.1 A third-level heading
 
 Third-level headings appear indented in the contents rail. The rail is sticky on wide screens and drops above the body as a plain list below 1024px.
 
 > A block quote, set off from the body by a rule on its left.
 
-### A table
+### 2.2 A table
+
+<div id="tbl:elements" class="ps-table">
+
+<div class="ps-table-caption">
+
+Table 1. Elements of the template and where each renders.
+
+</div>
 
 | Element    | Where it renders         | Checked by          |
 |------------|--------------------------|---------------------|
@@ -47,7 +55,9 @@ Third-level headings appear indented in the contents rail. The rail is sticky on
 | Contents   | Right rail or above body | Viewport width      |
 | Footnotes  | End of body              | Back-links          |
 
-## Method
+</div>
+
+## 3 Method
 
 A code block checks monospace setting and horizontal overflow:
 
@@ -55,15 +65,19 @@ A code block checks monospace setting and horizontal overflow:
 
 Inline code such as `index.md` should sit in the line without changing its height.
 
-## Results
+## 4 Results {#sec:results}
 
 Inline math sits in the line: the entropy of a source is \(H(X) = -\sum_x p(x) \log_2 p(x)\), measured in bits. Dollar signs are never math, so a salary of $431K and a budget of $10 stay literal.
 
 Display math is centered and scrolls sideways on narrow screens rather than overflowing:
 
+<div id="eq:kl" class="ps-equation">
+
 \[
 \mathbb{E}_{x \sim p}\left[-\log q(x)\right] = H(p) + D_{\mathrm{KL}}(p \,\|\, q)
-\]
+\tag{1}\]
+
+</div>
 
 A wide equation checks the horizontal scroll:
 
@@ -73,13 +87,17 @@ A wide equation checks the horizontal scroll:
 
 A standalone image becomes a numbered figure captioned by its alt text:
 
+<div id="fig:pipeline">
+
 ![One markdown source, two outputs: pandoc resolves citations once and writes both the web page and the PDF.](figures/pipeline.svg)
 
-## Conclusion
+</div>
+
+## 5 Conclusion
 
 The fixture ends here. Its footnote follows.[^2]
 
-## References
+## References {#references .unnumbered}
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 

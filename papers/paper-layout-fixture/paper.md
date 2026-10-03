@@ -26,7 +26,7 @@ keywords: [layout, fixture]
 
 The body column holds the reading measure at 44rem and starts on the same left edge as the navigation. Long paragraphs should wrap comfortably at this width on a desktop screen and reflow without horizontal scrolling on a phone. This sentence is here to make the paragraph long enough to show three or more lines of text at the widest breakpoint.
 
-A second paragraph checks spacing between paragraphs, carries a footnote marker,[^1] and cites two sources so the bibliography is exercised: the source coding theorem [@shannon1948], and usable information under computational constraints [@xu2020].
+A second paragraph checks spacing between paragraphs, carries a footnote marker,[^1] points ahead to @fig:pipeline, @tbl:elements, @eq:kl and @sec:results, and cites two sources so the bibliography is exercised: the source coding theorem [@shannon1948], and usable information under computational constraints [@xu2020].
 
 ## Background
 
@@ -44,6 +44,8 @@ Third-level headings appear indented in the contents rail. The rail is sticky on
 | Contents | Right rail or above body | Viewport width |
 | Footnotes | End of body | Back-links |
 
+: Elements of the template and where each renders. {#tbl:elements}
+
 ## Method
 
 A code block checks monospace setting and horizontal overflow:
@@ -54,7 +56,7 @@ scripts/build-paper.sh paper-layout-fixture   # resolves citations, renders the 
 
 Inline code such as `index.md` should sit in the line without changing its height.
 
-## Results
+## Results {#sec:results}
 
 Inline math sits in the line: the entropy of a source is \(H(X) = -\sum_x p(x) \log_2 p(x)\), measured in bits. Dollar signs are never math, so a salary of $431K and a budget of $10 stay literal.
 
@@ -62,7 +64,7 @@ Display math is centered and scrolls sideways on narrow screens rather than over
 
 \[
 \mathbb{E}_{x \sim p}\left[-\log q(x)\right] = H(p) + D_{\mathrm{KL}}(p \,\|\, q)
-\]
+\]{#eq:kl}
 
 A wide equation checks the horizontal scroll:
 
@@ -72,13 +74,13 @@ A wide equation checks the horizontal scroll:
 
 A standalone image becomes a numbered figure captioned by its alt text:
 
-![One markdown source, two outputs: pandoc resolves citations once and writes both the web page and the PDF.](figures/pipeline.svg)
+![One markdown source, two outputs: pandoc resolves citations once and writes both the web page and the PDF.](figures/pipeline.svg){#fig:pipeline}
 
 ## Conclusion
 
 The fixture ends here. Its footnote follows.[^2]
 
-## References
+## References {-}
 
 ::: {#refs}
 :::
