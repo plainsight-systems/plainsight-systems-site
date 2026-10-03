@@ -15,7 +15,8 @@
 #
 # Only real, published links go here.
 # LinkedIn permalinks are feed/update URLs built from each post's activity
-# ID. Titles quote a sentence from each post verbatim.
+# ID. Post titles quote a sentence from each post verbatim; article titles
+# are the article's own title.
 
 - title: "I added data structures and algorithms to my C++ performance corpus: 54 new guidelines in two categories, one for CPU hot paths and one for GPU."
   kind: post
@@ -44,6 +45,13 @@
   venue: LinkedIn
   date: 2026-09-29
   about: Seymour
+
+- title: "Reasoning Tokens Steer the Trajectory"
+  kind: article
+  url: https://andrewphunter.com/writing/reasoning-tokens-control-signal/
+  venue: andrewphunter.com
+  date: 2026-09-22
+  about: Reasoning tokens
 
 - title: "C++ evaluates every function argument before the call, so value_or and try_emplace build a fallback value even when it is never used."
   kind: post
