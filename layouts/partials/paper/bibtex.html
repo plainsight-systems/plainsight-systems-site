@@ -1,0 +1,26 @@
+{{/*
+  BibTeX entry for a paper page. Assumes front matter already passed
+  partial "paper/validate.html". Emitted as @misc with a note, the most
+  portable entry type for working papers and preprints.
+*/}}
+{{- $esc := dict "&" `\&` "%" `\%` "$" `\$` "#" `\#` "_" `\_` -}}
+{{- $first := index .Params.authors 0 -}}
+{{- $slugWord := index (split .File.ContentBaseName "-") 0 -}}
+{{- $key := .Params.citekey | default (printf "%s%s%s" (lower $first.family) (.Date.Format "2006") $slugWord) -}}
+{{- $names := slice -}}
+{{- range .Params.authors }}{{ $names = $names | append (printf "%s, %s" .family .given) }}{{ end -}}
+{{- $title := .Title -}}
+{{- with .Params.subtitle }}{{ $title = printf "%s: %s" $title . }}{{ end -}}
+{{- range $k, $v := $esc }}{{ $title = replace $title $k $v }}{{ end -}}
+{{- $labels := dict "working-paper" "Working paper" "preprint" "Preprint" "published" "Published" -}}
+@misc{ {{- $key }},
+  author = { {{- delimit $names " and " -}} },
+  title  = {{ "{{" }}{{ $title }}{{ "}}" }},
+  year   = { {{- .Date.Format "2006" -}} },
+  month  = {{ lower (.Date.Format "Jan") }},
+  note   = { {{- index $labels .Params.status }}, version {{ .Params.version }}, {{ .Site.Params.entity -}} },
+  url    = { {{- .Permalink -}} }
+{{- with .Params.doi }},
+  doi    = { {{- . -}} }
+{{- end }}
+}

@@ -1,0 +1,51 @@
+{{/*
+  Validates a paper's front matter and returns derived values.
+  Fails the build (errorf) on any contract violation; see the contract in
+  layouts/research/single.html. Returns:
+    pdf          the PDF page resource
+    pdfSize      human-readable size, e.g. "412 KB"
+    statusLabel  display label for .Params.status
+*/}}
+{{ $where := .File.Path }}
+
+{{ range slice "title" "version" "status" "abstract" "pdf" }}
+  {{ if not (index $.Params .) }}
+    {{ errorf "paper %s: front matter field %q is required" $where . }}
+  {{ end }}
+{{ end }}
+{{ if .Date.IsZero }}
+  {{ errorf "paper %s: front matter field \"date\" is required" $where }}
+{{ end }}
+
+{{ $labels := dict "working-paper" "Working paper" "preprint" "Preprint" "published" "Published" }}
+{{ $statusLabel := index $labels (.Params.status | default "") }}
+{{ if not $statusLabel }}
+  {{ errorf "paper %s: status %q is not one of working-paper, preprint, published" $where .Params.status }}
+{{ end }}
+
+{{ if not .Params.authors }}
+  {{ errorf "paper %s: at least one author is required" $where }}
+{{ end }}
+{{ range .Params.authors }}
+  {{ if or (not .given) (not .family) }}
+    {{ errorf "paper %s: every author needs \"given\" and \"family\" names" $where }}
+  {{ end }}
+{{ end }}
+
+{{/* errorf logs and continues, so every use of $pdf below is guarded. */}}
+{{ $pdf := .Resources.Get (.Params.pdf | default "") }}
+{{ $pdfSize := "" }}
+{{ if not $pdf }}
+  {{ errorf "paper %s: pdf %q is not in the page bundle" $where .Params.pdf }}
+{{ else if ne $pdf.MediaType.Type "application/pdf" }}
+  {{ errorf "paper %s: pdf %q is %s, not application/pdf" $where .Params.pdf $pdf.MediaType.Type }}
+{{ else }}
+  {{ $bytes := len $pdf.Content }}
+  {{ if ge $bytes 1048576 }}
+    {{ $pdfSize = printf "%.1f MB" (div (float $bytes) 1048576) }}
+  {{ else }}
+    {{ $pdfSize = printf "%d KB" (int (math.Ceil (div (float $bytes) 1024))) }}
+  {{ end }}
+{{ end }}
+
+{{ return dict "pdf" $pdf "pdfSize" $pdfSize "statusLabel" $statusLabel }}

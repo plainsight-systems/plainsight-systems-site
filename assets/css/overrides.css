@@ -536,6 +536,207 @@ a:hover {
   margin-top: 1rem;
 }
 
+/* ── RESEARCH PAPER ─────────────────────────────────────────── */
+/* Text column keeps the 44rem measure on the shared left edge; the
+   contents rail uses the space to its right. Below 1024px the rail
+   drops above the body as a plain list. */
+
+.ps-paper__authors {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.ps-paper__sep {
+  margin: 0 0.6rem;
+  color: var(--muted);
+}
+
+.ps-paper__orcid {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-left: 0.25rem;
+}
+
+.ps-paper__dates {
+  margin: 0.5rem 0 0;
+}
+
+.ps-paper__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.ps-paper__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 140ms ease;
+}
+
+.ps-paper__action:hover,
+.ps-paper__action:focus-visible {
+  border-color: var(--ink);
+  text-decoration: none;
+}
+
+.ps-paper__action-meta {
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+/* Cite: the summary is the button. Opening it takes the full row so the
+   entry sits below the buttons rather than beside them. */
+.ps-paper__cite[open] {
+  flex-basis: 100%;
+}
+
+.ps-paper__cite summary {
+  list-style: none;
+}
+
+.ps-paper__cite summary::-webkit-details-marker {
+  display: none;
+}
+
+.ps-paper__cite[open] summary {
+  border-color: var(--ink);
+}
+
+.ps-paper__bibtex {
+  max-width: var(--container-narrow);
+  margin: 0.75rem 0 0;
+  padding: 1rem 1.25rem;
+  background: var(--ivory-dim);
+  border: 1px solid var(--rule-soft);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ps-paper__grid {
+  display: grid;
+  grid-template-columns: minmax(0, var(--container-narrow)) minmax(11rem, 15rem);
+  grid-template-areas: "abstract rail" "main rail";
+  justify-content: space-between;
+  column-gap: 3rem;
+  align-items: start;
+}
+
+.ps-paper__abstract { grid-area: abstract; min-width: 0; }
+.ps-paper__main { grid-area: main; min-width: 0; }
+/* The rail stretches to the full row height so the sticky contents
+   inside it have room to stick. */
+.ps-paper__rail { grid-area: rail; align-self: stretch; }
+
+.ps-paper__toc {
+  position: sticky;
+  top: 2rem;
+}
+
+.ps-paper__toc ul {
+  list-style: none;
+}
+
+.ps-paper__toc li {
+  margin-bottom: 0.55rem;
+}
+
+.ps-paper__toc li ul {
+  margin-top: 0.55rem;
+  padding-left: 0.9rem;
+  border-left: 1px solid var(--rule-soft);
+}
+
+.ps-paper__toc a {
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--muted-strong);
+  text-decoration: none;
+}
+
+.ps-paper__toc a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.ps-paper__abstract {
+  padding-bottom: 2.25rem;
+  margin-bottom: 2.75rem;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.ps-paper__abstract .ps-prose {
+  font-size: 1.04rem;
+  color: var(--ink-soft);
+}
+
+/* Footnotes (goldmark) read as endnotes. */
+.ps-prose .footnotes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 0.88rem;
+  color: var(--muted-strong);
+}
+
+.ps-prose .footnotes hr { display: none; }
+
+.ps-prose sup a,
+.ps-prose .footnote-backref {
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.75em;
+}
+
+.ps-prose pre {
+  background: var(--ivory-dim);
+  border: 1px solid var(--rule-soft);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.ps-prose pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+@media (max-width: 1024px) {
+  .ps-paper__grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "abstract" "rail" "main";
+  }
+
+  .ps-paper__toc {
+    position: static;
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+}
+
 /* ── FOOTER ─────────────────────────────────────────────────── */
 
 .ps-footer {

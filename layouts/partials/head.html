@@ -2,7 +2,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
-{{ $description := .Description | default .Site.Params.description }}
+{{/* Papers carry an abstract instead of a description; use its opening. */}}
+{{ $description := .Description }}
+{{ if and (not $description) .Params.abstract }}
+  {{ $description = .Params.abstract | .RenderString | plainify | replaceRE `\s+` " " | strings.TrimSpace | truncate 200 }}
+{{ end }}
+{{ $description = $description | default .Site.Params.description }}
 {{ with $description }}<meta name="description" content="{{ . }}" />{{ end }}
 
 <link rel="canonical" href="{{ .Permalink }}" />

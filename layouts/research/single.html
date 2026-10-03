@@ -1,0 +1,139 @@
+{{/*
+  Research paper layout.
+
+  Each paper is a page bundle at content/research/<slug>/ holding index.md,
+  the PDF, and figures. Front matter contract (the build fails, via errorf,
+  when a required field is missing or invalid, so a page never renders a
+  broken download or an empty citation):
+
+    title     required
+    subtitle  optional
+    date      required  first publication
+    lastmod   optional  last revision; shown when it differs from date
+    version   required  e.g. "0.1"
+    status    required  working-paper | preprint | published
+    authors   required  list of {given, family, orcid?, affiliation?}
+    abstract  required  markdown
+    pdf       required  file name of a PDF resource in this bundle
+    doi       optional  bare DOI, e.g. 10.5281/zenodo.123
+    citekey   optional  BibTeX key; default <family><year><first slug word>
+    keywords  optional  list
+*/}}
+
+{{ define "head-extra" }}
+  {{ $p := partial "paper/validate.html" . }}
+  {{ $first := index .Params.authors 0 }}
+  <meta name="citation_title" content="{{ .Title }}" />
+  {{ range .Params.authors }}
+  <meta name="citation_author" content="{{ .family }}, {{ .given }}" />
+  {{ with .orcid }}<meta name="citation_author_orcid" content="https://orcid.org/{{ . }}" />{{ end }}
+  {{ with .affiliation }}<meta name="citation_author_institution" content="{{ . }}" />{{ end }}
+  {{ end }}
+  <meta name="citation_publication_date" content="{{ .Date.Format "2006/01/02" }}" />
+  {{ if eq .Params.status "working-paper" }}
+  <meta name="citation_technical_report_institution" content="{{ .Site.Params.entity }}" />
+  {{ end }}
+  {{ with $p.pdf }}<meta name="citation_pdf_url" content="{{ .Permalink }}" />{{ end }}
+  <meta name="citation_abstract_html_url" content="{{ .Permalink }}" />
+  {{ with .Params.doi }}<meta name="citation_doi" content="{{ . }}" />{{ end }}
+  {{ with .Params.keywords }}<meta name="citation_keywords" content="{{ delimit . "; " }}" />{{ end }}
+
+  {{ $authors := slice }}
+  {{ range .Params.authors }}
+    {{ $a := dict "@type" "Person" "givenName" .given "familyName" .family "name" (printf "%s %s" .given .family) }}
+    {{ with .orcid }}{{ $a = merge $a (dict "@id" (printf "https://orcid.org/%s" .)) }}{{ end }}
+    {{ with .affiliation }}{{ $a = merge $a (dict "affiliation" (dict "@type" "Organization" "name" .)) }}{{ end }}
+    {{ $authors = $authors | append $a }}
+  {{ end }}
+  {{ $ld := dict
+      "@context" "https://schema.org"
+      "@type" "ScholarlyArticle"
+      "headline" .Title
+      "name" .Title
+      "author" $authors
+      "datePublished" (.Date.Format "2006-01-02")
+      "dateModified" (.Lastmod.Format "2006-01-02")
+      "version" .Params.version
+      "abstract" (.Params.abstract | .RenderString | plainify | replaceRE `\s+` " " | strings.TrimSpace)
+      "url" .Permalink
+      "publisher" (dict "@id" "https://plainsight-systems.com/#organization")
+  }}
+  {{ with $p.pdf }}{{ $ld = merge $ld (dict "encoding" (dict "@type" "MediaObject" "encodingFormat" "application/pdf" "contentUrl" .Permalink)) }}{{ end }}
+  {{ with .Params.keywords }}{{ $ld = merge $ld (dict "keywords" .) }}{{ end }}
+  {{ with .Params.doi }}{{ $ld = merge $ld (dict "identifier" (printf "https://doi.org/%s" .)) }}{{ end }}
+  <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+{{ end }}
+
+{{ define "main" }}
+{{ $p := partial "paper/validate.html" . }}
+<article class="ps-paper">
+  <header class="ps-page-header">
+    <div class="ps-wrap">
+      <span class="ps-eyebrow">{{ $p.statusLabel }} · Version {{ .Params.version }}</span>
+      <h1 class="ps-page-header__title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}
+      <p class="ps-page-header__desc">{{ . }}</p>
+      {{ end }}
+
+      <p class="ps-paper__authors">
+        {{ range $i, $a := .Params.authors -}}
+          {{ if $i }}<span class="ps-paper__sep" aria-hidden="true">·</span>{{ end }}
+          <span class="ps-paper__author">
+            {{- $a.given }} {{ $a.family -}}
+            {{ with $a.orcid }} <a class="ps-paper__orcid" href="https://orcid.org/{{ . }}" rel="noopener" aria-label="ORCID {{ . }}">ORCID</a>{{ end -}}
+          </span>
+        {{- end }}
+      </p>
+
+      <p class="ps-meta ps-paper__dates">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+        {{ if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }}
+        · Revised <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2 January 2006" }}</time>
+        {{ end }}
+      </p>
+
+      <div class="ps-paper__actions">
+        {{ with $p.pdf }}
+        <a class="ps-paper__action" href="{{ .RelPermalink }}" download>
+          Download PDF <span class="ps-paper__action-meta">{{ $p.pdfSize }}</span>
+        </a>
+        {{ end }}
+        {{ with .Params.doi }}
+        <a class="ps-paper__action" href="https://doi.org/{{ . }}" rel="noopener">
+          DOI <span class="ps-paper__action-meta">{{ . }}</span>
+        </a>
+        {{ end }}
+        <details class="ps-paper__cite">
+          <summary class="ps-paper__action">Cite</summary>
+          <pre class="ps-paper__bibtex"><code>{{ partial "paper/bibtex.html" . }}</code></pre>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <div class="ps-section ps-paper__section">
+    <div class="ps-wrap ps-paper__grid">
+      {{ $toc := .TableOfContents }}
+      {{ if and (ne .Params.toc false) (findRE `<li>` $toc) }}
+      <aside class="ps-paper__rail" aria-label="Contents">
+        <div class="ps-paper__toc">
+          <span class="ps-eyebrow">Contents</span>
+          {{ $toc }}
+        </div>
+      </aside>
+      {{ end }}
+
+      <section class="ps-paper__abstract" aria-labelledby="abstract-label">
+        <span class="ps-eyebrow" id="abstract-label">Abstract</span>
+        <div class="ps-prose">{{ .Params.abstract | .RenderString (dict "display" "block") }}</div>
+      </section>
+
+      <div class="ps-paper__main">
+        <div class="ps-prose ps-paper__body">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+{{ end }}
