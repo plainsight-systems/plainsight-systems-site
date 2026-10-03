@@ -2,7 +2,8 @@
 #
 # Builds a research paper's web page and PDF from one markdown source.
 #
-#   scripts/build-paper.sh <slug>
+#   scripts/build-paper.sh <slug>            web page + PDF into content/
+#   scripts/build-paper.sh <slug> --arxiv    arXiv source bundle into build/
 #
 # Source (edit these):          papers/<slug>/paper.md
 #                               papers/<slug>/refs.bib      optional
@@ -36,8 +37,14 @@ CROSSREF_VERSION="0.3.25"
 
 die() { echo "build-paper: $*" >&2; exit 1; }
 
-[[ $# -eq 1 ]] || die "usage: scripts/build-paper.sh <slug>"
+usage="usage: scripts/build-paper.sh <slug> [--arxiv]"
+[[ $# -ge 1 && $# -le 2 ]] || die "$usage"
 slug="$1"
+mode="site"
+if [[ $# -eq 2 ]]; then
+  [[ "$2" == "--arxiv" ]] || die "$usage"
+  mode="arxiv"
+fi
 [[ "$slug" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || die "slug must be lowercase words joined by hyphens, got '$slug'"
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -49,6 +56,7 @@ xref="$root/scripts/paper/crossref.yaml"
 xrefweb="$root/scripts/paper/crossref-web.yaml"
 webfilter="$root/scripts/paper/web-body.lua"
 shift="$root/scripts/paper/shift-headings.lua"
+arxivfig="$root/scripts/paper/arxiv-figures.lua"
 
 [[ -f "$src/paper.md" ]] || die "no source at papers/$slug/paper.md"
 
@@ -112,8 +120,77 @@ elif grep -qE '\[@[A-Za-z0-9_:-]+' "$src/paper.md"; then
   die "paper.md cites sources but papers/$slug/refs.bib does not exist"
 fi
 
+# LaTeX options shared by the site PDF and the arXiv source, so the two
+# cannot drift apart.
+plex=(Extension=.otf UprightFont=*-Regular ItalicFont=*-Italic BoldFont=*-Bold BoldItalicFont=*-BoldItalic)
+latexopts=(
+  --from="$reader"
+  --number-sections --lua-filter="$shift"
+  --filter=pandoc-crossref --metadata-file="$xref"
+  --lua-filter="$filter"
+  ${cite[@]+"${cite[@]}"} --fail-if-warnings
+  --include-in-header="$header"
+  --metadata=paper-url:"$base_url/research/$slug/"
+  --resource-path="$src"
+  --variable=mainfont:IBMPlexSerif --variable=monofont:IBMPlexMono
+  --variable=fontsize:11pt
+  --variable=geometry:margin=1.1in
+  --variable=linestretch:1.15
+  --variable=colorlinks:true
+  --variable=linkcolor:black --variable=citecolor:black --variable=urlcolor:black
+  --variable=lang:en-US
+)
+for o in "${plex[@]}"; do
+  latexopts+=(--variable=mainfontoptions:"$o" --variable=monofontoptions:"$o")
+done
+
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
+
+# ── arXiv source bundle ────────────────────────────────────────
+# arXiv compiles source itself and rejects PDFs produced from TeX. The
+# bundle is <slug>.tex (citations already resolved by citeproc, so no .bib
+# or .bbl is needed) plus figures, with SVGs converted to PDF. It is
+# compiled here exactly once as arXiv would (two xelatex passes, no
+# network, no files outside the bundle) before it is zipped.
+if [[ "$mode" == "arxiv" ]]; then
+  bundle="$work/arxiv"
+  mkdir -p "$bundle"
+  while IFS= read -r -d '' f; do
+    mkdir -p "$bundle/$(dirname "$f")"
+    case "$f" in
+      *.svg) SOURCE_DATE_EPOCH="$epoch" rsvg-convert --format=pdf --output="$bundle/${f%.svg}.pdf" "$src/$f" ;;
+      *)     cp "$src/$f" "$bundle/$f" ;;
+    esac
+  done < <(cd "$src" && find . -type f ! -name 'paper.md' ! -name 'refs.bib' ! -name '.DS_Store' -print0)
+
+  pandoc "$src/paper.md" "${latexopts[@]}" --lua-filter="$arxivfig" \
+    --standalone --to=latex --output="$bundle/$slug.tex"
+
+  for pass in 1 2; do
+    if ! (cd "$bundle" && SOURCE_DATE_EPOCH="$epoch" FORCE_SOURCE_DATE=1 \
+          xelatex -interaction=nonstopmode -halt-on-error -no-shell-escape "$slug.tex" >"$work/xelatex.log" 2>&1); then
+      tail -25 "$work/xelatex.log" >&2
+      die "the arXiv bundle does not compile with xelatex (pass $pass)"
+    fi
+  done
+  if grep -q "There were undefined references" "$bundle/$slug.log"; then
+    die "the arXiv bundle has undefined references"
+  fi
+  rm -f "$bundle/$slug".{aux,log,out,toc,pdf}
+
+  # Reproducible zip: fixed timestamps (the paper's date, UTC), sorted entries.
+  mkdir -p "$root/build/arxiv"
+  zipfile="$root/build/arxiv/$slug-arxiv.zip"
+  rm -f "$zipfile"
+  (cd "$bundle" \
+    && find . -type f -exec env TZ=UTC touch -t "${stamp//-/}0000" {} + \
+    && find . -type f | LC_ALL=C sort | TZ=UTC zip -X -q "$zipfile" -@)
+
+  echo "build-paper: wrote build/arxiv/$slug-arxiv.zip ($(cd "$bundle" && find . -type f | wc -l | tr -d ' ') files)"
+  echo "  Upload it as a TeX submission and choose the XeLaTeX processor (TeX Live 2025)."
+  exit 0
+fi
 
 # ── Web body ───────────────────────────────────────────────────
 # Papers use ## for top-level sections (the page title is the h1), so
@@ -147,37 +224,17 @@ pandoc "$src/paper.md" \
 # and any change to the inputs changes the ID.
 pdf_id="$(
   { echo "pandoc $PANDOC_VERSION crossref $CROSSREF_VERSION"
-    cat "$filter" "$header" "$xref" "$xrefweb" "$webfilter" "$shift"
+    cat "$0" "$filter" "$header" "$xref" "$xrefweb" "$webfilter" "$shift"
     (cd "$src" && find . -type f ! -name '.DS_Store' | LC_ALL=C sort | while IFS= read -r f; do
        echo "$f"; cat "$f"; done)
   } | shasum -a 256 | cut -c1-32
 )"
 printf '\\AtBeginDocument{\\special{pdf:trailerid [<%s><%s>]}}\n' "$pdf_id" "$pdf_id" > "$work/pdf-id.tex"
 
-plex=(Extension=.otf UprightFont=*-Regular ItalicFont=*-Italic BoldFont=*-Bold BoldItalicFont=*-BoldItalic)
-fontvars=(--variable=mainfont:IBMPlexSerif --variable=monofont:IBMPlexMono)
-for o in "${plex[@]}"; do
-  fontvars+=(--variable=mainfontoptions:"$o" --variable=monofontoptions:"$o")
-done
-
 SOURCE_DATE_EPOCH="$epoch" FORCE_SOURCE_DATE=1 \
-pandoc "$src/paper.md" \
-  --from="$reader" \
-  --number-sections --lua-filter="$shift" \
-  --filter=pandoc-crossref --metadata-file="$xref" \
-  --lua-filter="$filter" \
-  ${cite[@]+"${cite[@]}"} --fail-if-warnings \
-  --include-in-header="$header" --include-in-header="$work/pdf-id.tex" \
-  --metadata=paper-url:"$base_url/research/$slug/" \
-  --resource-path="$src" \
+pandoc "$src/paper.md" "${latexopts[@]}" \
+  --include-in-header="$work/pdf-id.tex" \
   --pdf-engine=xelatex \
-  "${fontvars[@]}" \
-  --variable=fontsize:11pt \
-  --variable=geometry:margin=1.1in \
-  --variable=linestretch:1.15 \
-  --variable=colorlinks:true \
-  --variable=linkcolor:black --variable=citecolor:black --variable=urlcolor:black \
-  --variable=lang:en-US \
   --output="$work/$slug.pdf"
 
 # ── Install ────────────────────────────────────────────────────

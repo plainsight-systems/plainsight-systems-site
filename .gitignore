@@ -25,3 +25,6 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Paper build artifacts (scripts/build-paper.sh --arxiv)
+build/

@@ -68,7 +68,7 @@ Do not set `pdf:`; the build sets it to `<slug>.pdf`.
   list where it belongs with:
 
   ```
-  ## References
+  ## References {-}
 
   ::: {#refs}
   :::
@@ -77,6 +77,22 @@ Do not set `pdf:`; the build sets it to `<slug>.pdf`.
 - **No LaTeX-only constructs** (TikZ, algorithm environments, custom
   macros): the web page cannot render them. Draw diagrams as SVG and
   write algorithms as code blocks.
+
+## arXiv
+
+```bash
+scripts/build-paper.sh <slug> --arxiv
+```
+
+writes `build/arxiv/<slug>-arxiv.zip` (not committed): `<slug>.tex` with
+citations already resolved, plus figures, SVGs converted to PDF. The
+build compiles the bundle on its own with two xelatex passes before
+zipping it, so a bundle that would fail on arXiv fails here first.
+
+To submit: upload the zip as a TeX submission and choose the **XeLaTeX**
+processor (TeX Live 2025). arXiv advises against writing its 00README
+file by hand. A first submission to a category needs an endorsement from
+an established arXiv author in that category.
 
 ## What fails the build
 
