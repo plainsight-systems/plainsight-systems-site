@@ -9,14 +9,18 @@
       aria-label="Toggle navigation menu">Menu</button>
     <nav aria-label="Primary">
       <ul id="ps-nav-list" class="ps-nav__links">
-        {{/* aria-current="page" on the entry's own page; "true" on pages
-             inside its section (a paper under Research). */}}
+        {{/* aria-current="page" on the entry for this page; "true" on the
+             entry whose section contains it (a paper under Research).
+             Decided by comparing URLs rather than IsMenuCurrent, which the
+             dev server loses on incremental rebuilds. */}}
+        {{ $here := $.Page.RelPermalink }}
         {{ range .Site.Menus.main }}
+        {{ $u := .URL }}
         <li>
           <a
-            href="{{ .URL }}"
+            href="{{ $u }}"
             class="ps-nav__link"
-            {{ if $.Page.IsMenuCurrent "main" . }}aria-current="page"{{ else if $.Page.HasMenuCurrent "main" . }}aria-current="true"{{ end }}
+            {{ if eq $here $u }}aria-current="page"{{ else if and (ne $u "/") (hasPrefix $here $u) }}aria-current="true"{{ end }}
           >{{ .Name }}</a>
         </li>
         {{ end }}
