@@ -224,7 +224,15 @@ a:hover {
 }
 
 .ps-nav__link:hover { color: var(--ink); }
-.ps-nav__link[aria-current="page"] { color: var(--ink); }
+
+/* Current section: ink text with a rule under it. */
+.ps-nav__link[aria-current] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
 
 /* ── MOBILE NAV TOGGLE ──────────────────────────────────────── */
 /* Hidden on desktop; revealed on mobile via the responsive block.

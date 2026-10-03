@@ -65,21 +65,19 @@ minify:
   disableHTML: false
   disableJS: false
 
-# Main menu
+# Main menu. pageRef (not url) so templates can tell which entry is
+# current; Licensing lives in the footer's Legal column only.
 menu:
   main:
     - name: Research
-      url: /research/
+      pageRef: /research
       weight: 10
     - name: Open Source
-      url: /open-source/
+      pageRef: /open-source
       weight: 20
-    - name: Licensing
-      url: /licensing/
-      weight: 30
     - name: About
-      url: /about/
-      weight: 40
+      pageRef: /about
+      weight: 30
     - name: Contact
-      url: /contact/
-      weight: 50
+      pageRef: /contact
+      weight: 40
