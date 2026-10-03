@@ -1,12 +1,12 @@
 ---
 title: "Terms of Use"
-description: "Terms governing use of the plainsight-systems.com website. Operating brands' products and services are governed by separate terms on their own sites."
-date: 2026-04-21
+description: "Terms governing use of the plainsight-systems.com website."
+date: 2026-10-03
 ---
 
-*Last updated: April 21, 2026.*
+*Last updated: October 3, 2026.*
 
-These terms govern your use of the website at **plainsight-systems.com**, operated by **Plainsight Systems LLC** ("Plainsight Systems"). They cover this website only. Each operating brand — PlainSight Lab, Appario, CustodyZero — has its own terms of service covering that brand's products and services, available on the respective brand site.
+These terms govern your use of the website at **plainsight-systems.com**, operated by **Plainsight Systems LLC** ("Plainsight Systems").
 
 ## Acceptance
 
@@ -14,33 +14,33 @@ By accessing or using plainsight-systems.com you agree to these terms. If you do
 
 ## What this site is
 
-plainsight-systems.com is the corporate-identity site for Plainsight Systems LLC. It publishes information about the company, its operating brands, its licensing doctrine, and how to contact it. The site does not sell products, operate user accounts, or collect payments. For those functions, see the operating brand sites.
+plainsight-systems.com is the website of Plainsight Systems LLC. It publishes research papers, information about the company's open-source projects, its licensing policy, and how to contact it. The site does not sell products, operate user accounts, or collect payments.
 
 ## Informational only; no advice
 
-Content on this site is provided for informational purposes. It does not constitute legal, financial, tax, or professional advice. The licensing doctrine published at [/licensing/](/licensing/) describes operating policy and intent; the actual license text governing any given artifact is the license file distributed with that artifact.
+Content on this site is provided for informational purposes. It does not constitute legal, financial, tax, or professional advice. The licensing policy published at [/licensing/](/licensing/) describes policy and intent; the license text governing any given artifact is the license file distributed with that artifact.
 
 ## Acceptable use
 
 You may not use this site to:
 
 - violate any law or regulation;
-- attempt to disrupt, probe, or gain unauthorised access to the site or its supporting infrastructure;
-- misrepresent your affiliation with Plainsight Systems or any of its operating brands;
+- attempt to disrupt, probe, or gain unauthorized access to the site or its supporting infrastructure;
+- misrepresent your affiliation with Plainsight Systems;
 - scrape the site in a manner that materially degrades performance for others; or
 - reproduce site content in a manner that exceeds the permissions granted by the Creative Commons Attribution 4.0 license applied to written content (see below).
 
 ## Intellectual property
 
-**Written content** on this site — the licensing doctrine, policy statements, and accompanying prose — is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). You may reuse it with attribution.
+**Written content** on this site, including research papers and their PDFs, is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) unless a page states otherwise. You may reuse it with attribution.
 
 **Site code** (layouts, styles, configuration) is licensed under the MIT License, as set out in the site repository.
 
-**Brand assets** — the names "Plainsight Systems", "PlainSight Lab", "Appario", "CustodyZero", and associated wordmarks, logomarks, and icons — are trademarks or service marks of Plainsight Systems LLC and are excluded from the CC BY 4.0 and MIT licenses above. Use of brand assets requires written permission: [legal@plainsight-systems.com](mailto:legal@plainsight-systems.com).
+**Brand assets**: the name "Plainsight Systems" and its wordmark, logomark, and icons are trademarks or service marks of Plainsight Systems LLC and are excluded from the CC BY 4.0 and MIT licenses above. Use of brand assets requires written permission: [legal@plainsight-systems.com](mailto:legal@plainsight-systems.com).
 
 ## Third-party links
 
-This site links to operating brand sites and to external resources. Plainsight Systems does not control third-party sites and is not responsible for their content or practices.
+This site links to GitHub, to project demo pages, and to external resources. Plainsight Systems does not control third-party sites and is not responsible for their content or practices.
 
 ## Disclaimer of warranties
 
