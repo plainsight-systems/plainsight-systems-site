@@ -323,50 +323,93 @@ a:hover {
   line-height: 1.4;
   letter-spacing: -0.003em;
   color: var(--ink);
-  max-width: 44rem;
+  max-width: var(--container-max);
+  text-wrap: balance;
 }
 
 .ps-hero__thesis em {
   font-style: italic;
 }
 
+.ps-hero__lede {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+  margin-top: 1.25rem;
+}
+
+.ps-epigraph {
+  margin-top: 2.5rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--ink);
+  max-width: var(--measure);
+}
+
+.ps-epigraph blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.ps-epigraph figcaption {
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ps-section__more {
+  margin-top: 1.5rem;
+  font-size: 0.98rem;
+}
+
 /* ── BRAND GRID ─────────────────────────────────────────────── */
 
-/* auto-fit collapses empty tracks, so two cards fill the row instead of
-   leaving a blank third column. The first card has no left padding so its
-   text sits on the shared left edge; later cards are inset from their rule. */
+/* Fixed column counts so the first card of every row sits on the shared
+   left edge (no left padding) and the last card of every row has no right
+   rule. Three columns by default (home page); .ps-brands--2 for two
+   (Projects, four cards as 2 x 2). */
 .ps-brands {
+  --cols: 3;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
   gap: 0;
   border-top: 1px solid var(--rule);
 }
+
+.ps-brands--2 { --cols: 2; }
 
 .ps-brand {
   padding: 2.5rem 2rem;
   border-right: 1px solid var(--rule-soft);
   border-bottom: 1px solid var(--rule-soft);
-  text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.ps-brand:first-child {
-  padding-left: 0;
-}
+.ps-brands > .ps-brand:nth-child(3n + 1) { padding-left: 0; }
+.ps-brands > .ps-brand:nth-child(3n) { border-right: none; }
 
-.ps-brand:last-child {
-  border-right: none;
-}
+.ps-brands--2 > .ps-brand:nth-child(3n + 1) { padding-left: 2rem; }
+.ps-brands--2 > .ps-brand:nth-child(3n) { border-right: 1px solid var(--rule-soft); }
+.ps-brands--2 > .ps-brand:nth-child(2n + 1) { padding-left: 0; }
+.ps-brands--2 > .ps-brand:nth-child(2n) { border-right: none; }
 
-.ps-brand:hover {
+.ps-brand__name {
   text-decoration: none;
 }
 
-.ps-brand:hover .ps-brand__name {
+.ps-brand__name:hover {
   text-decoration: underline;
+  text-decoration-color: var(--ink);
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
@@ -394,12 +437,16 @@ a:hover {
 }
 
 .ps-brand__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink);
-  margin-top: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
 }
 
 /* ── PROSE — body content on inner pages ────────────────────── */
@@ -1122,7 +1169,8 @@ a:hover {
   .ps-brands {
     grid-template-columns: 1fr;
   }
-  .ps-brand {
+  /* :nth-child(n) matches the column rules' specificity; later wins. */
+  .ps-brands > .ps-brand:nth-child(n) {
     border-right: none;
     padding-left: 0;
     padding-right: 0;

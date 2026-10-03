@@ -2,9 +2,10 @@
   repo-card partial. Renders one open-source repo card with live stats
   fetched from the GitHub REST API at build time.
 
-  Params (positional via dict — the caller passes a data-file entry):
-    .repo    — GitHub owner/name (e.g. "plainsight-systems/cpp-perf-guidelines")
-    .summary — curated one-liner (overrides the GitHub description)
+  Params (the caller passes a data-file entry):
+    .repo    GitHub owner/name (e.g. "plainsight-systems/cpp-perf-guidelines")
+    .summary curated one-liner (overrides the GitHub description)
+    .demo    optional URL of a live demo; adds a "Live" link
 
   Failure mode: if the GitHub API is unreachable or returns an error,
   the card still renders (name + summary + link), the stats row omits
@@ -36,12 +37,17 @@
   {{ end }}
 {{ end }}
 
-<a class="ps-brand" href="{{ $repoURL }}" rel="noopener">
+{{/* An article, not one big link, so the card can carry separate Live and
+     Source links. The name links to the repository. */}}
+<article class="ps-brand">
   <span class="ps-brand__tag">
     {{- with $updated }}updated {{ . }}{{ end -}}
     {{- if $fetched }}{{ if $updated }} · {{ end }}{{ $stars }}★ · {{ $forks }} forks{{ end -}}
   </span>
-  <span class="ps-brand__name">{{ $name }}</span>
+  <a class="ps-brand__name" href="{{ $repoURL }}" rel="noopener">{{ $name }}</a>
   <span class="ps-brand__desc">{{ $summary }}</span>
-  <span class="ps-brand__cta">{{ strings.TrimPrefix "https://" $repoURL }} →</span>
-</a>
+  <span class="ps-brand__cta">
+    {{- with .demo }}<a href="{{ . }}" rel="noopener">Live →</a>{{ end -}}
+    <a href="{{ $repoURL }}" rel="noopener">Source →</a>
+  </span>
+</article>

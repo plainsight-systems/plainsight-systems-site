@@ -1,21 +1,19 @@
 ---
 title: "About"
-description: "Plainsight Systems LLC is an Arizona limited liability company operating as an independent research vehicle. Founder & Principal Researcher: Andrew P Hunter."
+description: "Andrew P Hunter, systems architect and builder, and Plainsight Systems LLC, the company that publishes his research."
 ---
-
-## Plainsight Systems
-
-Plainsight Systems is an independent research vehicle — a US limited liability company registered in Arizona, used to explore edge-native and on-device AI and publish open-source work under a clean legal and licensing structure. The corporate form exists primarily to hold and license this research cleanly.
-
-The active exploration is set out in [Research](/research/). Open-source work lives at [github.com/plainsight-systems](https://github.com/plainsight-systems). Licensing policy is at [Licensing](/licensing/).
 
 ## Andrew P Hunter
 
-Founder & Principal Researcher. Managing Member and Sole Member of Plainsight Systems LLC. US military veteran.
+I'm a systems architect and builder. I build things to find out how they work, then follow the question wherever it leads: inference engines, GPU memory systems, compression and information theory, real-time rendering. The usual career advice is to pick one narrow vertical and stay in it. I work across several on purpose, because the hard problem in one field is often already solved, or misunderstood, in another.
+
+The questions I'm working on, and what each has produced, are on the [Research](/research/) page. Longer essays are at [andrewphunter.com](https://andrewphunter.com/), and shorter notes go to LinkedIn. I'm a US military veteran.
 
 [LinkedIn](https://www.linkedin.com/in/andrewphunter/) · [GitHub](https://github.com/plainsight-systems) · [ORCID](https://orcid.org/0009-0005-7613-8019) · [andrewphunter.com](https://andrewphunter.com/)
 
-## Formation
+## Plainsight Systems
+
+Plainsight Systems LLC is the Arizona company that publishes this work and holds it under one license structure: Apache 2.0 for code and CC BY 4.0 for writing (see [Licensing](/licensing/)). Founder and Principal Researcher: Andrew P Hunter, Managing and Sole Member.
 
 | | |
 |---|---|
@@ -27,6 +25,4 @@ Founder & Principal Researcher. Managing Member and Sole Member of Plainsight Sy
 | Business classification | Veteran-Owned Small Business (VOSB) |
 | Principal office | 11240 N 19th Ave, Suite 22 PMB 1072, Phoenix, AZ 85029-4825, USA |
 
-## Contact
-
-General inquiries: [hello@plainsight-systems.com](mailto:hello@plainsight-systems.com). Legal and compliance: [legal@plainsight-systems.com](mailto:legal@plainsight-systems.com). Security: [security@plainsight-systems.com](mailto:security@plainsight-systems.com). +1 602 932 7283.
+Contact details are on the [Contact](/contact/) page.

@@ -4,7 +4,7 @@ title: Plainsight Systems
 theme: hugo-theme-operator
 
 params:
-  description: "Plainsight Systems is an independent research vehicle — an LLC used to explore edge-native and on-device AI and publish open-source work under a clean legal and licensing structure."
+  description: "Independent research by Andrew P Hunter: inference engines, GPU tools and theory, built from first principles to understand them."
   domain: plainsight-systems.com
   entity: "Plainsight Systems LLC"
 
@@ -72,8 +72,8 @@ menu:
     - name: Research
       pageRef: /research
       weight: 10
-    - name: Open Source
-      pageRef: /open-source
+    - name: Projects
+      pageRef: /projects
       weight: 20
     - name: About
       pageRef: /about

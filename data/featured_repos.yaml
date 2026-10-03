@@ -1,15 +1,23 @@
-# Repos featured on the Open Source section of the home page (first N)
-# and on the Open Source page (all). Order matters — flagship first.
+# Builds shown on the Projects page (all) and the home page (first 3).
+# Order matters: the most visual first.
 #
 # Each entry:
-#   repo    — GitHub owner/name (used both to build github.com URL and to
-#             fetch stats at build time from the GitHub API)
-#   summary — curated one-liner shown on the card. Overrides the raw
-#             GitHub description so the on-site copy stays under our
-#             control regardless of what a repo's description says.
+#   repo    GitHub owner/name (builds the github.com URL and fetches stats
+#           at build time from the GitHub API)
+#   summary curated one-liner shown on the card, so on-site copy stays
+#           under our control whatever the repository description says
+#   demo    optional URL of a live demo
+
+- repo: plainsight-systems/seymour
+  summary: "Why a GPU with a petaflop of compute waits on memory: take the chip apart, push a token through the model, and pull the throttles."
+  demo: https://plainsight-systems.github.io/seymour/
+
+- repo: plainsight-systems/charlotte
+  summary: "A transformer inference engine written by hand in C++, compiled to WebAssembly, with compute in WebGPU and no framework underneath. Early."
+  demo: https://plainsight-systems.github.io/charlotte/
 
 - repo: plainsight-systems/cpp-perf-guidelines
-  summary: "A low-level C++ performance corpus — the technique layer below the ISO C++ Core Guidelines. Adopted beyond the project."
+  summary: "The C++ performance technique layer below the ISO C++ Core Guidelines, every example compiled and checked. Starred and forked beyond the project."
 
 - repo: plainsight-systems/mcp-servers
-  summary: "MCP servers in Rust that give coding agents queryable access to trusted best-practice corpora."
+  summary: "MCP servers in Rust that put the performance corpora in front of coding agents while they work."

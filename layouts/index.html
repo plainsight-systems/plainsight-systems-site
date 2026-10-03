@@ -2,76 +2,62 @@
 
 <section class="ps-hero">
   <div class="ps-wrap">
-    <p class="ps-hero__thesis">
-      Plainsight Systems is an independent research vehicle — an LLC used
-      to explore edge-native and on-device AI and publish open-source work
-      under a clean legal and licensing structure.
+    <p class="ps-hero__thesis">Plainsight Systems builds things to understand them.</p>
+    <p class="ps-hero__lede">
+      Each project starts from first principles, hand-rolls what a library
+      would hide, and follows the choke points it finds back to the question
+      underneath. The work crosses fields on purpose: inference, compression,
+      rendering and systems performance keep turning out to share the same
+      problems.
     </p>
-  </div>
-</section>
-
-<section class="ps-section">
-  <div class="ps-wrap--narrow">
-    <span class="ps-eyebrow">Research</span>
-    <div class="ps-prose">
-      <p>
-        The exploration audits cargo-cult technology choices — defaults
-        adopted by momentum rather than fit. On-device LLMs where cloud is
-        the assumption; low-power radios where Bluetooth is the assumption.
-        Different domains, same lens.
-      </p>
-      <p>
-        <a href="{{ "/research/" | relURL }}">Read the research direction →</a>
-      </p>
-    </div>
+    <figure class="ps-epigraph">
+      <blockquote>What I cannot create, I do not understand.</blockquote>
+      <figcaption>Richard Feynman, on his Caltech blackboard, 1988</figcaption>
+    </figure>
   </div>
 </section>
 
 <section class="ps-section">
   <div class="ps-wrap">
-    <span class="ps-eyebrow">Open source</span>
-  </div>
-  <div class="ps-wrap" style="padding-top: 1.5rem;">
-    <div class="ps-brands">
-      {{ range first 2 .Site.Data.featured_repos }}
-        {{ partial "repo-card.html" . }}
+    <span class="ps-eyebrow">Questions</span>
+    <div class="ps-questions__list">
+      {{ range where site.Data.questions "home" true }}
+        {{ partial "question.html" (dict "q" . "page" $ "link" true) }}
       {{ end }}
     </div>
-    <p style="margin-top: 1.5rem;">
-      More at <a href="https://github.com/plainsight-systems" rel="noopener">github.com/plainsight-systems</a> →
+    <p class="ps-section__more">
+      <a href="{{ "research/" | relURL }}">All questions, papers and write-ups →</a>
     </p>
   </div>
 </section>
 
 <section class="ps-section">
-  <div class="ps-wrap--narrow">
+  <div class="ps-wrap">
+    <span class="ps-eyebrow">Builds</span>
+    <div class="ps-brands">
+      {{ range first 3 site.Data.featured_repos }}
+        {{ partial "repo-card.html" . }}
+      {{ end }}
+    </div>
+    <p class="ps-section__more">
+      <a href="{{ "projects/" | relURL }}">All projects →</a>
+    </p>
+  </div>
+</section>
+
+<section class="ps-section">
+  <div class="ps-wrap">
     <span class="ps-eyebrow">About</span>
     <div class="ps-prose">
       <p>
-        <strong>Led by Andrew P Hunter</strong><br>
-        Founder &amp; Principal Researcher
+        <strong>Andrew P Hunter</strong>, systems architect and builder.
+        <a href="{{ "about/" | relURL }}">More about the work and the company →</a>
       </p>
       <p>
         <a href="https://www.linkedin.com/in/andrewphunter/" rel="noopener">LinkedIn</a> ·
         <a href="https://github.com/plainsight-systems" rel="noopener">GitHub</a> ·
         <a href="https://orcid.org/0009-0005-7613-8019" rel="noopener">ORCID</a> ·
         <a href="https://andrewphunter.com/" rel="noopener">andrewphunter.com</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="ps-section">
-  <div class="ps-wrap--narrow">
-    <span class="ps-eyebrow">Licensing</span>
-    <div class="ps-prose">
-      <p>
-        Governance and coordination code is released under <strong>Apache&nbsp;2.0</strong>
-        — what is released stays released. Canonical specifications are published
-        under <strong>CC&nbsp;BY&nbsp;4.0</strong>. Brand assets are reserved.
-      </p>
-      <p>
-        <a href="{{ "/licensing/" | relURL }}">Read the full licensing policy →</a>
       </p>
     </div>
   </div>

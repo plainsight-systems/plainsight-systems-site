@@ -1,4 +1,4 @@
 ---
 title: "Plainsight Systems"
-description: "Plainsight Systems is an independent research vehicle — an LLC used to explore edge-native and on-device AI and publish open-source work under a clean legal and licensing structure."
+description: "Independent research by Andrew P Hunter: inference engines, GPU tools and theory, built from first principles to understand them."
 ---
