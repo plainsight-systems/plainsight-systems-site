@@ -17,7 +17,7 @@
 
 - repo: plainsight-systems/charlotte
   question: "What does inference cost when nothing is hidden?"
-  summary: "A transformer inference engine written by hand in C++, compiled to WebAssembly, with compute in WebGPU and no framework, to meet every choke point directly. Early."
+  summary: "A transformer inference engine written by hand in C++, compiled to WebAssembly, with compute in WebGPU and no framework. Three open-weight models run in the browser; Qwen3 0.6B decodes at 270 tok/s in Chrome on an M3 Max."
   demo: https://plainsight-systems.github.io/charlotte/
 
 - repo: plainsight-systems/cpp-perf-guidelines
@@ -27,3 +27,7 @@
 - repo: plainsight-systems/mcp-servers
   question: "Can a coding agent use that knowledge while it works?"
   summary: "MCP servers in Rust that put the performance corpora in front of coding agents as they write code."
+
+- repo: plainsight-systems/ariadne
+  question: "What would an information-theoretic approach to attention look like?"
+  summary: "A research program working toward an information-theoretic approach to attention and beyond, starting where the field started: Shannon's 1948 paper."

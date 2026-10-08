@@ -11,7 +11,7 @@ The usual advice is to pick one narrow specialty and stay in it. I've never mana
 
 I learned technical writing on nuclear power plant operations in the Navy, writing operating policies and procedures. Writeups of mine became a troubleshooting appendix in the water chemistry manual, best-practice guidelines adopted at Portsmouth Naval Shipyard, changes to the Navy's Radiological Controls Manual, and a long run of standing orders and guidance at the squadron level. The habit stuck: every build here ends in a write-up.
 
-Projects get names with a lineage. Seymour is named for Seymour Cray, who spent his career keeping the math fed. The rest of that name is an easter egg.
+Projects get names with a lineage. Seymour is named for Seymour Cray, who spent his career keeping the math fed. The rest of that name is an easter egg. Charlotte lives on the web and writes words. Ariadne is named for the thread through the labyrinth; Shannon's maze-solving mouse was called Theseus.
 
 The work itself is on the [Research](/research/) and [Projects](/projects/) pages. Longer essays live at [andrewphunter.com](https://andrewphunter.com/).
 

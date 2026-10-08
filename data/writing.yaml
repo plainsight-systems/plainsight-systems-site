@@ -25,6 +25,41 @@
 # ID. Post titles quote a sentence from each post verbatim; article titles
 # are the article's own title.
 
+- title: "Qwen3 0.6B decoding at 270 tokens per second, entirely in a Chrome tab on an M3 Max."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7513966097050517504/
+  venue: LinkedIn
+  date: 2026-10-08
+  about: Charlotte
+
+- title: "Debrief: what building Charlotte taught me"
+  kind: article
+  url: https://github.com/plainsight-systems/charlotte/blob/main/docs/debrief.md
+  venue: GitHub
+  date: 2026-10-07
+  about: Charlotte
+
+- title: "Review then caught what the test couldn't."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7513589837061529601/
+  venue: LinkedIn
+  date: 2026-10-07
+  about: Charlotte
+
+- title: "While building Charlotte, I started tagging every number in a transformer's forward pass as derived, fitted from experiments, or convention."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7513226386623430657/
+  venue: LinkedIn
+  date: 2026-10-06
+  about: Ariadne
+
+- title: "While building Charlotte, my latest inference harness, I started asking harder questions about every step: why this way, and why this number."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7512874481216823296/
+  venue: LinkedIn
+  date: 2026-10-05
+  about: Ariadne
+
 - title: "I added data structures and algorithms to my C++ performance corpus: 54 new guidelines in two categories, one for CPU hot paths and one for GPU."
   kind: post
   url: https://www.linkedin.com/feed/update/urn:li:activity:7511840174851678209/
