@@ -40,13 +40,18 @@
   {{ end }}
 
   {{/* Write-ups published elsewhere (articles, posts, papers hosted off
-       this site), newest first. Rendered only when there are any. */}}
+       this site), newest first. Rendered only when there are any. They hang
+       on the thread as a timeline: tied on at the heading, a large knot per
+       year, a small knot per write-up, the spool at the end. The knots are
+       CSS only (.ps-timeline), so the filter's [hidden] hides them too. */}}
   {{ $writing := where (partial "writing/items.html" .) "onsite" false }}
   {{ with $writing }}
   <section class="ps-section" aria-labelledby="writing-label">
     <div class="ps-wrap">
-      <span class="ps-eyebrow" id="writing-label">Write-ups</span>
-      {{ partial "writing/list.html" (dict "items" . "filter" true) }}
+      <div class="ps-thread ps-timeline">
+        <h2 class="ps-eyebrow ps-timeline__head" id="writing-label">Write-ups</h2>
+        {{ partial "writing/list.html" (dict "items" . "filter" true) }}
+      </div>
     </div>
   </section>
   {{ end }}

@@ -496,6 +496,57 @@ h2.ps-eyebrow {
   margin: 0 0 1.25rem;
 }
 
+/* The thread as a timeline (Research write-ups). Same line and spool;
+   the open knot ties on at the heading, then a large knot per year and a
+   small knot per write-up, each centred on its own first line (0.5lh).
+   Knots sit on elements the filter hides, so they hide with them. */
+.ps-timeline {
+  --knot-year: 0.95rem;
+  --knot-item: 0.55rem;
+}
+
+.ps-timeline::before {
+  top: 0.5rem;
+}
+
+.ps-timeline__head,
+.ps-timeline .ps-writing__year,
+.ps-timeline .ps-writing__meta {
+  position: relative;
+}
+
+.ps-timeline__head::before,
+.ps-timeline .ps-writing__year::before,
+.ps-timeline .ps-writing__meta::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--thread);
+}
+
+.ps-timeline__head::before {
+  left: calc(var(--thread-x) - var(--thread-gutter) - var(--knot) / 2);
+  top: calc(0.5lh - var(--knot) / 2);
+  width: var(--knot);
+  height: var(--knot);
+  background: var(--ivory);
+  border: 2px solid var(--thread);
+}
+
+.ps-timeline .ps-writing__year::before {
+  left: calc(var(--thread-x) - var(--thread-gutter) - var(--knot-year) / 2);
+  top: calc(0.5lh - var(--knot-year) / 2);
+  width: var(--knot-year);
+  height: var(--knot-year);
+}
+
+.ps-timeline .ps-writing__meta::before {
+  left: calc(var(--thread-x) - var(--thread-gutter) - var(--knot-item) / 2);
+  top: calc(0.5lh - var(--knot-item) / 2);
+  width: var(--knot-item);
+  height: var(--knot-item);
+}
+
 /* ── BUILDS ON THE THREAD ───────────────────────────────────── */
 
 .ps-builds {
