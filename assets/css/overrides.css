@@ -85,6 +85,18 @@
   --muted:        #5b5955;   /* Secondary text */
   --muted-strong: #3b3936;   /* Labels that need a touch more weight */
 
+  /* Night: the art's palette, for the header, hero band and footer.
+     Text on --night: --night-ink 15:1, --night-muted 8.6:1, --brass 8.6:1. */
+  --night:         #0e1524;  /* Night surface */
+  --night-surface: #131c2f;  /* Raised surface on night */
+  --night-rule:    #2c3650;  /* Dividers on night */
+  --night-ink:     #f1ebdc;  /* Text on night */
+  --night-muted:   #b9b2a2;  /* Secondary text on night */
+  --brass:         #d4ad5a;  /* Accent text on night */
+  --brass-soft:    #e9cf8f;  /* Quotes and hover on night */
+  --firefly:       #e8c46a;  /* Firefly dots; decorative only */
+  --thread:        #b3261e;  /* The red thread; decorative only, never text */
+
   /* Theme token overrides */
   --color-bg:              var(--ivory);
   --color-fg:              var(--ink);
