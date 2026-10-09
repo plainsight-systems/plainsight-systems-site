@@ -7,6 +7,8 @@
     .question the question the build exists to answer
     .summary curated one-liner (overrides the GitHub description)
     .demo    optional URL of a live demo; adds a "Live" link
+    .image   optional art under assets/, shown at the top of the card
+    .alt     required with .image
 
   Failure mode: if the GitHub API is unreachable or returns an error,
   the card still renders (name + summary + link), the stats row omits
@@ -41,6 +43,7 @@
 {{/* An article, not one big link, so the card can carry separate Live and
      Source links. The name links to the repository. */}}
 <article class="ps-brand">
+  {{ with .image }}<div class="ps-brand__art">{{ partial "build-art.html" (dict "path" . "alt" $.alt "sizes" "(max-width: 768px) 100vw, 34rem") }}</div>{{ end }}
   <span class="ps-brand__tag">
     {{- with $updated }}updated {{ . }}{{ end -}}
     {{- if $fetched }}{{ if $updated }} · {{ end }}{{ $stars }}★ · {{ $forks }} forks{{ end -}}

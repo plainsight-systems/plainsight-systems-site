@@ -1,24 +1,48 @@
-# Builds shown on the Projects page (all) and the home page (first 3).
-# Order matters: the most visual first.
+# Builds shown on the Projects page (all) and along the thread on the home
+# page (the ones with art). Order matters: the most visual first.
 #
 # Each entry:
-#   repo    GitHub owner/name (builds the github.com URL and fetches stats
-#           at build time from the GitHub API)
+#   repo     GitHub owner/name (builds the github.com URL and fetches stats
+#            at build time from the GitHub API)
 #   question the question the build exists to answer, shown first on the
-#           card
-#   summary curated one-liner shown on the card, so on-site copy stays
-#           under our control whatever the repository description says
-#   demo    optional URL of a live demo
-
-- repo: plainsight-systems/seymour
-  question: "Why is a GPU with a petaflop of compute waiting on memory?"
-  summary: "Take the chip apart, push a token through Llama 3.1 8B, and pull the throttles to see where decode stalls. H100 to MI355X."
-  demo: https://plainsight-systems.github.io/seymour/
+#            card
+#   summary  curated one-liner shown on the card, so on-site copy stays
+#            under our control whatever the repository description says
+#   demo     optional URL of a live demo
+#   image    optional art, a path under assets/ (original art only; see
+#            ~/Documents/linkedin-posts/STYLE.md for the style); with it,
+#            the build appears on the home page
+#   alt      required with image: what the art shows
+#   writeup  optional { label, url } for the build's main write-up
 
 - repo: plainsight-systems/charlotte
   question: "What does inference cost when nothing is hidden?"
   summary: "A transformer inference engine written by hand in C++, compiled to WebAssembly, with compute in WebGPU and no framework. Three open-weight models run in the browser; Qwen3 0.6B decodes at 270 tok/s in Chrome on an M3 Max."
   demo: https://plainsight-systems.github.io/charlotte/
+  image: images/builds/charlotte.jpg
+  alt: "A small spider in a web of strung lights at night, with words woven into the threads."
+  writeup:
+    label: Debrief
+    url: https://github.com/plainsight-systems/charlotte/blob/main/docs/debrief.md
+
+- repo: plainsight-systems/serenity
+  question: "What does lighting a scene with thousands of moving lights have in common with attention?"
+  summary: "A real-time path tracer for one scene lit by thousands of moving fireflies: C++ on Metal 4, ReSTIR, and a denoiser of my own. Early."
+  image: images/builds/serenity.jpg
+  alt: "Glass and brass spheres on a table at night, lit by fireflies that settle into the outline of a small ship."
+
+- repo: plainsight-systems/ariadne
+  question: "What would an information-theoretic approach to attention look like?"
+  summary: "A research program working toward an information-theoretic approach to attention and beyond, starting where the field started: Shannon's 1948 paper."
+  image: images/builds/ariadne.jpg
+  alt: "A relay-bank maze with a small mechanical mouse following a red thread toward the way out."
+
+- repo: plainsight-systems/seymour
+  question: "Why is a GPU with a petaflop of compute waiting on memory?"
+  summary: "Take the chip apart, push a token through Llama 3.1 8B, and pull the throttles to see where decode stalls. H100 to MI355X."
+  demo: https://plainsight-systems.github.io/seymour/
+  image: images/builds/seymour.jpg
+  alt: "A screenprint of a giant red plant swallowing a stack of memory chips carried by a small figure."
 
 - repo: plainsight-systems/cpp-perf-guidelines
   question: "What does a performance engineer know that a model trained on average code does not?"
@@ -27,7 +51,3 @@
 - repo: plainsight-systems/mcp-servers
   question: "Can a coding agent use that knowledge while it works?"
   summary: "MCP servers in Rust that put the performance corpora in front of coding agents as they write code."
-
-- repo: plainsight-systems/ariadne
-  question: "What would an information-theoretic approach to attention look like?"
-  summary: "A research program working toward an information-theoretic approach to attention and beyond, starting where the field started: Shannon's 1948 paper."

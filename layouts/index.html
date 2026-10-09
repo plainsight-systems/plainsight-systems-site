@@ -37,62 +37,68 @@
   </div>
 </section>
 
-<section class="ps-section ps-lede">
-  <div class="ps-wrap">
-    <p class="ps-hero__lede">
-      Each project starts from first principles, hand-rolls what a library
-      would hide, and follows the choke points it finds back to the question
-      underneath. The work crosses fields on purpose: inference, compression,
-      rendering and systems performance keep turning out to share the same
-      problems.
-    </p>
-  </div>
-</section>
+{{/* The thread: everything below the hero hangs on one red line down the
+     left margin, with a knot at each section and a spool at the end. The
+     line and knots are CSS only and carry no meaning for assistive
+     technology. */}}
+<div class="ps-wrap">
+  <div class="ps-thread">
 
-{{/* Latest papers and write-ups, wherever published. Rendered only when
-     something has been published. */}}
-{{ with first 3 (partial "writing/items.html" .) }}
-<section class="ps-section">
-  <div class="ps-wrap">
-    <span class="ps-eyebrow">Latest</span>
-    {{ partial "writing/list.html" (dict "items" . "filter" false) }}
-    <p class="ps-section__more">
-      <a href="{{ "research/" | relURL }}">All papers and write-ups →</a>
-    </p>
-  </div>
-</section>
-{{ end }}
-
-<section class="ps-section">
-  <div class="ps-wrap">
-    <span class="ps-eyebrow">Builds</span>
-    <div class="ps-brands">
-      {{ range first 3 site.Data.featured_repos }}
-        {{ partial "repo-card.html" . }}
-      {{ end }}
-    </div>
-    <p class="ps-section__more">
-      <a href="{{ "projects/" | relURL }}">All projects →</a>
-    </p>
-  </div>
-</section>
-
-<section class="ps-section">
-  <div class="ps-wrap">
-    <span class="ps-eyebrow">About</span>
-    <div class="ps-prose">
-      <p>
-        <strong>Andrew P Hunter</strong>, systems architect and builder.
-        <a href="{{ "about/" | relURL }}">More about the work and the company →</a>
+    <section class="ps-thread__step ps-thread__step--open">
+      <p class="ps-hero__lede">
+        Each project starts from first principles, hand-rolls what a library
+        would hide, and follows the choke points it finds back to the question
+        underneath. The work crosses fields on purpose: inference, compression,
+        rendering and systems performance keep turning out to share the same
+        problems.
       </p>
-      <p>
-        <a href="https://www.linkedin.com/in/andrewphunter/" rel="noopener">LinkedIn</a> ·
-        <a href="https://github.com/plainsight-systems" rel="noopener">GitHub</a> ·
-        <a href="https://orcid.org/0009-0005-7613-8019" rel="noopener">ORCID</a> ·
-        <a href="https://andrewphunter.com/" rel="noopener">andrewphunter.com</a>
+    </section>
+
+    <section class="ps-thread__step" aria-labelledby="builds-heading">
+      <h2 class="ps-eyebrow" id="builds-heading">Builds</h2>
+      <div class="ps-builds">
+        {{ $i := 0 }}
+        {{ range site.Data.featured_repos }}
+          {{ if .image }}
+            {{ partial "build-row.html" (dict "entry" . "flip" (eq (mod $i 2) 1)) }}
+            {{ $i = add $i 1 }}
+          {{ end }}
+        {{ end }}
+      </div>
+      <p class="ps-section__more">
+        <a href="{{ "projects/" | relURL }}">All projects →</a>
       </p>
-    </div>
+    </section>
+
+    {{/* Latest papers and write-ups, wherever published. Rendered only when
+         something has been published. */}}
+    {{ with first 3 (partial "writing/items.html" .) }}
+    <section class="ps-thread__step" aria-labelledby="latest-heading">
+      <h2 class="ps-eyebrow" id="latest-heading">Latest</h2>
+      {{ partial "writing/list.html" (dict "items" . "filter" false) }}
+      <p class="ps-section__more">
+        <a href="{{ "research/" | relURL }}">All papers and write-ups →</a>
+      </p>
+    </section>
+    {{ end }}
+
+    <section class="ps-thread__step ps-thread__step--last" aria-labelledby="about-heading">
+      <h2 class="ps-eyebrow" id="about-heading">About</h2>
+      <div class="ps-prose">
+        <p>
+          <strong>Andrew P Hunter</strong>, systems architect and builder.
+          <a href="{{ "about/" | relURL }}">More about the work and the company →</a>
+        </p>
+        <p>
+          <a href="https://www.linkedin.com/in/andrewphunter/" rel="noopener">LinkedIn</a> ·
+          <a href="https://github.com/plainsight-systems" rel="noopener">GitHub</a> ·
+          <a href="https://orcid.org/0009-0005-7613-8019" rel="noopener">ORCID</a> ·
+          <a href="https://andrewphunter.com/" rel="noopener">andrewphunter.com</a>
+        </p>
+      </div>
+    </section>
+
   </div>
-</section>
+</div>
 
 {{ end }}

@@ -1,0 +1,32 @@
+{{/*
+  build-art partial. A build's art as a responsive <picture>: WebP at the
+  widths the source allows (never upscaled), JPEG fallback, lazy-loaded.
+
+  Params (dict):
+    .path   resource path under assets/ (e.g. "images/builds/charlotte.jpg")
+    .alt    what the art shows (required; a missing alt is a build error)
+    .sizes  the <img sizes> value for this placement
+
+  Failure mode: a path that does not resolve is a build error, so a card
+  never ships with a broken image.
+*/}}
+{{ $alt := .alt }}
+{{ $sizes := .sizes }}
+{{ if not $alt }}{{ errorf "build-art: %s has no alt text" .path }}{{ end }}
+{{ with resources.Get .path }}
+  {{ $src := . }}
+  {{ $set := slice }}
+  {{ range slice 480 800 1200 1800 }}
+    {{ if le . $src.Width }}
+      {{ $img := $src.Resize (printf "%dx webp q82" .) }}
+      {{ $set = $set | append (printf "%s %dw" $img.RelPermalink $img.Width) }}
+    {{ end }}
+  {{ end }}
+  {{ $fallback := $src.Resize (printf "%dx jpg q82" (int (math.Min 1200 $src.Width))) }}
+<picture>
+  <source type="image/webp" srcset="{{ delimit $set ", " }}" sizes="{{ $sizes }}">
+  <img src="{{ $fallback.RelPermalink }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+</picture>
+{{ else }}
+  {{ errorf "build-art: no resource at assets/%s" .path }}
+{{ end }}

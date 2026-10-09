@@ -390,10 +390,6 @@ a:hover {
   font-style: italic;
 }
 
-.ps-lede {
-  padding-top: 3rem;
-}
-
 .ps-hero__lede {
   font-family: var(--font-serif);
   font-size: 1.2rem;
@@ -428,6 +424,171 @@ a:hover {
 .ps-section__more {
   margin-top: 1.5rem;
   font-size: 0.98rem;
+}
+
+/* ── THE THREAD ─────────────────────────────────────────────── */
+/* One red line down the left margin of the home page, a knot at each
+   section, a spool at the end. Pseudo-elements only: decorative, no
+   content, invisible to assistive technology. Geometry lives in three
+   variables so the line, knots and spool stay on one axis. */
+
+.ps-thread {
+  --thread-gutter: 3.25rem;   /* text starts this far right of the wrap */
+  --thread-x: 0.9rem;         /* the line's centre, from the wrap's edge */
+  --thread-w: 2px;
+  --knot: 0.8rem;
+  position: relative;
+  padding-left: var(--thread-gutter);
+  padding-bottom: 4.5rem;
+}
+
+/* The line: from the top of the first step to the spool. */
+.ps-thread::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--thread-x) - var(--thread-w) / 2);
+  top: 0;
+  bottom: 1.6rem;
+  width: var(--thread-w);
+  background: var(--thread);
+}
+
+/* The spool. */
+.ps-thread::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--thread-x) - 0.7rem);
+  bottom: 0.7rem;
+  width: 1.4rem;
+  height: 0.9rem;
+  border: 2px solid var(--thread);
+  border-radius: 3px;
+  background: var(--ivory);
+}
+
+.ps-thread__step {
+  position: relative;
+  padding: 3.5rem 0 1rem;
+}
+
+/* A knot level with each step's first line. */
+.ps-thread__step::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--thread-x) - var(--thread-gutter) - var(--knot) / 2);
+  top: calc(3.5rem + 0.35rem);
+  width: var(--knot);
+  height: var(--knot);
+  border-radius: 50%;
+  background: var(--thread);
+}
+
+/* The first knot is open: where the thread is tied on. */
+.ps-thread__step--open::before {
+  background: var(--ivory);
+  border: 2px solid var(--thread);
+  top: calc(3.5rem + 0.55rem);
+}
+
+h2.ps-eyebrow {
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0 0 1.25rem;
+}
+
+/* ── BUILDS ON THE THREAD ───────────────────────────────────── */
+
+.ps-builds {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  margin-top: 0.5rem;
+}
+
+.ps-build {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem 2.5rem;
+}
+
+.ps-build--flip { flex-direction: row-reverse; }
+
+.ps-build__art {
+  flex: 3 1 24rem;
+  min-width: 0;
+  padding: 0.5rem;
+  background: var(--ivory-dim);
+  border: 1px solid var(--rule);
+}
+
+.ps-build__art img,
+.ps-brand__art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ps-build__text {
+  flex: 2 1 17rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ps-build__name {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.ps-build__name:hover { color: var(--ink); }
+
+.ps-build__question {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.ps-build__desc {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.ps-build__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ps-build__links a { text-decoration-color: var(--thread); }
+
+/* Art on a Projects card. */
+.ps-brand__art {
+  padding: 0.4rem;
+  background: var(--ivory-dim);
+  border: 1px solid var(--rule);
+  margin-bottom: 0.5rem;
+}
+
+/* One shape for every card's art, so cards in a row line up whatever the
+   source's aspect ratio. */
+.ps-brand__art img {
+  aspect-ratio: 5 / 2;
+  object-fit: cover;
 }
 
 /* ── BRAND GRID ─────────────────────────────────────────────── */
@@ -1310,6 +1471,19 @@ a:hover {
   }
 
   .ps-hero { padding: 2.5rem 0 3rem; }
+
+  /* The thread narrows on a phone; flipped rows stack art first. */
+  .ps-thread {
+    --thread-gutter: 1.9rem;
+    --thread-x: 0.45rem;
+    --knot: 0.65rem;
+  }
+
+  .ps-thread__step { padding-top: 2.5rem; }
+  .ps-thread__step::before { top: calc(2.5rem + 0.35rem); }
+  .ps-thread__step--open::before { top: calc(2.5rem + 0.5rem); }
+
+  .ps-build--flip { flex-direction: row; }
 
   /* A phone crops the art to 4:3 around the bench. */
   .ps-hero-art img {

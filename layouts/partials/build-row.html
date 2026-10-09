@@ -1,0 +1,29 @@
+{{/*
+  build-row partial. One build along the home page's thread: its art beside
+  its question, summary and links. Rows alternate sides.
+
+  Params (dict):
+    .entry  a featured_repos.yaml entry that has an image
+    .flip   true to put the text first (alternate rows)
+
+  No GitHub stats here (the Projects page carries those), so the home page
+  makes no API calls.
+*/}}
+{{ $e := .entry }}
+{{ $repoURL := printf "https://github.com/%s" $e.repo }}
+{{ $name := path.Base $e.repo }}
+<article class="ps-build{{ if .flip }} ps-build--flip{{ end }}">
+  <div class="ps-build__art">
+    {{ partial "build-art.html" (dict "path" $e.image "alt" $e.alt "sizes" "(max-width: 768px) 100vw, 40rem") }}
+  </div>
+  <div class="ps-build__text">
+    <a class="ps-build__name" href="{{ $repoURL }}" rel="noopener">{{ $name }}</a>
+    <h3 class="ps-build__question">{{ $e.question }}</h3>
+    <p class="ps-build__desc">{{ $e.summary }}</p>
+    <p class="ps-build__links">
+      <a href="{{ $repoURL }}" rel="noopener">Code</a>
+      {{- with $e.demo }}<a href="{{ . }}" rel="noopener">Live demo</a>{{ end -}}
+      {{- with $e.writeup }}<a href="{{ .url }}" rel="noopener">{{ .label }}</a>{{ end -}}
+    </p>
+  </div>
+</article>
