@@ -345,18 +345,44 @@ a:hover {
 
 /* ── HERO ───────────────────────────────────────────────────── */
 
+/* The hero art: full width on night, cropped from the middle so the
+   bench stays in frame. Desktop shows a wide band; a phone a taller crop. */
+.ps-hero-art {
+  background: var(--night);
+}
+
+.ps-hero-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 34rem;
+  object-fit: cover;
+  object-position: 50% 62%;
+}
+
+/* The thesis band: night, directly under the art. */
 .ps-hero {
-  padding: 6rem 0 4rem;
+  background: var(--night);
+  color: var(--night-ink);
+  padding: 3.5rem 0 4rem;
+}
+
+.ps-hero__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 2.5rem 3.5rem;
 }
 
 .ps-hero__thesis {
+  flex: 2 1 28rem;
+  min-width: 0;
   font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 2.5vw, 1.95rem);
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: -0.003em;
-  color: var(--ink);
-  max-width: var(--container-max);
+  font-size: clamp(1.8rem, 3.6vw, 3rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--night-ink);
   text-wrap: balance;
 }
 
@@ -364,37 +390,39 @@ a:hover {
   font-style: italic;
 }
 
+.ps-lede {
+  padding-top: 3rem;
+}
+
 .ps-hero__lede {
   font-family: var(--font-serif);
   font-size: 1.2rem;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--ink-soft);
   max-width: var(--measure);
-  margin-top: 1.25rem;
 }
 
 .ps-epigraph {
-  margin-top: 2.5rem;
-  padding-left: 1.25rem;
-  border-left: 2px solid var(--ink);
+  flex: 1 1 16rem;
+  min-width: 0;
   max-width: var(--measure);
 }
 
 .ps-epigraph blockquote {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   line-height: 1.5;
-  color: var(--ink);
+  color: var(--brass-soft);
 }
 
 .ps-epigraph figcaption {
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--night-muted);
 }
 
 .ps-section__more {
@@ -1281,7 +1309,13 @@ a:hover {
     display: none;
   }
 
-  .ps-hero { padding: 3.5rem 0 2.5rem; }
+  .ps-hero { padding: 2.5rem 0 3rem; }
+
+  /* A phone crops the art to 4:3 around the bench. */
+  .ps-hero-art img {
+    aspect-ratio: 4 / 3;
+    max-height: none;
+  }
 
   .ps-brands {
     grid-template-columns: 1fr;

@@ -1,8 +1,44 @@
 {{ define "main" }}
 
+{{/* The night lab: the site's hero art, served as WebP at the widths the
+     source allows (never upscaled), with the original as the fallback. */}}
+{{ with resources.Get "images/home-hero.png" }}
+  {{ $src := . }}
+  {{ $widths := slice 640 960 1280 1774 }}
+  {{ $set := slice }}
+  {{ range $widths }}
+    {{ if le . $src.Width }}
+      {{ $img := $src.Resize (printf "%dx webp q82" .) }}
+      {{ $set = $set | append (printf "%s %dw" $img.RelPermalink $img.Width) }}
+    {{ end }}
+  {{ end }}
+  {{ $fallback := $src.Resize (printf "%dx jpg q82" (int (math.Min 1774 $src.Width))) }}
+<div class="ps-hero-art">
+  <picture>
+    <source type="image/webp" srcset="{{ delimit $set ", " }}" sizes="100vw">
+    <img
+      src="{{ $fallback.RelPermalink }}"
+      width="{{ $fallback.Width }}"
+      height="{{ $fallback.Height }}"
+      alt="A research lab at night: three people work at a long bench by lamplight, among brass instruments, glass and brass spheres and a small potted plant, while strung lights shaped like a spider web and turtles traced in stars fill the windows."
+      fetchpriority="high"
+      decoding="async">
+  </picture>
+</div>
+{{ end }}
+
 <section class="ps-hero">
-  <div class="ps-wrap">
+  <div class="ps-wrap ps-hero__inner">
     <p class="ps-hero__thesis">Plainsight Systems builds things to understand them.</p>
+    <figure class="ps-epigraph">
+      <blockquote>What I cannot create, I do not understand.</blockquote>
+      <figcaption>Richard Feynman, on his Caltech blackboard, 1988</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="ps-section ps-lede">
+  <div class="ps-wrap">
     <p class="ps-hero__lede">
       Each project starts from first principles, hand-rolls what a library
       would hide, and follows the choke points it finds back to the question
@@ -10,10 +46,6 @@
       rendering and systems performance keep turning out to share the same
       problems.
     </p>
-    <figure class="ps-epigraph">
-      <blockquote>What I cannot create, I do not understand.</blockquote>
-      <figcaption>Richard Feynman, on his Caltech blackboard, 1988</figcaption>
-    </figure>
   </div>
 </section>
 
