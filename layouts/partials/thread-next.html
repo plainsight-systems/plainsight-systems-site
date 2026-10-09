@@ -1,0 +1,31 @@
+{{/*
+  thread-next partial. Returns the next stop on the thread for the given
+  page, as a dict: url, label, start (true when the thread leads back to
+  the start).
+
+  The route is data/thread.yaml, with this build's papers (newest first)
+  inserted right after /research/. The last stop, and any page not on the
+  route, leads back to the start.
+
+  Failure mode: a route entry that does not resolve to a page is a build
+  error, so the footer never links to a missing page.
+*/}}
+{{ $route := slice }}
+{{ range site.Data.thread }}
+  {{ $p := site.GetPage . }}
+  {{ if not $p }}{{ errorf "data/thread.yaml: no page at %q" . }}{{ end }}
+  {{ $route = $route | append $p }}
+  {{ if eq . "/research/" }}
+    {{ range $p.RegularPages.ByDate.Reverse }}{{ $route = $route | append . }}{{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $here := .RelPermalink }}
+{{ $next := dict "url" ("/" | relURL) "label" "back to the start" "start" true }}
+{{ range $i, $p := $route }}
+  {{ if and (eq $p.RelPermalink $here) (lt (add $i 1) (len $route)) }}
+    {{ $n := index $route (add $i 1) }}
+    {{ $next = dict "url" $n.RelPermalink "label" $n.Title "start" false }}
+  {{ end }}
+{{ end }}
+{{ return $next }}

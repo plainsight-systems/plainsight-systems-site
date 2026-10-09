@@ -1488,6 +1488,18 @@ h2.ps-eyebrow {
   gap: 0.9rem;
 }
 
+/* "Follow the thread": the link to the next stop, in brass. */
+.ps-footer__thread {
+  color: var(--brass);
+  text-decoration: none;
+}
+
+.ps-footer__thread:hover {
+  color: var(--brass-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Three fireflies at the end of the page. Decorative, hidden from
    assistive technology. */
 .ps-fireflies {
@@ -1605,5 +1617,11 @@ h2.ps-eyebrow {
   .ps-footer__bottom {
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  /* A full-size tap target for the thread link on a phone. */
+  .ps-footer__thread {
+    display: inline-block;
+    padding: 0.75rem 0;
   }
 }

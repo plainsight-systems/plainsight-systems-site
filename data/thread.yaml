@@ -1,0 +1,15 @@
+# The route "Follow the thread" walks, shown in every page's footer as a
+# link to the next stop (layouts/partials/thread-next.html).
+#
+# Each entry is a page path. Order is the route. Published papers join the
+# route right after /research/, newest first, without being listed here.
+# After the last stop the thread leads back to the start; so does every page
+# that is not on the route (legal pages, the 404).
+#
+# A path that does not resolve to a page fails the build.
+
+- /
+- /projects/
+- /research/
+- /about/
+- /contact/
