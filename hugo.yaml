@@ -12,7 +12,7 @@ params:
   customCSS: ["css/overrides.css"]
 
   # OG / Social
-  ogImage: /images/social-card.png
+  ogImage: /images/social-card.jpg
   twitterCard: summary_large_image
 
   # Footer
