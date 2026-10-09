@@ -198,9 +198,9 @@ a:hover {
 /* ── NAV ────────────────────────────────────────────────────── */
 
 .ps-nav {
-  border-bottom: 1px solid var(--rule-soft);
   padding: 1.25rem 0;
-  background: var(--ivory);
+  background: var(--night);
+  color: var(--night-ink);
 }
 
 .ps-nav__inner {
@@ -218,8 +218,22 @@ a:hover {
   font-size: 1.05rem;
   font-weight: 400;
   letter-spacing: -0.005em;
-  color: var(--ink);
+  color: var(--night-ink);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* A single firefly beside the name. Decorative: no content, no meaning. */
+.ps-nav__brand::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--firefly);
+  box-shadow: 0 0 10px 2px rgba(232, 196, 106, 0.55);
+  flex: none;
 }
 
 .ps-nav__links {
@@ -234,19 +248,26 @@ a:hover {
   font-size: var(--text-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--night-muted);
   text-decoration: none;
 }
 
-.ps-nav__link:hover { color: var(--ink); }
+.ps-nav__link:hover { color: var(--night-ink); }
 
-/* Current section: ink text with a rule under it. */
+/* Current section: ink text with a brass rule under it. */
 .ps-nav__link[aria-current] {
-  color: var(--ink);
+  color: var(--night-ink);
   text-decoration: underline;
-  text-decoration-color: var(--ink);
+  text-decoration-color: var(--brass);
   text-decoration-thickness: 1px;
   text-underline-offset: 6px;
+}
+
+/* Focus on night: the theme's ink focus ring vanishes on navy. */
+.ps-nav a:focus-visible,
+.ps-footer a:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
 }
 
 /* ── MOBILE NAV TOGGLE ──────────────────────────────────────── */
@@ -258,7 +279,7 @@ a:hover {
 .ps-nav__toggle {
   display: none;
   background: transparent;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--night-rule);
   padding: 0.5rem 1rem;
   min-height: 44px;
   align-items: center;
@@ -266,21 +287,21 @@ a:hover {
   font-size: var(--text-xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--night-muted);
   cursor: pointer;
   transition: color 140ms ease, border-color 140ms ease;
 }
 
 .ps-nav__toggle:hover,
 .ps-nav__toggle:focus-visible {
-  color: var(--ink);
-  border-color: var(--ink);
+  color: var(--night-ink);
+  border-color: var(--brass);
   outline: none;
 }
 
 .ps-nav__toggle[aria-expanded="true"] {
-  color: var(--ink);
-  border-color: var(--ink);
+  color: var(--night-ink);
+  border-color: var(--brass);
 }
 
 /* ── CONTAINERS & SECTIONS ──────────────────────────────────── */
@@ -1105,9 +1126,9 @@ a:hover {
 /* ── FOOTER ─────────────────────────────────────────────────── */
 
 .ps-footer {
-  border-top: 1px solid var(--rule);
   padding: 3rem 0 2rem;
-  background: var(--ivory);
+  background: var(--night);
+  color: var(--night-muted);
 }
 
 .ps-footer__inner {
@@ -1123,7 +1144,7 @@ a:hover {
 .ps-footer__brand {
   font-family: var(--font-serif);
   font-size: 1.05rem;
-  color: var(--ink);
+  color: var(--night-ink);
   margin-bottom: 0.5rem;
   display: block;
   text-decoration: none;
@@ -1133,7 +1154,7 @@ a:hover {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--night-muted);
   letter-spacing: 0.04em;
   font-style: normal;
 }
@@ -1143,7 +1164,7 @@ a:hover {
   font-size: var(--text-xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--muted-strong);
+  color: var(--brass);
   margin-bottom: 0.9rem;
   display: block;
 }
@@ -1158,25 +1179,50 @@ a:hover {
 .ps-footer__links a {
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--muted);
+  color: var(--night-muted);
   text-decoration: none;
   letter-spacing: 0.04em;
 }
 
-.ps-footer__links a:hover { color: var(--ink); }
+.ps-footer__links a:hover { color: var(--night-ink); }
 
 .ps-footer__bottom {
   max-width: var(--container-max);
   margin: 2.5rem auto 0;
   padding: 1.5rem var(--container-padding) 0;
-  border-top: 1px solid var(--rule-soft);
+  border-top: 1px solid var(--night-rule);
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.06em;
-  color: var(--muted);
+  color: var(--night-muted);
 }
+
+.ps-footer__end {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+/* Three fireflies at the end of the page. Decorative, hidden from
+   assistive technology. */
+.ps-fireflies {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.ps-fireflies span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--firefly);
+  box-shadow: 0 0 8px rgba(232, 196, 106, 0.7);
+}
+
+.ps-fireflies span:nth-child(2) { width: 4px; height: 4px; }
+.ps-fireflies span:nth-child(3) { width: 6px; height: 6px; }
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
 
@@ -1212,7 +1258,7 @@ a:hover {
   }
 
   .ps-nav__links li {
-    border-bottom: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--night-rule);
   }
 
   .ps-nav__links li:last-child {
