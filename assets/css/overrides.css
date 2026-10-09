@@ -831,6 +831,49 @@ h2.ps-eyebrow {
   margin-top: 1rem;
 }
 
+/* ── NOT FOUND ──────────────────────────────────────────────── */
+/* The 404: the art as a plate (same frame as the build art), then the
+   title and the way back, on the shared left edge. */
+.ps-lost {
+  padding: 3.5rem 0 4.5rem;
+}
+
+.ps-lost__art {
+  max-width: 46rem;
+  padding: 0.5rem;
+  background: var(--ivory-dim);
+  border: 1px solid var(--rule);
+}
+
+.ps-lost__art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ps-lost__title {
+  margin-top: 2.5rem;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.ps-lost__desc {
+  margin-top: 0.75rem;
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: var(--muted-strong);
+}
+
+.ps-lost__back {
+  margin-top: 1.5rem;
+  font-size: 1.05rem;
+}
+
 /* ── RESEARCH PAPER ─────────────────────────────────────────── */
 /* The text column takes the space the contents rail leaves, on the
    shared left edge. Below 1024px the rail

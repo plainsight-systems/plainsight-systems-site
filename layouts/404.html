@@ -1,0 +1,42 @@
+{{ define "main" }}
+
+{{/* Not found: the Ariadne mouse in a dead end with the thread cut, then the
+     way back. The art is framed as a plate like the build art, served as
+     WebP at the widths the source allows (never upscaled). Loaded eagerly:
+     it is the first thing on the page. Cloudflare serves this page with a
+     404 status (wrangler.toml, not_found_handling). */}}
+<div class="ps-wrap">
+  <section class="ps-lost">
+    {{ with resources.Get "images/lost-thread.png" }}
+      {{ $src := . }}
+      {{ $set := slice }}
+      {{ range slice 640 960 1280 1536 }}
+        {{ if le . $src.Width }}
+          {{ $img := $src.Resize (printf "%dx webp q82" .) }}
+          {{ $set = $set | append (printf "%s %dw" $img.RelPermalink $img.Width) }}
+        {{ end }}
+      {{ end }}
+      {{ $fallback := $src.Resize (printf "%dx jpg q82" (int (math.Min 1280 $src.Width))) }}
+    <div class="ps-lost__art">
+      <picture>
+        <source type="image/webp" srcset="{{ delimit $set ", " }}" sizes="(max-width: 768px) 100vw, 46rem">
+        <img
+          src="{{ $fallback.RelPermalink }}"
+          width="{{ $fallback.Width }}"
+          height="{{ $fallback.Height }}"
+          alt="A relay-bank maze seen from above. A small mechanical mouse sits in a dead end holding the cut end of a red thread; the other end lies by the entrance across the maze, and a pair of brass scissors rests on a wall."
+          fetchpriority="high"
+          decoding="async">
+      </picture>
+    </div>
+    {{ else }}
+      {{ errorf "404: no resource at assets/images/lost-thread.png" }}
+    {{ end }}
+
+    <h1 class="ps-lost__title">You've lost the thread.</h1>
+    <p class="ps-lost__desc">This page doesn't exist, or it has moved.</p>
+    <p class="ps-lost__back"><a href="{{ "/" | relURL }}">Back to the start →</a></p>
+  </section>
+</div>
+
+{{ end }}
