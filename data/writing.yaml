@@ -25,6 +25,13 @@
 # ID. Post titles quote a sentence from each post verbatim; article titles
 # are the article's own title.
 
+- title: "Charlotte now runs on an iPhone, experimentally: Qwen3 0.6B loads and answers in the browser, with a short context."
+  kind: post
+  url: https://www.linkedin.com/feed/update/urn:li:activity:7514671063402921984/
+  venue: LinkedIn
+  date: 2026-10-10
+  about: Charlotte
+
 - title: "Serenity's first lit frame: a brass sphere on a checkerboard at night, lit by two fireflies, a nod to Turner Whitted's 1980 spheres over a checkerboard."
   kind: post
   url: https://www.linkedin.com/feed/update/urn:li:activity:7514332383613997057/
