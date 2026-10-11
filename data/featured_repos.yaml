@@ -18,7 +18,7 @@
 - repo: plainsight-systems/charlotte
   question: "What does inference cost when nothing is hidden?"
   summary: "A transformer inference engine written by hand in C++, compiled to WebAssembly, with compute in WebGPU and no framework. Three open-weight models run in the browser; Qwen3 0.6B decodes at 270 tok/s in Chrome on an M3 Max."
-  demo: https://plainsight-systems.github.io/charlotte/
+  demo: https://charlotte.plainsight-systems.com/
   image: images/builds/charlotte.jpg
   alt: "A small spider in a web of strung lights at night, with words woven into the threads."
   writeup:
