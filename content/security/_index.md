@@ -4,7 +4,7 @@ description: "How to report security vulnerabilities in plainsight-systems.com a
 date: 2026-10-03
 ---
 
-*Last updated: October 3, 2026.*
+*Last updated: October 11, 2026.*
 
 This page describes how to report a security vulnerability in plainsight-systems.com or in a Plainsight Systems open-source project, and how reports are handled. Machine-readable contact metadata is published at [/.well-known/security.txt](/.well-known/security.txt) per RFC 9116.
 
@@ -31,7 +31,7 @@ We will acknowledge receipt within three business days. We will confirm whether 
 In scope:
 
 - plainsight-systems.com and its supporting infrastructure;
-- the public repositories in the [plainsight-systems GitHub organization](https://github.com/plainsight-systems) and the demo pages published from them at plainsight-systems.github.io;
+- the public repositories in the [plainsight-systems GitHub organization](https://github.com/plainsight-systems) and the demo pages published from them at plainsight-systems.github.io and at subdomains of plainsight-systems.com;
 - configuration of services operated on our behalf (DNS, CDN, email).
 
 Out of scope:

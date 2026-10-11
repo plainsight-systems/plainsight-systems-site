@@ -4,7 +4,7 @@ description: "How Plainsight Systems LLC handles personal information on plainsi
 date: 2026-10-03
 ---
 
-*Last updated: October 3, 2026.*
+*Last updated: October 11, 2026.*
 
 This policy describes how **Plainsight Systems LLC** ("Plainsight Systems", "we", "us") handles personal information collected through **plainsight-systems.com** and the project demo pages it publishes.
 
@@ -24,7 +24,7 @@ We do not use advertising cookies, analytics tracking, fingerprinting, or third-
 
 ## 3. Project demo pages
 
-Interactive demos (for example, Seymour and Charlotte) are published at **plainsight-systems.github.io** and hosted by GitHub Pages, which processes requests under [GitHub's privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement). The demos send nothing back to Plainsight Systems.
+Interactive demos (for example, Seymour and Charlotte) are published at **plainsight-systems.github.io** or at subdomains of **plainsight-systems.com** (such as charlotte.plainsight-systems.com) and hosted by GitHub Pages, which processes requests under [GitHub's privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement). The demos send nothing back to Plainsight Systems.
 
 - Some demos save settings or progress (such as game scores) in your browser's local storage. That data stays on your device; clearing your browser's site data removes it.
 - Demos that run language models download the model files you choose directly from their host, such as Hugging Face, into your browser's storage. That host receives the download request under its own privacy policy.
