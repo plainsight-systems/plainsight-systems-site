@@ -1,6 +1,7 @@
 {{/*
   build-row partial. One build along the home page's thread: its art beside
-  its question, summary and links. Rows alternate sides.
+  its question, summary and links. Rows alternate sides. An optional project
+  site is linked before Code.
 
   Params (dict):
     .entry  a featured_repos.yaml entry that has an image
@@ -21,6 +22,7 @@
     <h3 class="ps-build__question">{{ $e.question }}</h3>
     <p class="ps-build__desc">{{ $e.summary }}</p>
     <p class="ps-build__links">
+      {{ with $e.project_site }}<a href="{{ . }}" rel="noopener">Project site</a>{{ end }}
       <a href="{{ $repoURL }}" rel="noopener">Code</a>
       {{- with $e.demo }}<a href="{{ . }}" rel="noopener">Live demo</a>{{ end -}}
       {{- with $e.writeup }}<a href="{{ .url }}" rel="noopener">{{ .label }}</a>{{ end -}}

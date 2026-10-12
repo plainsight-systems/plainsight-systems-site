@@ -8,6 +8,7 @@
 #            card
 #   summary  curated one-liner shown on the card, so on-site copy stays
 #            under our control whatever the repository description says
+#   project_site optional project website, linked before the repository
 #   demo     optional URL of a live demo
 #   image    optional art, a path under assets/ (original art only; see
 #            ~/Documents/linkedin-posts/STYLE.md for the style); with it,
@@ -26,6 +27,7 @@
     url: https://github.com/plainsight-systems/charlotte/blob/main/docs/debrief.md
 
 - repo: plainsight-systems/serenity
+  project_site: https://serenity.plainsight-systems.com/
   question: "What does lighting a scene with thousands of moving lights have in common with attention?"
   summary: "A real-time path tracer for one scene lit by thousands of moving fireflies: C++ on Metal 4, ReSTIR, and a denoiser of my own. Early."
   image: images/builds/serenity.jpg

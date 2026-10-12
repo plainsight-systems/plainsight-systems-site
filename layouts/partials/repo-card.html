@@ -6,6 +6,7 @@
     .repo    GitHub owner/name (e.g. "plainsight-systems/cpp-perf-guidelines")
     .question the question the build exists to answer
     .summary curated one-liner (overrides the GitHub description)
+    .project_site optional project website, linked before Source
     .demo    optional URL of a live demo; adds a "Live" link
     .image   optional art under assets/, shown at the top of the card
     .alt     required with .image
@@ -52,6 +53,7 @@
   {{ with .question }}<span class="ps-brand__question">{{ . }}</span>{{ end }}
   <span class="ps-brand__desc">{{ $summary }}</span>
   <span class="ps-brand__cta">
+    {{- with .project_site }}<a href="{{ . }}" rel="noopener">Project site</a>{{ end -}}
     {{- with .demo }}<a href="{{ . }}" rel="noopener">Live →</a>{{ end -}}
     <a href="{{ $repoURL }}" rel="noopener">Source →</a>
   </span>
