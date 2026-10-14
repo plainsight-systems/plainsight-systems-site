@@ -3,25 +3,35 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches: [ "main" ]
-  # Weekly rebuild refreshes build-time GitHub stats on the Open Source
-  # cards (fetched via resources.GetRemote in layouts/partials/repo-card.html)
-  # so stars, forks, and last-pushed dates stay honest without a content push.
-  # 06:00 UTC every Monday — off-hours for the primary time zones.
+  pull_request:
+  # Refresh published articles and GitHub stats daily, at 00:17 Arizona time.
   schedule:
-    - cron: "0 6 * * 1"
-  # Manual trigger from the Actions tab, e.g. after publishing a new repo to
-  # the org and updating data/featured_repos.yaml on a branch, or to force
-  # a stats refresh sooner than the weekly schedule.
+    - cron: "17 7 * * *"
+  # Also permits an immediate refresh after publishing an article.
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: deploy-plainsight-systems-com
+  group: deploy-plainsight-systems-com-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  keep-schedule-active:
+    # Public repositories otherwise lose schedules after 60 quiet days.
+    # Re-enable this workflow through GitHub's API, without dummy commits,
+    # personal tokens, or write access in the build/deploy job.
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Keep the publication refresh schedule enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/deploy.yaml/enable"
+
   deploy:
     runs-on: ubuntu-latest
 
@@ -42,11 +52,41 @@ jobs:
           hugo-version: "0.154.2"
           extended: true
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install publication dependencies
+        run: python3 -m pip install -r scripts/requirements.txt
+
+      - name: Test publication index
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Restore last successful feed snapshots
+        if: github.event_name != 'pull_request'
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/project_writing.json
+          key: writing-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: writing-v1-
+
+      - name: Refresh project articles
+        if: github.event_name != 'pull_request'
+        run: python3 scripts/refresh-writing.py
+
       - name: Build site
         run: hugo --minify
 
       - name: Deploy (Wrangler)
+        if: github.event_name != 'pull_request'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx -y wrangler deploy
+
+      - name: Save publication snapshots
+        if: github.event_name != 'pull_request'
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/project_writing.json
+          key: writing-v1-${{ github.run_id }}-${{ github.run_attempt }}

@@ -28,3 +28,8 @@ Thumbs.db
 
 # Paper build artifacts (scripts/build-paper.sh --arxiv)
 build/
+
+# Publication feed refresh cache and local Python environment
+.cache/
+.venv/
+__pycache__/

@@ -39,6 +39,65 @@ npx wrangler dev --port 8787
 
 ---
 
+## Writing across project sites
+
+Project sites own their articles. This site combines their published metadata
+with local papers and optional curated links in Research and the homepage's
+Latest list. The article text stays on the originating site.
+
+Register a project's complete RSS feed with `feed` and `writing_name` in its
+existing `data/featured_repos.yaml` entry. Serenity publishes
+`https://serenity.plainsight-systems.com/writing/index.xml`; Cradle publishes
+`https://cradle.plainsight-systems.com/lessons/index.xml`. Feeds contain published
+articles only, with title, description, date, project URL and canonical GUID.
+They must contain the complete archive, without a recent-item limit.
+
+To refresh locally:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r scripts/requirements.txt
+.venv/bin/python scripts/refresh-writing.py
+hugo --minify
+```
+
+`data/project_writing.json` is a generated starting snapshot, so a fresh checkout
+can build without fetching feeds. Do not maintain article entries in it by hand.
+CI restores its last successful snapshot, fetches the registered feeds, builds,
+and deploys daily at 07:17 UTC (00:17 Arizona), and on pushes to main or a manual
+workflow run. PRs test and build with the checked-in snapshot without deploying.
+A successful feed replaces that project's entries, including corrections and
+removals. A failed feed retains its previous entries and prints a warning; a new
+source without a saved snapshot fails explicitly. The cache is saved after a
+successful deployment. GitHub's cache can be evicted; the checked-in snapshot
+remains the fallback if that happens during a feed outage.
+
+Reading links point to project editions. Canonical GUIDs also identify copies
+published elsewhere, so a curated personal-site link does not duplicate a Cradle
+lesson. `data/writing.yaml` is optional curation for standalone posts and writing
+without a feed; new project articles need no entry there.
+
+For initial setup before a feed is deployed, generate its production output in
+the project repository, then pass `--feed-file URL=/absolute/path/index.xml` to
+the refresh script. This option seeds metadata from the real production feed,
+not from private planning files. Deploy the project feeds before deploying the
+hub. No cross-repository credentials or browser-side feed requests are required.
+
+Verification: `.venv/bin/python -m unittest discover -s tests -v` covers RSS
+parsing, outage recovery, changes/removals, future dates and duplicate editions,
+and renders both article lists through Hugo.
+
+GitHub disables public scheduled workflows after 60 days without repository
+activity. A separate scheduled job keeps this workflow enabled using GitHub's
+workflow-enable API and its short-lived repository token. Only that job has
+`actions: write`; the build/deploy job keeps `contents: read`, and PRs cannot run
+the keepalive job. This follows the API-based approach documented by
+[gh-workflow-keepalive](https://github.com/liskin/gh-workflow-keepalive), without
+adding an external action or dummy commits. GitHub may delay scheduled runs;
+the manual trigger is available for immediate publication.
+
+---
+
 ## Deployment
 
 Push to `main` triggers automatic deployment via GitHub Actions.

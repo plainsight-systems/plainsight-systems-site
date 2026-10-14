@@ -1,6 +1,7 @@
 {{/*
   Returns every published write-up as a uniform list of dicts, newest
-  first: this site's paper pages plus the entries in data/writing.yaml.
+  first: local papers, registered project feed snapshots, and curated links.
+  Feed entries win over curated copies with the same URL or canonical URL.
   Each dict: title, url, kind (paper|article|post), kindLabel, venue,
   date (YYYY-MM-DD string), about, onsite (true for this site's papers).
   A data entry missing a required field, or with an unknown kind or a
@@ -16,6 +17,25 @@
         "onsite" true) }}
   {{ end }}
 {{ end }}
+{{/* Only registered projects participate, even if an old snapshot remains. */}}
+{{ range site.Data.featured_repos }}
+  {{ $project := . }}
+  {{ with .feed }}
+    {{ $source := index site.Data.project_writing . }}
+    {{ if not $source }}
+      {{ errorf "No writing snapshot for %s; run scripts/refresh-writing.py" . }}
+    {{ end }}
+    {{ range $source.items }}
+      {{ if le (time .published) now }}
+        {{ $items = $items | append (dict
+            "title" .title "url" .url "canonical_url" .canonical_url
+            "kind" "article" "kindLabel" "Article"
+            "venue" $project.writing_name "date" .date "about" $project.writing_name
+            "summary" .summary "onsite" false) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 {{ range site.Data.writing }}
   {{ $label := index $kinds (.kind | default "") }}
   {{ if or (not $label) (not .title) (not .url) (not .venue) (not .date) }}
@@ -28,6 +48,18 @@
   {{ $items = $items | append (dict
       "title" .title "url" .url "kind" .kind "kindLabel" $label
       "venue" .venue "date" (substr $date 0 10) "about" (.about | default "")
-      "onsite" false) }}
+      "canonical_url" (.canonical_url | default .url)
+      "summary" (.summary | default "") "onsite" false) }}
 {{ end }}
-{{ return sort $items "date" "desc" }}
+{{ $unique := slice }}
+{{ $seen := newScratch }}
+{{ range $items }}
+  {{ $url := strings.TrimSuffix "/" .url }}
+  {{ $canonical := strings.TrimSuffix "/" (.canonical_url | default .url) }}
+  {{ if and (not ($seen.Get $url)) (not ($seen.Get $canonical)) }}
+    {{ $unique = $unique | append . }}
+    {{ $seen.Set $url true }}
+    {{ $seen.Set $canonical true }}
+  {{ end }}
+{{ end }}
+{{ return sort $unique "date" "desc" }}

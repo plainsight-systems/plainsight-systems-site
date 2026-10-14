@@ -5,7 +5,9 @@ description: "Andrew P Hunter, systems architect and builder, and Plainsight Sys
 
 ## Andrew P Hunter
 
-I build things to find out how they work. Lately that has meant an inference engine written from scratch for the browser, a tour of why GPUs spend so much time waiting on memory, and a detour through Claude Shannon's 1948 paper because a tokenizer raised a question I couldn't let go of.
+I build things to find out how they work. That curiosity runs through an inference engine written from scratch for the browser, a tour of why GPUs spend so much time waiting on memory, and a detour through Claude Shannon's 1948 paper because a tokenizer raised a question I couldn't let go of.
+
+In Serenity, I approach GPU performance from the rendering side. Moving lights give me a way to study techniques that also matter to inference, with an image at the end where people can see what the kernel work makes possible. Cradle takes the teaching route: in Let's Build a Transformer!, we build an inference engine in C# with .NET developers, explaining the code and checking each new piece as the program grows.
 
 The usual advice is to pick one narrow specialty and stay in it. I've never managed it. Every field I dig into turns out to have a problem another field already solved, and finding that connection is the best part of the work. Shannon worked the same way: information theory, a maze-solving mechanical mouse, juggling machines, and a unicycle he rode through the halls of Bell Labs. I've kept the curiosity and skipped the unicycle.
 

@@ -1,0 +1,44 @@
+{
+  "https://cradle.plainsight-systems.com/lessons/index.xml": {
+    "fetched_at": "2026-10-14T03:22:26.206670+00:00",
+    "items": [
+      {
+        "canonical_url": "https://andrewphunter.com/writing/cradle-01-the-cradle/",
+        "date": "2026-10-13",
+        "published": "2026-10-13T00:00:00+00:00",
+        "summary": "Find a GPU, run our first C# kernel, and check every result before building on it.",
+        "title": "The cradle",
+        "url": "https://cradle.plainsight-systems.com/lessons/01-the-cradle/"
+      },
+      {
+        "canonical_url": "https://andrewphunter.com/writing/cradle-00-getting-the-cradle-ready/",
+        "date": "2026-10-12",
+        "published": "2026-10-12T00:00:00+00:00",
+        "summary": "Set up the tools, build the starting program, and check the dependencies we’ll use in the first lesson.",
+        "title": "Prologue: Getting the cradle ready",
+        "url": "https://cradle.plainsight-systems.com/lessons/00-getting-the-cradle-ready/"
+      }
+    ]
+  },
+  "https://serenity.plainsight-systems.com/writing/index.xml": {
+    "fetched_at": "2026-10-14T03:22:26.206670+00:00",
+    "items": [
+      {
+        "canonical_url": "https://serenity.plainsight-systems.com/writing/milestone-2/",
+        "date": "2026-10-13",
+        "published": "2026-10-13T00:00:00+00:00",
+        "summary": "Keeping useful paths, giving the glass its own work, and measuring what reuse buys. The connections to inference run through the pipeline.",
+        "title": "Milestone 2: reusing work with ReSTIR",
+        "url": "https://serenity.plainsight-systems.com/writing/milestone-2/"
+      },
+      {
+        "canonical_url": "https://serenity.plainsight-systems.com/writing/milestone-1/",
+        "date": "2026-10-10",
+        "published": "2026-10-10T00:00:00+00:00",
+        "summary": "The scene, the reference image, and the measurements behind the first milestone, including the bugs that plausible images did not reveal.",
+        "title": "Milestone 1: building the baseline",
+        "url": "https://serenity.plainsight-systems.com/writing/milestone-1/"
+      }
+    ]
+  }
+}

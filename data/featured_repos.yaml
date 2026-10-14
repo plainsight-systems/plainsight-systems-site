@@ -1,5 +1,8 @@
 # Builds shown on the Projects page (all) and along the thread on the home
 # page (the ones with art). Order matters: the most visual first.
+# Describe each project's purpose and approach, without milestone numbers,
+# progress labels, benchmark snapshots, or promises about the next release.
+# Project sites carry the changing details.
 #
 # Each entry:
 #   repo     GitHub owner/name (builds the github.com URL and fetches stats
@@ -9,6 +12,8 @@
 #   summary  curated one-liner shown on the card, so on-site copy stays
 #            under our control whatever the repository description says
 #   project_site optional project website, linked before the repository
+#   feed     optional complete RSS article feed; refreshed automatically
+#   writing_name display name for feed articles and their project filter
 #   demo     optional URL of a live demo
 #   image    optional art, a path under assets/ (original art only; see
 #            ~/Documents/linkedin-posts/STYLE.md for the style); with it,
@@ -18,7 +23,7 @@
 
 - repo: plainsight-systems/charlotte
   question: "What does inference cost when nothing is hidden?"
-  summary: "A transformer inference engine written by hand in C++, compiled to WebAssembly, with compute in WebGPU and no framework. Three open-weight models run in the browser; Qwen3 0.6B decodes at 270 tok/s in Chrome on an M3 Max."
+  summary: "A transformer inference engine written by hand in C++, compiled to WebAssembly, with compute in WebGPU and no framework. Running open-weight models in the browser lets me follow the cost of inference through the code, from loading weights to producing a token."
   demo: https://charlotte.plainsight-systems.com/
   image: images/builds/charlotte.jpg
   alt: "A small spider in a web of strung lights at night, with words woven into the threads."
@@ -28,14 +33,25 @@
 
 - repo: plainsight-systems/serenity
   project_site: https://serenity.plainsight-systems.com/
-  question: "What does lighting a scene with thousands of moving lights have in common with attention?"
-  summary: "A real-time path tracer for one scene lit by thousands of moving fireflies: C++ on Metal 4, ReSTIR, and a denoiser of my own. Early."
+  feed: https://serenity.plainsight-systems.com/writing/index.xml
+  writing_name: Serenity
+  question: "What can rendering teach us about GPU inference?"
+  summary: "A C++ and Metal path tracer for exploring techniques that also matter to inference: processing work in small pieces, keeping a small amount of state, and reusing earlier work. ReSTIR shares sampled paths across pixels and frames; marbles lit by moving fireflies give me a picture at the end, where people can see what the kernel work makes possible."
   image: images/builds/serenity.jpg
   alt: "Glass and brass spheres on a table at night, lit by fireflies that settle into the outline of a small ship."
 
+- repo: plainsight-systems/cradle
+  project_site: https://cradle.plainsight-systems.com/
+  feed: https://cradle.plainsight-systems.com/lessons/index.xml
+  writing_name: Cradle
+  question: "Can we build a transformer inference engine we can follow all the way through?"
+  summary: "The code behind Let's Build a Transformer!, a practical series for .NET developers. We build one growing program in C# with ILGPU, write the GPU kernels ourselves, and introduce the math when the code needs it. Each lesson adds something we can run and check, following Jack Crenshaw's approach in Let's Build a Compiler!"
+  image: images/builds/cradle.png
+  alt: "A small electrical transformer rests in a wooden cradle under a brass desk lamp, with a red power lead trailing onto the workbench."
+
 - repo: plainsight-systems/ariadne
   question: "What would an information-theoretic approach to attention look like?"
-  summary: "A research program working toward an information-theoretic approach to attention and beyond, starting where the field started: Shannon's 1948 paper."
+  summary: "A research program investigating attention through information theory, starting where the field started: Shannon's 1948 paper."
   image: images/builds/ariadne.jpg
   alt: "A relay-bank maze with a small mechanical mouse following a red thread toward the way out."
 
@@ -48,7 +64,7 @@
 
 - repo: plainsight-systems/cpp-perf-guidelines
   question: "What does a performance engineer know that a model trained on average code does not?"
-  summary: "The C++ performance technique layer below the ISO C++ Core Guidelines, every example compiled and checked. Starred and forked beyond the project."
+  summary: "The C++ performance technique layer below the ISO C++ Core Guidelines, every example compiled and checked."
 
 - repo: plainsight-systems/mcp-servers
   question: "Can a coding agent use that knowledge while it works?"

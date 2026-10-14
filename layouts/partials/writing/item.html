@@ -2,10 +2,11 @@
 <li class="ps-writing__item"
     data-kind="{{ .kind }}"
     data-about="{{ .about }}"
-    data-text="{{ lower (printf "%s %s %s %s" .title .venue .about .kindLabel) }}">
+    data-text="{{ lower (printf "%s %s %s %s %s" .title .venue .about .kindLabel (.summary | default "")) }}">
   <span class="ps-writing__meta">
     {{- .kindLabel }} · {{ .venue }} · <time datetime="{{ .date }}">{{ (time .date).Format "2 Jan 2006" }}</time>
-    {{- with .about }} · {{ . }}{{ end -}}
+    {{- with .about }}{{ if ne . $.venue }} · {{ . }}{{ end }}{{ end -}}
   </span>
   <a class="ps-writing__title" href="{{ .url }}"{{ if hasPrefix .url "http" }} rel="noopener"{{ end }}>{{ .title }}</a>
+  {{ with .summary }}<p class="ps-writing__summary">{{ . }}</p>{{ end }}
 </li>
