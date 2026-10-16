@@ -48,7 +48,8 @@ Latest list. The article text stays on the originating site.
 Register a project's complete RSS feed with `feed` and `writing_name` in its
 existing `data/featured_repos.yaml` entry. Serenity publishes
 `https://serenity.plainsight-systems.com/writing/index.xml`; Cradle publishes
-`https://cradle.plainsight-systems.com/lessons/index.xml`. Feeds contain published
+`https://cradle.plainsight-systems.com/lessons/index.xml`; Dolittle publishes
+`https://dolittle.plainsight-systems.com/writing/index.xml`. Feeds contain published
 articles only, with title, description, date, project URL and canonical GUID.
 They must contain the complete archive, without a recent-item limit.
 

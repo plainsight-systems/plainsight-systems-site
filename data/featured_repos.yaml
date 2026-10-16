@@ -31,6 +31,15 @@
     label: Debrief
     url: https://github.com/plainsight-systems/charlotte/blob/main/docs/debrief.md
 
+- repo: plainsight-systems/dolittle
+  project_site: https://dolittle.plainsight-systems.com/
+  feed: https://dolittle.plainsight-systems.com/writing/index.xml
+  writing_name: Dolittle
+  question: "What do we learn from two views of a thinking model?"
+  summary: "An experiment in comparing a model's generated thinking with natural language descriptions of its internal activations. I read Anthropic's work on natural language autoencoders and wanted to build the machinery myself, so I could inspect both views at the same point in a generation and explore where they agree or differ."
+  image: images/builds/dolittle.png
+  alt: "A green parrot speaks into a brass listening horn, with glowing marks becoming handwriting above an open notebook in a lamplit study."
+
 - repo: plainsight-systems/serenity
   project_site: https://serenity.plainsight-systems.com/
   feed: https://serenity.plainsight-systems.com/writing/index.xml

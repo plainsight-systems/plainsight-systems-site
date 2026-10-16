@@ -1,6 +1,6 @@
 {
   "https://cradle.plainsight-systems.com/lessons/index.xml": {
-    "fetched_at": "2026-10-14T03:22:26.206670+00:00",
+    "fetched_at": "2026-10-16T22:07:41.653359+00:00",
     "items": [
       {
         "canonical_url": "https://andrewphunter.com/writing/cradle-01-the-cradle/",
@@ -20,9 +20,38 @@
       }
     ]
   },
-  "https://serenity.plainsight-systems.com/writing/index.xml": {
-    "fetched_at": "2026-10-14T03:22:26.206670+00:00",
+  "https://dolittle.plainsight-systems.com/writing/index.xml": {
+    "fetched_at": "2026-10-16T22:07:41.653359+00:00",
     "items": [
+      {
+        "canonical_url": "https://dolittle.plainsight-systems.com/writing/two-views-of-a-thinking-model/",
+        "date": "2026-10-16",
+        "published": "2026-10-16T09:00:00+00:00",
+        "summary": "What generated thinking tells us, what an activation verbalizer adds, and how to read the places where they disagree.",
+        "title": "Two views of a thinking model",
+        "url": "https://dolittle.plainsight-systems.com/writing/two-views-of-a-thinking-model/"
+      },
+      {
+        "canonical_url": "https://dolittle.plainsight-systems.com/writing/choosing-a-model-we-can-run/",
+        "date": "2026-10-16",
+        "published": "2026-10-16T08:00:00+00:00",
+        "summary": "Comparing two Qwen3/NLA pairs on a 3090 Ti, and why the 8B pair is the starting point for Dolittle.",
+        "title": "Choosing a model we can run",
+        "url": "https://dolittle.plainsight-systems.com/writing/choosing-a-model-we-can-run/"
+      }
+    ]
+  },
+  "https://serenity.plainsight-systems.com/writing/index.xml": {
+    "fetched_at": "2026-10-16T22:07:41.653359+00:00",
+    "items": [
+      {
+        "canonical_url": "https://serenity.plainsight-systems.com/writing/milestone-3/",
+        "date": "2026-10-16",
+        "published": "2026-10-16T00:00:00+00:00",
+        "summary": "Building and training a reconstruction model, running it inside the renderer, and seeing what survives denoising and upscaling.",
+        "title": "Milestone 3: turning samples into an image",
+        "url": "https://serenity.plainsight-systems.com/writing/milestone-3/"
+      },
       {
         "canonical_url": "https://serenity.plainsight-systems.com/writing/milestone-2/",
         "date": "2026-10-13",
