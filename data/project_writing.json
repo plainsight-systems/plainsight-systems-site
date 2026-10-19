@@ -1,9 +1,17 @@
 {
   "https://cradle.plainsight-systems.com/lessons/index.xml": {
-    "fetched_at": "2026-10-16T22:07:41.653359+00:00",
+    "fetched_at": "2026-10-19T04:35:56.529832+00:00",
     "items": [
       {
-        "canonical_url": "https://andrewphunter.com/writing/cradle-01-the-cradle/",
+        "canonical_url": "https://cradle.plainsight-systems.com/lessons/02-buffers-and-shapes/",
+        "date": "2026-10-18",
+        "published": "2026-10-18T00:00:00+00:00",
+        "summary": "Give our data rows and columns, make ownership explicit, and add matrices on the GPU.",
+        "title": "Buffers and shapes",
+        "url": "https://cradle.plainsight-systems.com/lessons/02-buffers-and-shapes/"
+      },
+      {
+        "canonical_url": "https://cradle.plainsight-systems.com/lessons/01-the-cradle/",
         "date": "2026-10-13",
         "published": "2026-10-13T00:00:00+00:00",
         "summary": "Find a GPU, run our first C# kernel, and check every result before building on it.",
@@ -11,7 +19,7 @@
         "url": "https://cradle.plainsight-systems.com/lessons/01-the-cradle/"
       },
       {
-        "canonical_url": "https://andrewphunter.com/writing/cradle-00-getting-the-cradle-ready/",
+        "canonical_url": "https://cradle.plainsight-systems.com/lessons/00-getting-the-cradle-ready/",
         "date": "2026-10-12",
         "published": "2026-10-12T00:00:00+00:00",
         "summary": "Set up the tools, build the starting program, and check the dependencies we’ll use in the first lesson.",
@@ -21,7 +29,7 @@
     ]
   },
   "https://dolittle.plainsight-systems.com/writing/index.xml": {
-    "fetched_at": "2026-10-16T22:07:41.653359+00:00",
+    "fetched_at": "2026-10-19T04:35:56.529832+00:00",
     "items": [
       {
         "canonical_url": "https://dolittle.plainsight-systems.com/writing/two-views-of-a-thinking-model/",
@@ -42,7 +50,7 @@
     ]
   },
   "https://serenity.plainsight-systems.com/writing/index.xml": {
-    "fetched_at": "2026-10-16T22:07:41.653359+00:00",
+    "fetched_at": "2026-10-19T04:35:56.529832+00:00",
     "items": [
       {
         "canonical_url": "https://serenity.plainsight-systems.com/writing/milestone-3/",

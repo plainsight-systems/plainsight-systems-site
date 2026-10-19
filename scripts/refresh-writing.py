@@ -4,8 +4,8 @@
 The project registry owns feed URLs and display names. Each successful feed
 replaces that source's snapshot, including removals; a failed source keeps its
 last good snapshot and warns. A new source without a usable snapshot fails.
-Only public metadata enters Hugo. Project links retain their edition while
-canonical RSS GUIDs allow syndicated copies to be deduplicated by the template.
+Only public metadata enters Hugo. Project sites own canonical URLs; legacy
+off-site RSS GUIDs never make a syndicated edition the canonical original.
 CI persists the snapshot in its cache; a checked-in seed supports offline builds.
 """
 
@@ -76,14 +76,15 @@ def parse_feed(raw, feed, now):
     for entry in channel.findall('item'):
         title = (entry.findtext('title') or '').strip()
         url = https_url((entry.findtext('link') or '').strip())
-        # A feed may identify a canonical edition elsewhere, but its reading
-        # links belong to the registered project site.
+        # Reading links and canonical editions belong to the project site.
         if urlsplit(url).netloc != urlsplit(feed).netloc:
             raise ValueError(f'Article link is outside the project site: {url}')
         guid = entry.find('guid')
         canonical = https_url(guid.text.strip()) if (
             guid is not None and guid.get('isPermaLink', 'true') == 'true' and guid.text
         ) else url
+        if urlsplit(canonical).netloc != urlsplit(feed).netloc:
+            canonical = url
         published = parsedate_to_datetime(entry.findtext('pubDate') or '')
         if not title or published.tzinfo is None:
             raise ValueError('Articles need a title and a timezone-aware publication date')
@@ -125,6 +126,9 @@ def read_snapshot(path):
             https_url(item['canonical_url'])
             if urlsplit(item['url']).netloc != urlsplit(feed).netloc:
                 raise ValueError(f'{path}: article link is outside its project')
+            # Migrate old snapshots too, including outage fallbacks from CI.
+            if urlsplit(item['canonical_url']).netloc != urlsplit(feed).netloc:
+                item['canonical_url'] = item['url']
             published = datetime.fromisoformat(item['published'])
             if published.tzinfo is None or item['date'] != published.date().isoformat():
                 raise ValueError(f'{path}: invalid article publication date')

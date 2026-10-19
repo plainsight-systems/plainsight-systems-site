@@ -36,7 +36,7 @@ class FeedTests(unittest.TestCase):
         item, = writing.parse_feed(feed(guid='https://author.example/article/'), FEED, NOW)
         self.assertEqual(item['title'], 'A & B')
         self.assertEqual(item['summary'], 'A & B: checked GPU work.')
-        self.assertEqual(item['canonical_url'], 'https://author.example/article/')
+        self.assertEqual(item['canonical_url'], 'https://project.example/writing/article/')
         self.assertEqual(item['url'], 'https://project.example/writing/article/')
         self.assertEqual(item['date'], '2026-10-13')
 
@@ -106,6 +106,11 @@ class FeedTests(unittest.TestCase):
             snapshot = {FEED: dict(fetched_at=NOW.isoformat(), items=writing.parse_feed(feed(), FEED, NOW))}
             writing.write_snapshot(path, snapshot)
             self.assertEqual(writing.read_snapshot(path), snapshot)
+            snapshot[FEED]['items'][0]['canonical_url'] = 'https://author.example/article/'
+            writing.write_snapshot(path, snapshot)
+            migrated = writing.read_snapshot(path)
+            self.assertEqual(migrated[FEED]['items'][0]['canonical_url'],
+                             'https://project.example/writing/article/')
             result, _ = writing.refresh({FEED: 'Project'}, snapshot, lambda _: b'invalid',
                                         datetime(2020, 1, 1, tzinfo=timezone.utc))
             self.assertEqual(result[FEED]['items'], [])
@@ -144,6 +149,7 @@ class RenderTests(unittest.TestCase):
             with (root / 'data/writing.yaml').open('a') as output:
                 output.write('\n- title: Duplicate canonical edition\n  kind: article\n'
                              '  url: https://andrewphunter.com/writing/cradle-01-the-cradle/\n'
+                             '  canonical_url: https://cradle.plainsight-systems.com/lessons/01-the-cradle/\n'
                              '  venue: Personal site\n  date: 2026-10-13\n')
             shutil.copytree(ROOT / 'layouts/partials/writing', root / 'layouts/partials/writing')
             template = '{{ partial "writing/list.html" (dict "items" (partial "writing/items.html" .) "filter" false) }}'

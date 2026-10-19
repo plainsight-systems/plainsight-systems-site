@@ -73,10 +73,12 @@ source without a saved snapshot fails explicitly. The cache is saved after a
 successful deployment. GitHub's cache can be evicted; the checked-in snapshot
 remains the fallback if that happens during a feed outage.
 
-Reading links point to project editions. Canonical GUIDs also identify copies
-published elsewhere, so a curated personal-site link does not duplicate a Cradle
-lesson. `data/writing.yaml` is optional curation for standalone posts and writing
-without a feed; new project articles need no entry there.
+Reading links and canonical URLs belong to the project sites. Legacy off-site
+RSS GUIDs fall back to the project article URL, including in saved snapshots.
+For a curated syndicated copy, set `canonical_url` to the project article URL
+so it does not duplicate the original. `data/writing.yaml` is optional curation
+for standalone posts and writing without a feed; new project articles need no
+entry there.
 
 For initial setup before a feed is deployed, generate its production output in
 the project repository, then pass `--feed-file URL=/absolute/path/index.xml` to
