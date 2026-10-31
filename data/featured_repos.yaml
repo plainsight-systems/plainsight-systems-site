@@ -40,6 +40,12 @@
   image: images/builds/dolittle.png
   alt: "A green parrot speaks into a brass listening horn, with glowing marks becoming handwriting above an open notebook in a lamplit study."
 
+- repo: plainsight-systems/frizzle
+  question: "What happens when you poke a neuron?"
+  summary: "Ask a model a question, then reach inside and change a few neurons. Turn them up, turn them down, or switch them off, and compare what it says with its original answer. Frizzle lets you experiment with a running language model right in your browser. Pick something, change it, see what happens."
+  image: images/builds/frizzle.png
+  alt: "A small vintage coach drives along a night road through a row of glass panes, each a grid of points of light; on one pane a single point glows amber beside a brass dial that has just been turned."
+
 - repo: plainsight-systems/serenity
   project_site: https://serenity.plainsight-systems.com/
   feed: https://serenity.plainsight-systems.com/writing/index.xml
